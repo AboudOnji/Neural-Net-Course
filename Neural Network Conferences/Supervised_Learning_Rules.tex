@@ -1,0 +1,316 @@
+\documentclass[aspectratio=169,xcolor=dvipsnames]{beamer}
+\usetheme{Berlin}
+
+\usepackage[english]{babel} % Cambiado a español para acentos y textos automáticos
+\usepackage{hyperref}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{amsmath}
+\usepackage{lettrine}
+\setbeamertemplate{caption}[numbered]
+\usepackage[dvipsnames,svgnames,x11names]{xcolor}
+\usepackage{xurl}
+\usepackage{hyperref}
+\usepackage{algorithm}
+\usepackage{algorithmicx}
+\usepackage{algpseudocode}
+\usepackage{adjustbox}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=cyan, % Color más visible en temas oscuros
+    filecolor=blue,
+    urlcolor=blue,
+    citecolor=blue,
+}
+
+%----------------------------------------------------------------------------------------
+\usepackage{listings}
+\usepackage{xcolor}
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.97,0.97,0.99}
+
+\lstdefinestyle{MATLABStyle}{
+  language=Matlab,
+  basicstyle=\ttfamily\footnotesize,
+  keywordstyle=\color{blue}\bfseries,
+  commentstyle=\color{codegreen},
+  stringstyle=\color{violet},
+  numberstyle=\tiny\color{gray},
+  breakatwhitespace=false,
+  breaklines=true,
+  captionpos=b,
+  keepspaces=true,
+  numbers=left,
+  numbersep=5pt,
+  showspaces=false,
+  showstringspaces=false,
+  showtabs=false,
+  tabsize=2,
+  frame=lines,
+  framerule=0.4pt,
+  backgroundcolor=\color{backcolour}
+}
+\lstset{style=MATLABStyle}
+
+%----------------------------------------------------------------------------------------
+%	TITLE PAGE
+%----------------------------------------------------------------------------------------
+
+\title{Artificial Neural Networks}
+\subtitle{Chapter 3: Supervised Learning Neural Networks \\ Supervised Learning Rules}
+
+\author{Prof. D.Sc. BARSEKH-ONJI Aboud}
+
+\institute
+{
+    Facultad de Ingeniería \\
+    Universidad Anáhuac México
+}
+\date{\today}
+
+%----------------------------------------------------------------------------------------
+%	PRESENTATION SLIDES
+%----------------------------------------------------------------------------------------
+
+\AtBeginSection[]
+{
+  \begin{frame}{Agenda}
+    \tableofcontents[currentsection]
+  \end{frame}
+}
+
+\begin{document}
+
+\begin{frame}
+    \titlepage
+\end{frame}
+
+%------------------------------------------------
+\section{Introduction}
+%------------------------------------------------
+
+\begin{frame}{Supervised Learning Overview}
+    \begin{block}{Goal}
+    In Supervised Learning, the network is provided with a dataset $D = \{( \mathbf{z}_p, \mathbf{t}_p )\}_{p=1}^{P}$, where:
+    \begin{itemize}
+        \item $\mathbf{z}_p$ is the input vector.
+        \item $\mathbf{t}_p$ is the desired target vector.
+    \end{itemize}
+    The goal is to adjust the weights $\mathbf{W}$ to minimize the error between the actual output $\mathbf{o}_p$ and the target $\mathbf{t}_p$.
+    \end{block}
+\end{frame}
+
+\begin{frame}{The Error Signal}
+    The difference between the target and the actual output is the error signal.
+    \begin{equation}
+        \mathcal{E} = E(\mathbf{t} - \mathbf{o})
+    \end{equation}
+    
+    Learning rules optimize the weights based on this error signal.
+\end{frame}
+
+%------------------------------------------------
+\subsection{The Supervised Learning Problem}
+
+\begin{frame}{The Supervised Learning Problem}
+    \begin{block}{Definition}
+    Supervised learning is the process of approximating an unknown function $\boldsymbol{\mu}(\mathbf{z})$ using a finite set of input-target pairs $D = \{d_p = (\mathbf{z}_p, \mathbf{t}_p) \mid p = 1, \dots, P\}$.
+    \end{block}
+    
+    \begin{block}{Signal-Plus-Noise Model}
+    The target is modeled as the true function plus noise:
+    \begin{equation}
+        \mathbf{t}_p = \boldsymbol{\mu}(\mathbf{z}_p) + \boldsymbol{\zeta}_p
+    \end{equation}
+    where $\boldsymbol{\zeta}_p$ represents zero-mean, independent, identically distributed noise.
+    \end{block}
+\end{frame}
+
+\begin{frame}{Data Organization}
+    The dataset $D$ is typically divided into:
+    \begin{enumerate}
+        \item \textbf{Training set ($D_T$)}: Used to find the approximation $f_{NN}(\mathbf{z}_p, \mathbf{W})$.
+        \item \textbf{Validation set ($D_V$)}: Used to determine memorization/overfitting.
+        \item \textbf{Test set ($D_G$)}: Used to estimate generalization accuracy.
+    \end{enumerate}
+\end{frame}
+
+\begin{frame}{Error Definitions}
+    \begin{block}{Empirical (Training) Error}
+    The objective function to be minimized:
+    \begin{equation}
+        E_T(D_T, \mathbf{W}) = \frac{1}{P_T} \sum_{p=1}^{P_T} (f_{NN}(\mathbf{z}_p, \mathbf{W}) - \mathbf{t}_p)^2
+    \end{equation}
+    \end{block}
+    
+    \begin{block}{Generalization Error}
+    The expected error on new data:
+    \begin{equation}
+        \mathcal{E}_G(\Omega, \mathbf{W}) = \int (f_{NN}(\mathbf{z}, \mathbf{W}) - \mathbf{t})^2 d\Omega(\mathbf{z}, \mathbf{t})
+    \end{equation}
+    \end{block}
+\end{frame}
+
+\begin{frame}{Optimization Approaches}
+    \begin{itemize}
+        \item \textbf{Local Optimization}: The algorithm may get stuck in a local optimum (e.g., Gradient Descent, Scaled Conjugate Gradient).
+        \item \textbf{Global Optimization}: Searches larger areas of the search space (e.g., LeapFrog, Simulated Annealing, Evolutionary Algorithms, Swarm Optimization).
+    \end{itemize}
+\end{frame}
+
+%------------------------------------------------
+\section{Error-Correction Learning}
+%------------------------------------------------
+
+\begin{frame}{Error-Correction Learning}
+    \begin{alertblock}{Principle}
+    Weights are modified only if the neuron responds incorrectly.
+    \end{alertblock}
+    
+    \begin{description}
+        \item[Perceptron Learning Rule:] 
+        Used for binary classification (outputs 0 or 1).
+        \begin{equation}
+            v_i(t+1) = v_i(t) + \eta (t_p - o_p) z_{i,p}
+        \end{equation}
+    \end{description}
+    \begin{itemize}
+        \item If $t_p = o_p$, error is 0, no change.
+        \item If $t_p = 1, o_p = 0$, weights increase.
+        \item If $t_p = 0, o_p = 1$, weights decrease.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Perceptron Convergence Theorem}
+    \begin{block}{Theorem}
+    If the training data is linearly separable, the Perceptron Learning Rule is guaranteed to converge to a solution (a hyperplane that separates the classes) in a finite number of steps.
+    \end{block}
+    
+    
+\end{frame}
+
+%------------------------------------------------
+\section{Delta Rule (LMS)}
+%------------------------------------------------
+
+\begin{frame}{The Delta Rule}
+    Also known as the \textbf{Widrow-Hoff} or \textbf{Least Mean Squares (LMS)} rule.
+    
+    \begin{itemize}
+        \item Designed for continuous activation functions (or linear units).
+        \item Minimizes the Sum Squared Error (SSE):
+        \begin{equation}
+            \mathcal{E} = \sum_{p=1}^{P} (t_p - o_p)^2
+        \end{equation}
+    \end{itemize}
+    
+    \begin{block}{Update Rule}
+    \begin{equation}
+        \Delta v_i = \eta (t_p - o_p) z_{i,p}
+    \end{equation}
+    (assuming linear activation $f(net) = net$, so $f'(net) = 1$).
+    \end{block}
+\end{frame}
+
+%------------------------------------------------
+\section{Gradient Descent}
+%------------------------------------------------
+
+\begin{frame}{Steepest Gradient Descent}
+    For general non-linear differentiable activation functions (like Sigmoid), we use Gradient Descent.
+    
+    \begin{block}{Concept}
+    The error surface can be visualized as a landscape. We want to move "downhill" towards the minimum error.
+    \end{block}
+    
+    The weight change is proportional to the negative gradient of the error with respect to the weight:
+    \begin{equation}
+        \Delta v_i = - \eta \frac{\partial \mathcal{E}}{\partial v_i}
+    \end{equation}
+\end{frame}
+
+\begin{frame}{General Update Rule}
+    Using the chain rule:
+    \begin{equation}
+        \frac{\partial \mathcal{E}}{\partial v_i} = \frac{\partial \mathcal{E}}{\partial o_p} \cdot \frac{\partial o_p}{\partial net_p} \cdot \frac{\partial net_p}{\partial v_i} = -(t_p - o_p) f'(net) z_{i,p}
+    \end{equation}
+    
+    Thus:
+    \begin{equation}
+        v_i(t+1) = v_i(t) + \eta (t_p - o_p) f'(net) z_{i,p}
+    \end{equation}
+    
+    This is the basis for \textbf{Backpropagation} in Multi-Layer Perceptrons.
+\end{frame}
+
+\begin{frame}{Stochastic vs. Batch Learning}
+    \begin{columns}[t]
+        \column{.48\textwidth}
+            \begin{block}{Stochastic (Online)}
+            Weights are updated after presenting \textbf{each} pattern $p$.
+            \begin{itemize}
+                \item More noise, can escape local minima.
+                \item Faster for large datasets.
+            \end{itemize}
+            \end{block}
+        \column{.48\textwidth}
+            \begin{block}{Batch}
+            Weights are updated after the \textbf{entire} dataset (epoch) is presented.
+            \begin{equation}
+                \Delta v_i = \sum_{p=1}^{P} \Delta v_{i,p}
+            \end{equation}
+            \begin{itemize}
+                \item True gradient descent.
+                \item Smooth convergence.
+            \end{itemize}
+            \end{block}
+    \end{columns}
+\end{frame}
+
+%------------------------------------------------
+\section{Other Rules}
+%------------------------------------------------
+
+\begin{frame}{Correlation Learning (Hebbian)}
+    \begin{block}{Hebbian Principle}
+    "Cells that fire together, wire together."
+    \end{block}
+    
+    Supervised Hebbian learning adjusts weights based on the correlation between input and target:
+    \begin{equation}
+        \Delta v_i = \eta t_p z_{i,p}
+    \end{equation}
+    
+    \begin{itemize}
+        \item If input $z_i$ and target $t_p$ are both high, the weight increases strongly.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Reinforcement Learning}
+    
+    In Reinforcement Learning, the network receives a \textbf{grade} or \textbf{reward} $r$ rather than a precise target $t$.
+    
+    \begin{itemize}
+        \item If the output is "good" (high reward), the weights corresponding to that output are strengthened.
+        \item Often uses stochastic units allowing exploration.
+    \end{itemize}
+\end{frame}
+
+%------------------------------------------------
+\section{Conclusion}
+%------------------------------------------------
+
+\begin{frame}{Summary}
+    \begin{itemize}
+        \item \textbf{Error-Correction} drives the Perceptron to classify linearly separable data.
+        \item \textbf{Gradient Descent} allows training of non-linear neurons (e.g., Adaline, MLP) by searching the error surface.
+        \item \textbf{Stochastic vs. Batch} updates offer trade-offs between speed and convergence stability.
+        \item These rules form the mathematical engine for training supervised neural networks.
+    \end{itemize}
+\end{frame}
+
+\end{document}

@@ -1,0 +1,5 @@
+\babel@toc {english}{}\relax 
+\beamer@sectionintoc {1}{Fundamentals of Tensors}{2}{0}{1}
+\beamer@sectionintoc {2}{The Core Dimensions}{5}{0}{2}
+\beamer@sectionintoc {3}{Implementation in MATLAB}{10}{0}{3}
+\beamer@sectionintoc {4}{Conclusion}{13}{0}{4}

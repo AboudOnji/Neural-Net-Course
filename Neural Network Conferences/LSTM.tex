@@ -1,0 +1,403 @@
+\documentclass[aspectratio=169,xcolor=dvipsnames]{beamer}
+\usetheme{Berlin}
+
+\usepackage[english]{babel}
+\usepackage{hyperref}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{amsmath}
+\usepackage{lettrine}
+\setbeamertemplate{caption}[numbered]
+\usepackage[dvipsnames,svgnames,x11names]{xcolor}
+\usepackage{xurl}
+\usepackage{algorithm}
+\usepackage{algorithmicx}
+\usepackage{algpseudocode}
+\usepackage{adjustbox}
+
+% Configuración de enlaces y metadatos PDF
+\hypersetup{
+    colorlinks=true,
+    linkcolor=cyan,
+    filecolor=blue,
+    urlcolor=blue,
+    citecolor=blue,
+}
+
+%----------------------------------------------------------------------------------------
+%	CODE LISTINGS SETTINGS
+%----------------------------------------------------------------------------------------
+\usepackage{listings}
+\definecolor{backcolour}{rgb}{0.97,0.97,0.99}
+\definecolor{codegreen}{rgb}{0,0.6,0}
+
+\lstdefinestyle{MATLABStyle}{
+  language=Matlab,
+  basicstyle=\ttfamily\scriptsize,
+  keywordstyle=\color{blue}\bfseries,
+  commentstyle=\color{codegreen},
+  stringstyle=\color{violet},
+  breaklines=true,
+  numbers=left,
+  numbersep=5pt,
+  frame=lines,
+  backgroundcolor=\color{backcolour}
+}
+\lstset{style=MATLABStyle}
+
+%----------------------------------------------------------------------------------------
+%	INFORMACIÓN DEL TÍTULO
+%----------------------------------------------------------------------------------------
+
+\title{Recurrent Neural Networks II}
+\subtitle{Deep Dive: Long Short-Term Memory (LSTM)}
+
+\author{Prof. D.Sc. BARSEKH-ONJI Aboud}
+
+\institute
+{
+    Facultad de Ingeniería \\
+    Universidad Anáhuac México
+}
+\date{\today}
+
+%----------------------------------------------------------------------------------------
+%	INICIO DE PRESENTACIÓN
+%----------------------------------------------------------------------------------------
+
+\AtBeginSection[]
+{
+  \begin{frame}{Agenda}
+    \tableofcontents[currentsection]
+  \end{frame}
+}
+
+\begin{document}
+
+\begin{frame}
+    \titlepage
+\end{frame}
+
+%------------------------------------------------
+\section{Introduction to LSTM}
+%------------------------------------------------
+
+\begin{frame}{The Problem with Standard RNNs}
+    \begin{columns}[t]
+        \column{.5\textwidth}
+             \begin{alertblock}{Short-Term Memory}
+             Standard Recurrent Networks (RNNs) suffer from the **Vanishing Gradient Problem**. 
+             \begin{itemize}
+                 \item As the gap between relevant information and the current prediction grows, RNNs lose the ability to learn connections.
+                 \item They have difficulty retaining information over long sequences.
+             \end{itemize}
+             \end{alertblock}
+        \column{.5\textwidth}
+            \begin{block}{The LSTM Solution}
+            Proposed by Hochreiter \& Schmidhuber (1997).
+            \begin{itemize}
+                \item Explicitly designed to avoid the long-term dependency problem.
+                \item Remembering information for long periods is their default behavior, not something they struggle to learn.
+            \end{itemize}
+            \end{block}
+    \end{columns}
+\end{frame}
+
+%------------------------------------------------
+\section{LSTM Architecture}
+%------------------------------------------------
+
+\begin{frame}{The Core Structure}
+    Unlike the repeating module in a standard RNN (a single tanh layer), the LSTM contains four interacting layers (gates).
+    
+    \begin{figure}
+        \centering
+        % Usando la figura específica solicitada
+        \includegraphics[width=0.55\textwidth]{Figures/LSTMNN.png}
+        \caption{Internal Architecture of an LSTM Cell. Note the interaction between Hidden State $\mathbf{h}$ and Cell State $\mathbf{c}$.}
+    \end{figure}
+\end{frame}
+
+\begin{frame}{Key Concepts: States and Inputs}
+    Looking at the diagram, we identify the primary vectors:
+    
+    \begin{enumerate}
+        \item \textbf{Input Vector ($\mathbf{x}_t$):} The new information entering the network at time step $t$.
+        \item \textbf{Previous Hidden State ($\mathbf{h}_{t-1}$):} The output of the LSTM from the previous step (Short-term memory).
+        \item \textbf{Cell State ($\mathbf{c}_t$):} The internal memory "highway". It runs straight down the entire chain with only minor linear interactions, allowing gradients to flow unchanged (solving vanishing gradient).
+    \end{enumerate}
+\end{frame}
+
+%------------------------------------------------
+\section{The 4 Gates: Mathematical Deep Dive}
+%------------------------------------------------
+
+\begin{frame}{Understanding the Symbols}
+    The figure introduces four distinct blocks (gates). Each block represents a Neural Network layer with its own weights ($W$) and bias ($b$).
+    
+    \begin{table}[]
+    \centering
+    \begin{tabular}{@{}c l l l@{}}
+    \toprule
+    \textbf{Symbol} & \textbf{Name} & \textbf{Activation} & \textbf{Role} \\ \midrule
+    $f$ & \textbf{Forget Gate} & Sigmoid ($\sigma$) & Decides what to delete. \\
+    $g$ & \textbf{Update Gate} & Tanh & Creates new candidates. \\
+    $i$ & \textbf{Input Gate} & Sigmoid ($\sigma$) & Decides importance of $g$. \\
+    $o$ & \textbf{Output Gate} & Sigmoid ($\sigma$) & Filters the output $\mathbf{h}_t$. \\ \bottomrule
+    \end{tabular}
+    \end{table}
+\end{frame}
+
+\begin{frame}{Step 1: The Forget Gate ($f$)}
+    \begin{columns}
+        \column{0.6\textwidth}
+        \begin{block}{Decision: "What do we throw away?"}
+        The gate looks at $\mathbf{h}_{t-1}$ and $\mathbf{x}_t$, and outputs a number between 0 and 1 for each number in the cell state $\mathbf{c}_{t-1}$.
+        \end{block}
+        
+        \begin{equation}
+             \mathbf{f}_t = \sigma(W_f \cdot [\mathbf{h}_{t-1}, \mathbf{x}_t] + b_f)
+        \end{equation}
+        
+        \begin{itemize}
+            \item \textbf{1:} "Keep this completely."
+            \item \textbf{0:} "Get rid of this completely."
+        \end{itemize}
+        
+        \column{0.4\textwidth}
+        % Recorte visual o referencia a la parte f de la imagen
+        \centering
+        \textbf{Symbol in Diagram:} \\
+        \fbox{\Large $f$} \\
+        $\uparrow$ \\
+        Control of History
+    \end{columns}
+\end{frame}
+
+\begin{frame}{Step 2: The Input \& Update Gates ($i, g$)}
+    \begin{block}{Decision: "What new info do we store?"}
+    This step has two parts appearing in the diagram as $i$ and $g$:
+    \end{block}
+    
+    \begin{columns}[t]
+        \column{0.5\textwidth}
+        \textbf{1. Input Gate ($i$)}:
+        \begin{equation}
+             \mathbf{i}_t = \sigma(W_i \cdot [\mathbf{h}_{t-1}, \mathbf{x}_t] + b_i)
+        \end{equation}
+        Decides \textit{which values} we'll update.
+        
+        \column{0.5\textwidth}
+        \textbf{2. Candidate Update ($g$)}:
+        \begin{equation}
+             \mathbf{g}_t = \tanh(W_g \cdot [\mathbf{h}_{t-1}, \mathbf{x}_t] + b_g)
+        \end{equation}
+        Creates a vector of \textit{new candidate values} to be added to the state.
+    \end{columns}
+\end{frame}
+
+\begin{frame}{Step 3: Updating the Cell State ($\mathbf{c}_t$)}
+    \begin{alertblock}{The Core Operation}
+    We now update the old cell state, $\mathbf{c}_{t-1}$, into the new cell state $\mathbf{c}_t$. 
+    \end{alertblock}
+
+    In the diagram, observe the "Merge" line at the top:
+    
+    \begin{equation}
+        \mathbf{c}_t = (\underbrace{\mathbf{f}_t \odot \mathbf{c}_{t-1}}_{\text{Forget old memory}}) + (\underbrace{\mathbf{i}_t \odot \mathbf{g}_t}_{\text{Add new scaled info}})
+    \end{equation}
+
+    \vspace{0.3cm}
+    \footnotesize{*Note: The symbol $\odot$ denotes element-wise multiplication (Hadamard product), represented by the black squares in the diagram.}
+\end{frame}
+
+\begin{frame}{Step 4: The Output Gate ($o$)}
+    Finally, we need to decide what we’re going to output. This output will be based on our cell state, but a filtered version.
+
+    \begin{columns}
+        \column{0.6\textwidth}
+        \textbf{1. Calculate Gate Activation:}
+        \begin{equation}
+             \mathbf{o}_t = \sigma(W_o \cdot [\mathbf{h}_{t-1}, \mathbf{x}_t] + b_o)
+        \end{equation}
+        
+        \textbf{2. Calculate Hidden State:}
+        Push cell state through tanh (to push values between -1 and 1) and multiply by output gate.
+        \begin{equation}
+             \mathbf{h}_t = \mathbf{o}_t \odot \tanh(\mathbf{c}_t)
+        \end{equation}
+        
+        \column{0.4\textwidth}
+        \centering
+         \textbf{Symbol in Diagram:} \\
+        \fbox{\Large $o$} $\rightarrow$ Output \\
+        
+        Outputs both $\mathbf{h}_t$ (for prediction) and passes it to the next step.
+    \end{columns}
+\end{frame}
+
+%------------------------------------------------
+\section{Computational Complexity}
+%------------------------------------------------
+
+\begin{frame}{Parameter Complexity}
+    Why does an LSTM have so many learnable parameters in MATLAB?
+    
+    \begin{block}{The Factor of 4}
+    Since an LSTM has 4 separate "Neural Networks" inside ($f, i, g, o$), the total number of weights is:
+    
+    \begin{equation}
+        \text{NumParameters} \approx 4 \times [ (n \times m) + (n^2) + n ]
+    \end{equation}
+    
+    Where:
+    \begin{itemize}
+        \item $n$: Number of Hidden Units.
+        \item $m$: Input dimension size.
+    \end{itemize}
+    \end{block}
+    
+    This explains why Deep Network Analyzer shows "Total learnables: 68.1k" for a relatively small network.
+\end{frame}
+
+
+%------------------------------------------------
+% NUEVA SECCIÓN: ANÁLISIS PRÁCTICO EN MATLAB
+%------------------------------------------------
+\section{Network Analysis \& Fine Tuning}
+
+\begin{frame}{Validating Complexity with Network Analyzer}
+    \begin{columns}[t]
+        \column{0.5\textwidth}
+        \begin{figure}
+            \centering
+            \includegraphics[width=\textwidth]{Figures/analysis.png} 
+            \caption{Deep Network Designer Report: 73.3k Learnables.}
+        \end{figure}
+        
+        \column{0.5\textwidth}
+        \begin{block}{Applying the Formula}
+        In the provided screenshot: Input ($m$) = 12, Hidden ($n$) = 128.
+        \end{block}
+        
+        \textbf{LSTM Parameters Calculation:}
+        $$ P \approx 4 \times ( (12 \times 128) + (128^2) + 128 ) $$
+        $$ P \approx 4 \times ( 1,536 + 16,384 + 128 ) $$
+        $$ P \approx 72,192 \text{ weights} $$
+        
+        \textbf{Final Count:}
+        Adding the Fully Connected layer ($128 \times 9 + 9 = 1,161$), the total matches the report: \textbf{73,353 parameters}.
+    \end{columns}
+\end{frame}
+
+\begin{frame}{The Softmax Layer}
+    \begin{alertblock}{From Logits to Probabilities}
+    In the architecture diagram, the LSTM feeds a Fully Connected (FC) layer, which outputs raw scores called \textbf{logits}. These can be negative or unbounded (e.g., $2.5, -0.1, 5.0$).
+    \end{alertblock}
+    
+    The \textbf{Softmax Layer} squashes these values to form a valid probability distribution:
+    \begin{equation}
+        P(y=j \mid \mathbf{z}) = \frac{e^{z_j}}{\sum_{k=1}^{K} e^{z_k}}
+    \end{equation}
+    
+    \begin{itemize}
+        \item \textbf{Rule 1:} All outputs sum to exactly 1 (100\%).
+        \item \textbf{Rule 2:} Competitive nature (if Class A goes up, B and C must go down).
+        \item \textbf{Usage:} Essential for Multi-class Classification loss calculation.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Initialization Strategies}
+    \begin{columns}
+        \column{0.7\textwidth}
+        Choosing the right initialization is critical for convergence in LSTMs. MATLAB offers several options in the dropdown menu:
+        
+        \begin{itemize}
+            \item \textbf{Glorot (Xavier):} The default for LSTMs.
+            \begin{itemize}
+                \item optimized for symmetric activations like \textbf{Tanh} and \textbf{Sigmoid} (the internal gates of LSTM).
+                \item Keeps variance constant across layers.
+            \end{itemize}
+            
+            \item \textbf{He:}
+            \begin{itemize}
+                \item Optimized for \textbf{ReLU} layers. usually avoided for the internal gates of RNNs but used in the FC layers.
+            \end{itemize}
+            
+            \item \textbf{Orthogonal:}
+            \begin{itemize}
+                \item Specifically useful for RNNs/LSTMs to prevent vanishing gradients during very long sequences.
+            \end{itemize}
+        \end{itemize}
+        
+        \column{0.3\textwidth}
+        \begin{figure}
+            \centering
+           \includegraphics[width=\textwidth]{Figures/car.png}
+            \caption{Weight Initializers in MATLAB.}
+        \end{figure}
+    \end{columns}
+\end{frame}
+
+\begin{frame}{Deployment \& Compression}
+    \begin{block}{Resource Constrains}
+    LSTMs are memory intensive. The analyzer shows \textbf{287.5 KB} for a small network, but deep LSTMs can grow to Gigabytes.
+    \end{block}
+    
+    MATLAB's Compression Tools (Pruning, Quantization) help deploy to embedded systems:
+    
+    \begin{table}[]
+    \centering
+    \begin{tabular}{@{}l l l@{}}
+    \toprule
+    \textbf{Method} & \textbf{Concept} & \textbf{Trade-off} \\ \midrule
+    \textbf{Pruning} & Removing "weak" connections & Can reduce accuracy if aggressive. \\
+    \textbf{Quantization} & Float32 $\rightarrow$ Int8 & 4x Smaller, faster inference. \\
+    \textbf{Projection} & Compressing feature maps & Requires retraining. \\ \bottomrule
+    \end{tabular}
+    \end{table}
+\end{frame}
+
+%------------------------------------------------
+\section{Applications and Implementation}
+%------------------------------------------------
+
+\begin{frame}{Real-World Applications}
+    LSTMs are the state-of-the-art for sequence problems (before Transformers took over NLP):
+    
+    \begin{enumerate}
+        \item \textbf{Time Series Classification:} Activity recognition (Acc/Gyro), ECG arrhythmia detection.
+        \item \textbf{Forecasting:} Stock prediction, energy load demand.
+        \item \textbf{Anomaly Detection:} Predictive maintenance in machinery (detecting patterns that deviate from normal history).
+        \item \textbf{Control Systems:} Modeling dynamic systems where state depends on deep history.
+    \end{enumerate}
+\end{frame}
+
+\begin{frame}[fragile]{MATLAB Implementation}
+    Constructing the network discussed in theory:
+
+    \begin{lstlisting}[language=Matlab, caption=Defining LSTM Architecture]
+    % Sequence Input: 3 Channels (sensors)
+    inputSize = 3;
+    numHiddenUnits = 128; % Generates 128x4 internal weights
+    numClasses = 4;
+
+    layers = [ ...
+        sequenceInputLayer(inputSize)
+        lstmLayer(numHiddenUnits, 'OutputMode', 'last') % Use 'sequence' for seq2seq
+        dropoutLayer(0.5)
+        fullyConnectedLayer(numClasses)
+        softmaxLayer
+        classificationLayer];
+    \end{lstlisting}
+\end{frame}
+
+\begin{frame}{Conclusion}
+    \begin{itemize}
+        \item \textbf{Structure:} LSTMs separate the memory stream ($\mathbf{c}_t$) from the processing stream ($\mathbf{h}_t$).
+        \item \textbf{Gates:} Through mechanisms $f, g, i, o$, the network learns purely by gradient descent *what* to remember and *what* to ignore.
+        \item \textbf{Result:} They solve the vanishing gradient problem, enabling the modeling of complex temporal dependencies over thousands of time steps.
+    \end{itemize}
+\end{frame}
+
+\end{document}

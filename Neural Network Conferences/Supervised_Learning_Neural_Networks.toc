@@ -1,0 +1,7 @@
+\babel@toc {english}{}\relax 
+\beamer@sectionintoc {1}{Introduction}{2}{0}{1}
+\beamer@sectionintoc {2}{Feedforward Neural Networks}{4}{0}{2}
+\beamer@sectionintoc {3}{Recurrent Neural Networks}{12}{0}{3}
+\beamer@sectionintoc {4}{Time-Delay Neural Networks}{17}{0}{4}
+\beamer@sectionintoc {5}{Cascade Neural Networks}{20}{0}{5}
+\beamer@sectionintoc {6}{Conclusion}{23}{0}{6}

@@ -1,0 +1,244 @@
+\documentclass[aspectratio=169,xcolor=dvipsnames]{beamer}
+\usetheme{Berlin}
+
+\usepackage[english]{babel}
+\usepackage{hyperref}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{amsmath}
+\usepackage{lettrine}
+\setbeamertemplate{caption}[numbered]
+\usepackage[dvipsnames,svgnames,x11names]{xcolor}
+\usepackage{xurl}
+\usepackage{algorithm}
+\usepackage{algorithmicx}
+\usepackage{algpseudocode}
+\usepackage{adjustbox}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=cyan,
+    filecolor=blue,
+    urlcolor=blue,
+    citecolor=blue,
+}
+
+%----------------------------------------------------------------------------------------
+%	CODE LISTINGS SETTINGS
+%----------------------------------------------------------------------------------------
+\usepackage{listings}
+\usepackage{xcolor}
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.97,0.97,0.99}
+
+\lstdefinestyle{MATLABStyle}{
+  language=Matlab,
+  basicstyle=\ttfamily\scriptsize, % Reducido ligeramente para caber en diapositivas
+  keywordstyle=\color{blue}\bfseries,
+  commentstyle=\color{codegreen},
+  stringstyle=\color{violet},
+  numberstyle=\tiny\color{gray},
+  breakatwhitespace=false,
+  breaklines=true,
+  captionpos=b,
+  keepspaces=true,
+  numbers=left,
+  numbersep=5pt,
+  showspaces=false,
+  showstringspaces=false,
+  showtabs=false,
+  tabsize=2,
+  frame=lines,
+  framerule=0.4pt,
+  backgroundcolor=\color{backcolour}
+}
+\lstset{style=MATLABStyle}
+
+%----------------------------------------------------------------------------------------
+%	TITLE PAGE INFO
+%----------------------------------------------------------------------------------------
+
+\title{Data Structures in Deep Learning}
+\subtitle{Understanding Tensors: Dimensions C, B, T, S}
+
+\author{Prof. D.Sc. BARSEKH-ONJI Aboud}
+
+\institute
+{
+    Facultad de Ingeniería \\
+    Universidad Anáhuac México
+}
+\date{\today}
+
+%----------------------------------------------------------------------------------------
+%	PRESENTATION SLIDES
+%----------------------------------------------------------------------------------------
+
+\AtBeginSection[]
+{
+  \begin{frame}{Agenda}
+    \tableofcontents[currentsection]
+  \end{frame}
+}
+
+\begin{document}
+
+\begin{frame}
+    \titlepage
+\end{frame}
+
+%------------------------------------------------
+\section{Fundamentals of Tensors}
+%------------------------------------------------
+
+\begin{frame}{Beyond the Matrix}
+    \begin{block}{What is a Tensor?}
+    In computational intelligence, a tensor is a generalization of scalars, vectors, and matrices to higher dimensions. It is the fundamental data structure for Deep Learning frameworks (MATLAB, PyTorch, TensorFlow).
+    \end{block}
+
+    \begin{table}[]
+    \centering
+    \begin{tabular}{@{}lll@{}}
+    \toprule
+    \textbf{Rank} & \textbf{Name} & \textbf{MATLAB Representation} \\ \midrule
+    0 & Scalar & \texttt{Single value (1x1)} \\
+    1 & Vector & \texttt{Array (1xN)} \\
+    2 & Matrix & \texttt{Grayscale Image (MxN)} \\
+    3+ & Tensor & \texttt{Color Image / Batch Data} \\ \bottomrule
+    \end{tabular}
+    \end{table}
+\end{frame}
+
+\begin{frame}{Why Dimensions Matter?}
+    \begin{alertblock}{The "Dimension Mismatch" Problem}
+    Most compilation errors in Deep Network Designer arise from incompatible tensor shapes. Understanding the labels \textbf{C, B, T, S} is crucial for:
+    \end{alertblock}
+    
+    \begin{itemize}
+        \item Connecting layers correctly (e.g., LSTM to Dense Layer).
+        \item Shaping input data from sensors.
+        \item Debugging memory errors in GPUs.
+    \end{itemize}
+\end{frame}
+
+%------------------------------------------------
+\section{The Core Dimensions}
+%------------------------------------------------
+
+\begin{frame}{The C-Dimension (Channel)}
+            \begin{block}{C: Channel / Features}
+            Represents the "depth" of information at a single point. This dimension is \textbf{fixed} by the network architecture.
+            \end{block}
+            \begin{itemize}
+                \item \textbf{In Time Series:} The number of sensors or variables.
+                \begin{itemize}
+                    \item Accelerometer (x, y, z) $\rightarrow C=3$.
+                    \item Medical Data (HR, Temp, SPO2) $\rightarrow C=3$.
+                \end{itemize}
+                \item \textbf{In Vision:} The color planes (RGB $\rightarrow C=3$).
+            \end{itemize}
+            \vspace{1cm}
+            \centering
+            % Placeholder for illustration
+
+\end{frame}
+
+\begin{frame}{The B-Dimension (Batch)}
+    \begin{block}{B: Batch / Observation}
+    The dimension of \textbf{computational parallelism}. It defines how many independent examples are processed simultaneously by the GPU.
+    \end{block}
+    
+    \begin{itemize}
+        \item \textbf{Batch Training:} Instead of updating weights after 1 sample, we average the gradient of $N$ samples (MiniBatchSize).
+        \item \textbf{Impact:} Higher $B$ improves stability and speed but requires more VRAM.
+        \item During inference (real-time use), usually $B=1$.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{The T-Dimension (Time)}
+    \begin{alertblock}{T: Time / Sequence}
+    Exclusive to Sequence Models (RNN, LSTM, GRU). Represents the duration of the event.
+    \end{alertblock}
+    
+    \begin{itemize}
+        \item \textbf{Variable Length:} Unlike $C$, $T$ can vary. A trained LSTM can process a signal of $T=50$ and then $T=500$.
+        \item \textbf{Recurrent Processing:} The network unfolds loop $T$ times:
+        \begin{equation}
+             h_t = \sigma(W x_t + U h_{t-1} + b)
+        \end{equation}
+        where $t$ iterates from $1$ to $T$.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{The S-Dimension (Spatial)}
+    \begin{block}{S: Spatial (H/W)}
+    Represents geometric dimensions (Height and Width).
+    \end{block}
+            \begin{itemize}
+                \item \textbf{Context:} Convolutional Neural Networks (CNNs).
+                \item \textbf{Deep Network Designer:}
+                \begin{itemize}
+                    \item Images: $H \times W \times C \times B$ (`SSCB`).
+                    \item Time Series: Spatial dimension is implicitly 1. Usually labeled just `CBT`.
+                \end{itemize}
+            \end{itemize}
+\end{frame}
+
+%------------------------------------------------
+\section{Implementation in MATLAB}
+%------------------------------------------------
+
+\begin{frame}[fragile]{MATLAB: The dlarray Object}
+    Modern MATLAB (R2023a+) uses formatted `dlarray` objects to explicitly handle these dimensions.
+    
+    \begin{lstlisting}[language=Matlab, caption=Creating a labeled Tensor for LSTM training]
+% Example: 100 samples of 3-axis accelerometer data (5 seconds @ 50Hz)
+numSamples = 100;    % Batch (B)
+numSensors = 3;      % Channels (C)
+timeSteps = 250;     % Time (T) -> 5s * 50Hz
+
+% Create Random Data
+rawData = randn(numSensors, numSamples, timeSteps); 
+
+% Convert to labeled Deep Learning Array
+X = dlarray(rawData, "CBT"); % Ordering: Channel, Batch, Time
+
+disp("Tensor Dimensions: " + dims(X))
+    \end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{Analyzing Dimensions in Network Analyzer}
+    When designing a network (e.g., for `WaveformData`), check the input layer:
+    
+    \begin{lstlisting}[language=Matlab]
+    layer = sequenceInputLayer(3, "Name", "input");
+    % Here '3' fixes the C-dimension.
+    \end{lstlisting}
+    
+    \begin{alertblock}{Validation Rules}
+    \begin{enumerate}
+        \item \textbf{Input Check:} Your data's $C$ must match the input layer's size exactly.
+        \item \textbf{Output Check:} The classification layer must match the number of classes.
+        \item $B$ and $T$ are flexible during design but consume memory during execution.
+    \end{enumerate}
+    \end{alertblock}
+\end{frame}
+
+%------------------------------------------------
+\section{Conclusion}
+%------------------------------------------------
+
+\begin{frame}{Summary}
+    \begin{itemize}
+        \item \textbf{Tensors} are the fuel of Neural Networks.
+        \item \textbf{C (Channels):} Structural depth (sensors/features). Fixed by design.
+        \item \textbf{B (Batch):} Parallel observations. affects training speed/stochasticity.
+        \item \textbf{T (Time):} Sequence length. Handles dynamic temporal patterns.
+        \item \textbf{S (Spatial):} Geometric layout for vision tasks.
+    \end{itemize}
+    
+\end{frame}
+
+\end{document}

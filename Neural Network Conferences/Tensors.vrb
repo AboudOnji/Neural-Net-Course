@@ -1,0 +1,15 @@
+\frametitle{Analyzing Dimensions in Network Analyzer}
+When designing a network (e.g., for `WaveformData`), check the input layer:
+
+    \begin{lstlisting}[language=Matlab]
+    layer = sequenceInputLayer(3, "Name", "input");
+    % Here '3' fixes the C-dimension.
+    \end{lstlisting}
+
+    \begin{alertblock}{Validation Rules}
+    \begin{enumerate}
+        \item \textbf{Input Check:} Your data's $C$ must match the input layer's size exactly.
+        \item \textbf{Output Check:} The classification layer must match the number of classes.
+        \item $B$ and $T$ are flexible during design but consume memory during execution.
+    \end{enumerate}
+    \end{alertblock}

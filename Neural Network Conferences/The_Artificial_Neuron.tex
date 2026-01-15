@@ -1,0 +1,303 @@
+\documentclass[aspectratio=169,xcolor=dvipsnames]{beamer}
+\usetheme{Berlin}
+
+\usepackage[english]{babel} % Cambiado a español para acentos y textos automáticos
+\usepackage{hyperref}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{amsmath}
+\usepackage{lettrine}
+\setbeamertemplate{caption}[numbered]
+\usepackage[dvipsnames,svgnames,x11names]{xcolor}
+\usepackage{xurl}
+\usepackage{hyperref}
+\usepackage{algorithm}
+\usepackage{algorithmicx}
+\usepackage{algpseudocode}
+\usepackage{adjustbox}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=cyan, % Color más visible en temas oscuros
+    filecolor=blue,
+    urlcolor=blue,
+    citecolor=blue,
+}
+%----------------------------------------------------------------------------------------
+\usepackage{listings}
+\usepackage{xcolor}
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.97,0.97,0.99}
+
+\lstdefinestyle{MATLABStyle}{
+  language=Matlab,
+  basicstyle=\ttfamily\footnotesize,
+  keywordstyle=\color{blue}\bfseries,
+  commentstyle=\color{codegreen},
+  stringstyle=\color{violet},
+  numberstyle=\tiny\color{gray},
+  breakatwhitespace=false,
+  breaklines=true,
+  captionpos=b,
+  keepspaces=true,
+  numbers=left,
+  numbersep=5pt,
+  showspaces=false,
+  showstringspaces=false,
+  showtabs=false,
+  tabsize=2,
+  frame=lines,
+  framerule=0.4pt,
+  backgroundcolor=\color{backcolour}
+}
+\lstset{style=MATLABStyle}
+
+%----------------------------------------------------------------------------------------
+%	TITLE PAGE
+%----------------------------------------------------------------------------------------
+
+\title{Artificial Neural Networks}
+\subtitle{Chapter 1: The Artificial Neuron}
+
+\author{Prof. D.Sc. BARSEKH-ONJI Aboud}
+
+\institute
+{
+    Facultad de Ingeniería \\
+    Universidad Anáhuac México
+}
+\date{\today}
+
+%----------------------------------------------------------------------------------------
+%	PRESENTATION SLIDES
+%----------------------------------------------------------------------------------------
+
+\AtBeginSection[]
+{
+  \begin{frame}{Agenda}
+    \tableofcontents[currentsection]
+  \end{frame}
+}
+
+\begin{document}
+
+\begin{frame}
+    \titlepage
+\end{frame}
+
+%------------------------------------------------
+\section{The Artificial Neuron (AN)}
+%------------------------------------------------
+
+\begin{frame}{Introduction to the Artificial Neuron}
+    \begin{columns}[t]
+        \column{.48\textwidth}
+            \begin{block}{Biological Inspiration}
+            The Artificial Neuron (AN) is the fundamental building block of Artificial Neural Networks (ANNs), inspired by the biological neuron. It receives input signals, processes them, and produces an output signal if the accumulated input reaches a certain threshold.
+            \end{block}
+        \column{.48\textwidth}
+            \begin{figure}
+                \centering
+                \includegraphics[width=0.8\textwidth]{Figures/neuron_schematic.png}
+                \caption{Schematic representation of an Artificial Neuron.}
+            \end{figure}
+        \end{columns}
+\end{frame}
+
+\begin{frame}{Components of an Artificial Neuron}
+    \begin{itemize}
+        \item \textbf{Input Signals ($z_1, z_2, \dots, z_I$):} Represent data or the output from other neurons.
+        \item \textbf{Weights ($v_1, v_2, \dots, v_I$):} Represent the synaptic strength of connections. Positive weights are excitatory, negative are inhibitory.
+        \item \textbf{Combination Function (Net Input):} Aggregates the weighted inputs (usually summation).
+        \item \textbf{Activation Function ($f_{AN}$):} Defines the output based on the net input.
+        \item \textbf{Bias ($\theta$):} A threshold value that shifts the activation function.
+    \end{itemize}
+\end{frame}
+
+%------------------------------------------------
+\section{Calculating the Net Input Signal}
+%------------------------------------------------
+
+\begin{frame}{Calculating the Net Input Signal}
+    The net input signal ($net$) combines all incoming signals and weights. There are two main types:
+\begin{columns}[t]
+    \column{.48\textwidth}
+    \begin{alertblock}{Summation Unit (SU)}
+        The most common type, calculating the weighted sum of inputs minus the bias.
+        \begin{equation}
+            net = \sum_{i=1}^{I} z_i v_i - \theta
+        \end{equation}
+    \end{alertblock}
+    \column{.48\textwidth}      
+    \begin{block}{Product Unit (PU)}
+        Multiplies the inputs raised to the power of their weights.
+        \begin{equation}
+            net = \prod_{i=1}^{I} z_i^{v_i}
+        \end{equation}
+    \end{block}
+\end{columns}
+\end{frame}
+
+%------------------------------------------------
+\section{Activation Functions}
+%------------------------------------------------
+
+\begin{frame}{Activation Functions}
+    The activation function $f_{AN}(net)$ determines the output $o$ of the neuron. 
+    It defines the relationship between the internal state and the output signal.
+    
+    Common characteristics required:
+    \begin{itemize}
+        \item Non-linearity (essential for multi-layer networks).
+        \item Differentiability (required for Gradient Descent learning).
+        \item Boundedness (often desirable).
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Linear and Step Functions}
+    \begin{columns}[t]
+        \column{.48\textwidth}
+            \begin{block}{Linear Function}
+                $f(net) = \gamma \cdot net$ \\
+                Simple identity, no non-linearity.
+            \end{block}
+            \includegraphics[width=0.85\textwidth]{Figures/activation_linear.png}
+
+        \column{.48\textwidth}
+            \begin{block}{Step Function}
+                $f(net) = \begin{cases} 1 & \text{if } net \ge 0 \\ 0 & \text{if } net < 0 \end{cases}$ \\
+                Used in the original Perceptron. Not differentiable.
+            \end{block}
+            \includegraphics[width=0.6\textwidth]{Figures/activation_step.png}
+    \end{columns}
+\end{frame}
+
+\begin{frame}{Ramp and Sigmoid Functions}
+    \begin{columns}[t]
+        \column{.48\textwidth}
+            \begin{block}{Ramp Function}
+                Combination of linear and step, bounded.
+            \end{block}
+            \includegraphics[width=0.9\textwidth]{Figures/activation_ramp.png}
+
+        \column{.48\textwidth}
+            \begin{alertblock}{Sigmoid Function}
+                $f(net) = \frac{1}{1 + e^{-\lambda net}}$ \\
+                Continuous, differentiable, S-shaped. Crucial for Backpropagation.
+            \end{alertblock}
+            \includegraphics[width=0.7\textwidth]{Figures/activation_sigmoid.png}
+    \end{columns}
+\end{frame}
+
+\begin{frame}{Hyperbolic Tangent and Gaussian}
+    \begin{columns}[t]
+        \column{.48\textwidth}
+            \begin{block}{Hyperbolic Tangent (tanh)}
+                $f(net) = \tanh(\lambda net)$ \\
+                Like Sigmoid but ranges from -1 to 1. Zero-centered.
+            \end{block}
+            \includegraphics[width=0.8\textwidth]{Figures/activation_tanh.png}
+
+        \column{.48\textwidth}
+            \begin{block}{Gaussian Function}
+                $f(net) = e^{-net^2}$ \\
+                Used in Radial Basis Function (RBF) networks. Localized response.
+            \end{block}
+            \includegraphics[width=0.8\textwidth]{Figures/activation_gaussian.png}
+    \end{columns}
+\end{frame}
+
+%------------------------------------------------
+\section{Artificial Neuron Geometry}
+%------------------------------------------------
+
+\begin{frame}{Artificial Neuron Geometry}
+    \begin{block}{Hyperplane Decision Boundary}
+        An Artificial Neuron with a step activation function acts as a linear classifier. 
+        It divides the input space into two regions separated by a \textbf{decision boundary} (hyperplane).
+        
+        The boundary is defined where the net input is zero:
+        \begin{equation}
+            \sum_{i=1}^{I} z_i v_i - \theta = 0
+        \end{equation}
+    \end{block}
+\end{frame}
+\begin{frame}{Artificial Neuron Geometry}
+
+    \centering
+    \includegraphics[width=0.4\textwidth]{Figures/geometry_linear_separability.png}
+\end{frame}
+
+%------------------------------------------------
+\section{Artificial Neuron Learning}
+%------------------------------------------------
+
+\begin{frame}{Learning in Artificial Neurons}
+    Learning involves adjusting the weights ($v_i$) and bias ($\theta$) to minimize the error between the actual output and the desired target.
+
+    \begin{block}{Augmented Vectors}
+        To simplify learning, the bias is treated as a weight $v_{I+1}$ connected to an input $z_{I+1} = -1$.
+        \begin{equation}
+            net = \sum_{i=1}^{I+1} z_i v_i = \mathbf{Z}^T \mathbf{V}
+        \end{equation}
+    \end{block}
+\end{frame}
+
+\begin{frame}{Gradient Descent Learning Rule}
+    \begin{alertblock}{Gradient Descent}
+        Minimizes the Sum-Squared Error (SSE) by moving weights in the opposite direction of the gradient.
+        
+        Weight update rule:
+        \begin{equation}
+            \Delta v_i = \eta (t_p - o_p) f'(net) z_{i,p}
+        \end{equation}
+        Where $\eta$ is the learning rate, $t_p$ is target, and $o_p$ is actual output.
+    \end{alertblock}
+\end{frame}
+\begin{frame}{Gradient Descent Learning Rule}
+
+    \begin{columns}
+        \begin{column}{0.5\textwidth}
+            This requires the activation function $f$ to be differentiable (e.g., Sigmoid).
+        \end{column}
+        \begin{column}{0.5\textwidth}
+             \includegraphics[width=0.8\textwidth]{Figures/gradient_descent.png}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+\begin{frame}{Other Learning Rules}
+    \begin{block}{Widrow-Hoff (LMS) Rule}
+        Also known as the Delta Rule. Assumes $f(net) = net$ (linear) for the error calculation.
+        \begin{equation}
+            v_i(t+1) = v_i(t) + 2\eta (t_p - o_p) z_{i,p}
+        \end{equation}
+    \end{block}
+
+    \begin{block}{Error-Correction Learning}
+        Updates weights only when the neuron makes a mistake (used in Perceptron).
+        \begin{itemize}
+            \item If output is correct ($o_p = t_p$), no change.
+            \item If output is 0 but should be 1, increase weights.
+            \item If output is 1 but should be 0, decrease weights.
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+%------------------------------------------------
+\section{Conclusion}
+%------------------------------------------------
+
+\begin{frame}{Summary}
+    \begin{itemize}
+        \item The Artificial Neuron is a mathematical abstraction of the biological neuron.
+        \item It computes a weighted sum of inputs and applies a non-linear activation function.
+        \item \textbf{Activation functions} (Sigmoid, Tanh, ReLU) introduce non-linearity, enabling the learning of complex patterns.
+        \item \textbf{Learning rules} (Gradient Descent, Widrow-Hoff) allow the neuron to adapt its weights to minimize error.
+        \item Single neurons define linear decision boundaries (Hyperplanes).
+    \end{itemize}
+\end{frame}
+
+\end{document}

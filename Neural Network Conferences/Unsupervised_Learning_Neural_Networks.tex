@@ -1,0 +1,303 @@
+\documentclass[aspectratio=169,xcolor=dvipsnames]{beamer}
+\usetheme{Berlin}
+
+\usepackage[english]{babel} % Cambiado a español para acentos y textos automáticos
+\usepackage{hyperref}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{amsmath}
+\usepackage{lettrine}
+\setbeamertemplate{caption}[numbered]
+\usepackage[dvipsnames,svgnames,x11names]{xcolor}
+\usepackage{xurl}
+\usepackage{hyperref}
+\usepackage{algorithm}
+\usepackage{algorithmicx}
+\usepackage{algpseudocode}
+\usepackage{adjustbox}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=cyan, % Color más visible en temas oscuros
+    filecolor=blue,
+    urlcolor=blue,
+    citecolor=blue,
+}
+
+%----------------------------------------------------------------------------------------
+\usepackage{listings}
+\usepackage{xcolor}
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.97,0.97,0.99}
+
+\lstdefinestyle{MATLABStyle}{
+  language=Matlab,
+  basicstyle=\ttfamily\footnotesize,
+  keywordstyle=\color{blue}\bfseries,
+  commentstyle=\color{codegreen},
+  stringstyle=\color{violet},
+  numberstyle=\tiny\color{gray},
+  breakatwhitespace=false,
+  breaklines=true,
+  captionpos=b,
+  keepspaces=true,
+  numbers=left,
+  numbersep=5pt,
+  showspaces=false,
+  showstringspaces=false,
+  showtabs=false,
+  tabsize=2,
+  frame=lines,
+  framerule=0.4pt,
+  backgroundcolor=\color{backcolour}
+}
+\lstset{style=MATLABStyle}
+
+%----------------------------------------------------------------------------------------
+%	TITLE PAGE
+%----------------------------------------------------------------------------------------
+
+\title{Artificial Neural Networks}
+\subtitle{Chapter 4: Unsupervised Learning Neural Networks}
+
+\author{Prof. D.Sc. BARSEKH-ONJI Aboud}
+
+\institute
+{
+    Facultad de Ingeniería \\
+    Universidad Anáhuac México
+}
+\date{\today}
+
+%----------------------------------------------------------------------------------------
+%	PRESENTATION SLIDES
+%----------------------------------------------------------------------------------------
+
+\AtBeginSection[]
+{
+  \begin{frame}{Agenda}
+    \tableofcontents[currentsection]
+  \end{frame}
+}
+
+\begin{document}
+
+\begin{frame}
+    \titlepage
+\end{frame}
+
+%------------------------------------------------
+\section{Background}
+%------------------------------------------------
+
+\begin{frame}{Introduction to Unsupervised Learning}
+    \begin{block}{Definition}
+    Unsupervised learning involves training a neural network on a dataset without explicit target values. The network must discover the underlying structure, patterns, or probability distribution of the data.
+    \end{block}
+
+    \begin{itemize}
+        \item No "teacher" signal to correct errors.
+        \item Focuses on:
+        \begin{itemize}
+            \item Clustering (grouping similar data)
+            \item Dimensionality Reduction (compressing information)
+            \item Feature Extraction
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+%------------------------------------------------
+\section{Hebbian Learning Rule}
+%------------------------------------------------
+
+\begin{frame}{Hebbian Learning}
+    \begin{block}{Hebb's Postulate}
+    "When an axon of cell A is near enough to excite a cell B and repeatedly or persistently takes part in firing it, some growth process or metabolic change takes place in one or both cells such that A's efficiency, as one of the cells firing B, is increased."
+    \end{block}
+    
+    \begin{itemize}
+        \item Basic idea: "Cells that fire together, wire together."
+        \item Mathematical formulation:
+        \begin{equation}
+            \Delta w_{ij} = \eta y_i x_j
+        \end{equation}
+        where $y_i$ is the output of neuron $i$ and $x_j$ is the input from neuron $j$.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Algorithm: Hebbian Learning}
+    \begin{algorithm}[H]
+    \caption{Hebbian Learning Algorithm (Algorithm 4.1)}
+    \footnotesize
+    \begin{algorithmic}
+    \State Initialize all weights such that $u_{ki} = 0, \forall i = 1, \dots, I$ and $\forall k = 1, \dots, K$;
+    \While{stopping condition(s) not true}
+        \For{each input pattern $\mathbf{z}_p$}
+            \State Compute the corresponding output vector $\mathbf{o}_p$;
+        \EndFor
+        \State Adjust the weights using equation (4.3):
+        \State $u_{ki}(t) = u_{ki}(t-1) + \Delta u_{ki}(t)$, where $\Delta u_{ki}(t) = \eta o_{k,p} z_{i,p}$
+    \EndWhile
+    \end{algorithmic}
+    \end{algorithm}
+\end{frame}
+
+%------------------------------------------------
+\section{Principal Component Learning Rule}
+%------------------------------------------------
+
+\begin{frame}{Principal Component Analysis (PCA)}
+    \begin{itemize}
+        \item PCA is a statistical procedure that uses an orthogonal transformation to convert a set of observations of possibly correlated variables into a set of values of linearly uncorrelated variables called principal components.
+        \item Neural networks can perform PCA using specific learning rules (e.g., Oja's Rule, Sanger's Rule).
+    \end{itemize}
+    
+    \begin{block}{Goal}
+    To find a direction (weight vector) that maximizes the variance of the output.
+    \end{block}
+\end{frame}
+
+\begin{frame}{Algorithm: Principal Component Learning}
+    \begin{algorithm}[H]
+    \caption{Principal Component Learning (Oja's Rule)}
+    \footnotesize
+    \begin{algorithmic}
+    \State Initialize weights $\mathbf{u}_k$ to small random values;
+    \While{stopping condition not true}
+        \For{each input pattern $\mathbf{z}_p$}
+            \State Compute output $o_{k,p} = \sum_i u_{ki} z_{i,p}$;
+            \State Update weights: $\Delta u_{ki} = \eta o_{k,p} [z_{i,p} - o_{k,p} u_{ki}(t-1)]$;
+        \EndFor
+    \EndWhile
+    \end{algorithmic}
+    \end{algorithm}
+\end{frame}
+
+%------------------------------------------------
+\section{Learning Vector Quantizer-I}
+%------------------------------------------------
+
+\begin{frame}{Learning Vector Quantizer-I (LVQ-I)}
+    \begin{itemize}
+        \item Supervised version of Vector Quantization? (Note: LVQ is typically supervised, but grouped here. Check context).
+        \item \textit{Wait, standard LVQ is supervised, but closely related to SOM/VQ which are unsupervised. In Engelbrecht's book, LVQ-I might be introduced in the context of prototype-based learning.}
+        \item Basic concept: Move prototype vectors closest to the input data closer (if same class) or further away (if different class).
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Algorithm: LVQ-I}
+    \begin{algorithm}[H]
+    \caption{Learning Vector Quantizer-I Training Algorithm (Algorithm 4.2)}
+    \footnotesize
+    \begin{algorithmic}
+    \State Initialize the number of output clusters, $K$;
+    \State Initialize weight vectors $\mathbf{u}_k$;
+    \State Initialize the learning rate $\eta(0)$;
+    \While{stopping condition(s) not true}
+        \For{each input pattern $\mathbf{z}_p$}
+            \State Find the winning unit $k^* = \arg\min_k \{||\mathbf{z}_p - \mathbf{u}_k||\}$;
+            \State Update the winning unit: 
+            \State $\mathbf{u}_{k^*}(t+1) = \mathbf{u}_{k^*}(t) + \eta(t) [\mathbf{z}_p - \mathbf{u}_{k^*}(t)]$;
+        \EndFor
+        \State Adjust the learning rate;
+    \EndWhile
+    \end{algorithmic}
+    \end{algorithm}
+\end{frame}
+
+%------------------------------------------------
+\section{Self-Organizing Feature Maps}
+%------------------------------------------------
+
+\begin{frame}{Self-Organizing Maps (SOM)}
+    \begin{block}{Overview}
+    Introduced by Teuvo Kohonen. A SOM is a type of artificial neural network that is trained using unsupervised learning to produce a low-dimensional (typically two-dimensional), discretized representation of the input space of the training samples, called a map.
+    \end{block}
+    
+    \begin{itemize}
+        \item Preserves topological properties of the input space.
+        \item Uses competitive learning: neurons compete to be activated.
+    \end{itemize}
+\end{frame}
+
+\subsection{Stochastic Training Rule}
+\begin{frame}{SOM Training Algorithm (Stochastic)}
+    \begin{algorithm}[H]
+    \caption{Stochastic Self-Organizing Map Training}
+    \footnotesize
+    \begin{algorithmic}
+    \State Initialize weight vectors $\mathbf{w}_{mn}$ to small random values;
+    \State Initialize learning rate $\eta(0)$ and neighborhood size $\sigma(0)$;
+    \While{stopping condition not true}
+        \For{each input pattern $\mathbf{z}_p$}
+            \State Find the winning neuron $\mathbf{c} = \arg\min_{mn} \{||\mathbf{z}_p - \mathbf{w}_{mn}||\}$;
+            \State Update weights for all neurons $ij$ in the neighborhood of $\mathbf{c}$:
+            \State $\mathbf{w}_{ij}(t+1) = \mathbf{w}_{ij}(t) + \eta(t) h_{cij}(t) [\mathbf{z}_p - \mathbf{w}_{ij}(t)]$;
+        \EndFor
+        \State Update learning rate $\eta(t)$ and neighborhood size $\sigma(t)$;
+    \EndWhile
+    \end{algorithmic}
+    \end{algorithm}
+\end{frame}
+
+\subsection{Batch Map}
+\begin{frame}{Batch SOM}
+    \begin{algorithm}[H]
+    \caption{Batch Self-Organizing Map (Algorithm 4.3)}
+    \footnotesize
+    \begin{algorithmic}
+    \State Initialize codebook vectors by assigning the first $K_J$ training patterns to them;
+    \While{stopping condition(s) not true}
+        \For{each neuron $k_j$}
+            \State Collect a list of copies of all patterns $\mathbf{z}_p$ whose nearest codebook vector belongs to the topological neighborhood of that neuron;
+        \EndFor
+        \For{each codebook vector}
+            \State Compute the codebook vector as the mean over the corresponding list of patterns;
+        \EndFor
+    \EndWhile
+    \end{algorithmic}
+    \end{algorithm}
+\end{frame}
+
+\subsection{Growing SOM}
+\begin{frame}{Growing SOM}
+    \begin{itemize}
+        \item Standard SOM has a fixed grid size.
+        \item Growing SOMs (e.g., Growing Grid, Growing Cell Structures) add neurons dynamically during training to better represent data distribution.
+    \end{itemize}
+\end{frame}
+
+\subsection{Improving Convergence Speed}
+\begin{frame}{Improving Convergence}
+    \begin{itemize}
+        \item Initialization methods (e.g., using PCA).
+        \item Adaptive learning rates.
+        \item Time-varying neighborhood functions.
+    \end{itemize}
+\end{frame}
+
+\subsection{Using SOM}
+\begin{frame}{Applications of SOM}
+    \begin{itemize}
+        \item \textbf{Clustering}: Grouping similar data.
+        \item \textbf{Visualization}: Visualizing high-dimensional data in 2D.
+        \item \textbf{Feature Extraction}: Pre-processing for other models.
+    \end{itemize}
+\end{frame}
+
+%------------------------------------------------
+\section{Assignments}
+%------------------------------------------------
+
+\begin{frame}{Assignments}
+    \begin{enumerate}
+        \item Implement a basic Hebbian learning rule for a simple pattern association task.
+        \item Use a library (e.g., MiniSom or sklearn) to apply SOM to a dataset (e.g., Iris or handwritten digits). Visualize the result.
+        \item Compare PCA and SOM on a dimensionality reduction task.
+    \end{enumerate}
+\end{frame}
+
+\end{document}

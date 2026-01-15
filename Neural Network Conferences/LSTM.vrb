@@ -1,0 +1,17 @@
+\frametitle{MATLAB Implementation}
+Constructing the network discussed in theory:
+
+    \begin{lstlisting}[language=Matlab, caption=Defining LSTM Architecture]
+    % Sequence Input: 3 Channels (sensors)
+    inputSize = 3;
+    numHiddenUnits = 128; % Generates 128x4 internal weights
+    numClasses = 4;
+
+    layers = [ ...
+        sequenceInputLayer(inputSize)
+        lstmLayer(numHiddenUnits, 'OutputMode', 'last') % Use 'sequence' for seq2seq
+        dropoutLayer(0.5)
+        fullyConnectedLayer(numClasses)
+        softmaxLayer
+        classificationLayer];
+    \end{lstlisting}
