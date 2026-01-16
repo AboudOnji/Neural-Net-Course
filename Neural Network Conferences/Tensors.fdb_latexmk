@@ -1,6 +1,6 @@
 # Fdb version 4
-["pdflatex"] 1768502352.29184 "/Users/aboudonji/OnjiLabs/Neural Net Course/Neural Network Conferences/Tensors.tex" "Tensors.pdf" "Tensors" 1768502354.31364 0
-  "/Users/aboudonji/OnjiLabs/Neural Net Course/Neural Network Conferences/Tensors.tex" 1768502352.1758 8477 47d334840b7099a081ea497486d42088 ""
+["pdflatex"] 1768585370.66364 "/Users/aboudonji/OnjiLabs/Neural Net Course/Neural Network Conferences/Tensors.tex" "Tensors.pdf" "Tensors" 1768585372.61557 0
+  "/Users/aboudonji/OnjiLabs/Neural Net Course/Neural Network Conferences/Tensors.tex" 1768585370.58151 8475 54e794423767800c26b79b2dc57b7d56 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1246382020 1004 54797486969f23fa377b128694d548df ""
   "/usr/local/texlive/2025/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex8.tfm" 1246382020 988 bdf658c3bfc2d96d3c8b02cfc1c94c20 ""
@@ -238,12 +238,12 @@
   "/usr/local/texlive/2025/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1759950611 5467155 19efa205003f9ecad95fbbaa6ff24da1 ""
   "/usr/local/texlive/2025/texmf-var/web2c/pdftex/pdflatex.fmt" 1741450574 3345740 46b66fdb0378f7bf5921b5eabf1762b8 ""
   "/usr/local/texlive/2025/texmf.cnf" 1741450484 577 418a7058ec8e006d8704f60ecd22c938 ""
-  "Tensors.aux" 1768502354.24166 3721 5547b77ebb0e7953657b67c49b91a040 "pdflatex"
-  "Tensors.nav" 1768502354.24256 2164 c8d06609ffdededb397b02d0163c8850 "pdflatex"
-  "Tensors.out" 1768502354.24237 570 fc056f005dc348ffe8467149e64e82e3 "pdflatex"
-  "Tensors.tex" 1768502352.1758 8477 47d334840b7099a081ea497486d42088 ""
-  "Tensors.toc" 1768502354.24258 252 485ce61f50062a973a18a003bf2e88dd "pdflatex"
-  "Tensors.vrb" 1768502354.00226 668 6968644198477892701fd896e062d487 "pdflatex"
+  "Tensors.aux" 1768585372.55537 3721 5547b77ebb0e7953657b67c49b91a040 "pdflatex"
+  "Tensors.nav" 1768585372.55629 2164 c8d06609ffdededb397b02d0163c8850 "pdflatex"
+  "Tensors.out" 1768585372.55613 570 fc056f005dc348ffe8467149e64e82e3 "pdflatex"
+  "Tensors.tex" 1768585370.58151 8475 54e794423767800c26b79b2dc57b7d56 ""
+  "Tensors.toc" 1768585372.55631 252 485ce61f50062a973a18a003bf2e88dd "pdflatex"
+  "Tensors.vrb" 1768585372.32306 668 6968644198477892701fd896e062d487 "pdflatex"
   (generated)
   "Tensors.aux"
   "Tensors.log"
