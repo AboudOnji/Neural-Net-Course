@@ -1,0 +1,314 @@
+\documentclass[aspectratio=169,xcolor=dvipsnames]{beamer}
+\usetheme{Berlin}
+
+\usepackage[english]{babel}
+\usepackage{hyperref}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{amsmath}
+\usepackage{lettrine}
+\setbeamertemplate{caption}[numbered]
+\usepackage[dvipsnames,svgnames,x11names]{xcolor}
+\usepackage{xurl}
+\usepackage{algorithm}
+\usepackage{algorithmicx}
+\usepackage{algpseudocode}
+\usepackage{adjustbox}
+
+% Configuración de enlaces y metadatos PDF
+\hypersetup{
+    colorlinks=true,
+    linkcolor=cyan,
+    filecolor=blue,
+    urlcolor=blue,
+    citecolor=blue,
+}
+
+%----------------------------------------------------------------------------------------
+%	CODE LISTINGS SETTINGS
+%----------------------------------------------------------------------------------------
+\usepackage{listings}
+\definecolor{backcolour}{rgb}{0.97,0.97,0.99}
+\definecolor{codegreen}{rgb}{0,0.6,0}
+
+\lstdefinestyle{MATLABStyle}{
+  language=Matlab,
+  basicstyle=\ttfamily\scriptsize,
+  keywordstyle=\color{blue}\bfseries,
+  commentstyle=\color{codegreen},
+  stringstyle=\color{violet},
+  breaklines=true,
+  numbers=left,
+  numbersep=5pt,
+  frame=lines,
+  backgroundcolor=\color{backcolour}
+}
+\lstset{style=MATLABStyle}
+
+
+\title{Convolutional Neural Networks (CNNs)}
+\subtitle{Theory, Mathematics, and Architecture Design}
+
+\author{Prof. D.Sc. BARSEKH-ONJI Aboud}
+
+\institute
+{
+    Facultad de Ingeniería \\
+    Universidad Anáhuac México
+}
+\date{\today}
+
+%----------------------------------------------------------------------------------------
+%	INICIO
+%----------------------------------------------------------------------------------------
+
+\AtBeginSection[]
+{
+  \begin{frame}{Agenda}
+    \tableofcontents[currentsection]
+  \end{frame}
+}
+
+\begin{document}
+
+\begin{frame}
+    \titlepage
+\end{frame}
+
+%------------------------------------------------
+\section{Motivation}
+%------------------------------------------------
+
+\begin{frame}{Biological Inspiration}
+    \begin{columns}
+        \column{0.5\textwidth}
+        CNNs are biologically inspired by the visual cortex organization (Hubel \& Wiesel, 1959).
+        
+        \begin{itemize}
+            \item Local Receptive Fields: Neurons respond only to a small sub region of the visual field.
+            \item Hierarchy:
+            
+                \item \textbf{V1 Area:} Detects simple edges and orientations.
+                \item \textbf{Higher Areas:} Detect shapes, textures, and objects.
+           
+        \end{itemize}
+        
+        \column{0.5\textwidth}
+        \begin{figure}
+        \includegraphics[width=\textwidth]{Figures/activation_tanh.png}
+        \caption{Hierarchical processing in the brain vs. Deep Learning.}
+        \end{figure}
+    \end{columns}
+\end{frame}
+
+\begin{frame}{Why not Standard MLPs?}
+    Imagine an image of $224 \times 224$ pixels (RGB).
+    
+    \begin{alertblock}{The Curse of Dimensionality}
+    If we flatten this image into a vector:
+    $$ \text{Input Vector} = 224 \times 224 \times 3 = 150,528 \text{ inputs} $$
+    
+    If the first hidden layer has 1,000 neurons (Dense Layer):
+    $$ \text{Weights} = 150,528 \times 1,000 \approx 150 \text{ Million Parameters!} $$
+    \end{alertblock}
+    
+    \textbf{Problem:} Huge computational cost and massive overfitting. \\
+    \textbf{Solution:} Local connectivity and Parameter Sharing (CNNs).
+\end{frame}
+
+%------------------------------------------------
+\section{The Convolution Operation}
+%------------------------------------------------
+
+\begin{frame}{The Mathematical Definition}
+    In Deep Learning, a "convolution" is technically a \textbf{sliding dot product} (cross-correlation). 
+    
+    We pass a filter (kernel) $K$ over an image $I$:
+    
+    \begin{equation}
+        (I * K)(i, j) = \sum_{m} \sum_{n} I(i+m, j+n) \cdot K(m, n)
+    \end{equation}
+    
+    \begin{itemize}
+        \item \textbf{Element-wise multiplication:} Between the kernel weights and the image patch.
+        \item \textbf{Summation:} Aggregating the result into a single pixel in the Feature Map.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Feature Maps & Channels}
+    \begin{columns}[t]
+        \column{0.6\textwidth}
+            \begin{block}{Input Tensor ($H \times W \times C_{in}$)}
+            An image usually has 3 channels (RGB).
+            \end{block}
+            
+            \begin{block}{Output Tensor ($H' \times W' \times K$)}
+            If we apply $K$ distinct filters (e.g., 32 filters):
+            \begin{itemize}
+                \item We obtain 32 discrete 2D maps.
+                \item These stack together to form the output depth (Channels).
+                \item \textbf{Analogy:} Each channel represents a specific "feature" (one for horizontal lines, one for curves, etc.).
+            \end{itemize}
+        
+        \column{0.4\textwidth}
+            \centering
+             \textit{[Placeholder: Animation of a kernel sliding over a matrix]}
+             \caption{The sliding window mechanism.}
+    \end{columns}
+\end{frame}
+
+%------------------------------------------------
+\section{Hyperparameters & Arithmetic}
+%------------------------------------------------
+
+\begin{frame}{Spatial Dimensions Control}
+    How do we calculate the output size of a layer?
+    This is the fundamental arithmetic equation for CNN design.
+    
+    \begin{block}{Output Dimension Formula}
+    \begin{equation}
+        O = \left\lfloor \frac{W - F + 2P}{S} \right\rfloor + 1
+    \end{equation}
+    \end{block}
+    
+    Where:
+    \begin{itemize}
+        \item $W$: Input Volume Size (Width/Height)
+        \item $F$: Filter/Kernel Size (e.g., $3 \times 3$)
+        \item $S$: \textbf{Stride} (Step size of the slide)
+        \item $P$: \textbf{Padding} (Zeros added around the border)
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Padding Options}
+    \begin{columns}
+        \column{0.5\textwidth}
+        \textbf{1. Valid Padding ($P=0$):}
+        \begin{itemize}
+            \item No padding.
+            \item The image shrinks after convolution.
+            \item Losing edge information.
+        \end{itemize}
+        
+        \column{0.5\textwidth}
+        \textbf{2. Same Padding ($P > 0$):}
+        \begin{itemize}
+            \item Padding added to preserve dimensions.
+            \item Output Size = Input Size (if stride=1).
+            \item Allows for very deep networks without vanishing spatial size.
+        \end{itemize}
+    \end{columns}
+    
+    \vspace{0.5cm}
+    \begin{center}
+    \textbf{MATLAB syntax:} \texttt{"Padding", "same"} vs \texttt{"Padding", 0}
+    \end{center}
+\end{frame}
+
+%------------------------------------------------
+\section{CNN Building Blocks}
+%------------------------------------------------
+
+\begin{frame}{The Non-Linearity (ReLU)}
+    Convolution is a \textit{linear} operation (multiplication + sum). To learn complex patterns, we need non-linearity.
+    
+    \begin{equation}
+        f(x) = \max(0, x)
+    \end{equation}
+    
+    \textbf{Rectified Linear Unit (ReLU):}
+    \begin{itemize}
+        \item Introduces sparsity.
+        \item Avoids Vanishing Gradient problem (common in Sigmoid).
+        \item Extremely computationally efficient.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Pooling Layers (Subsampling)}
+    Purpose: Progressively reduce the spatial size ($S$-dimension) to reduce parameters and computation.
+    
+    \begin{columns}
+        \column{0.6\textwidth}
+            \begin{itemize}
+                \item \textbf{Max Pooling:} Takes the maximum value in the window. Extracts the most prominent features.
+                \item \textbf{Average Pooling:} Takes the average. Smoothes features.
+            \end{itemize}
+            \vspace{0.3cm}
+            \textbf{Key Property:} \textit{Translation Invariance}. Small shifts in the image don't change the outcome.
+        \column{0.4\textwidth}
+            \centering
+             \textit{[Placeholder: 2x2 Max Pooling on a 4x4 matrix]}
+             \caption{Max Pooling operation.}
+    \end{columns}
+\end{frame}
+
+\begin{frame}{Flattening & Fully Connected}
+    \begin{block}{Transition to Classification}
+    After extracting spatial features with Convolution+Pooling, we get a 3D volume (e.g., $7 \times 7 \times 512$).
+    \end{block}
+    
+    \begin{enumerate}
+        \item \textbf{Flatten:} Unroll the volume into a 1D vector (size 25,088).
+        \item \textbf{Fully Connected (FC):} Standard MLP layers to combine features and perform classification logic.
+        \item \textbf{Softmax:} Probability distribution for the output classes.
+    \end{enumerate}
+\end{frame}
+
+%------------------------------------------------
+\section{MATLAB Implementation}
+%------------------------------------------------
+
+\begin{frame}[fragile]{Defining a CNN in MATLAB}
+    Using the \texttt{Layer Graph} approach (standard for modern image classification):
+    
+\begin{lstlisting}[language=Matlab, caption=Standard VGG-Style Block]
+inputSize = [28 28 1]; % Grayscale image (S-S-C)
+
+layers = [
+    imageInputLayer(inputSize, "Name", "imageinput")
+    
+    % Convolutional Block 1
+    convolution2dLayer(3, 8, "Padding", "same", "Name", "conv_1")
+    batchNormalizationLayer("Name", "batchnorm_1")
+    reluLayer("Name", "relu_1")
+    
+    % Downsampling
+    maxPooling2dLayer(2, "Stride", 2, "Name", "maxpool_1")
+    
+    % Classification Head
+    fullyConnectedLayer(10, "Name", "fc") % 10 classes
+    softmaxLayer("Name", "softmax")
+    ];
+    
+lgraph = layerGraph(layers);
+% Ready for analyzeNetwork(lgraph) or trainnet()
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}{Understanding Data Formats: SSCB}
+    When training CNNs, MATLAB (since R2023a) usually expects tensors in the format \textbf{SSCB}.
+    
+    \begin{itemize}
+        \item \textbf{S (Spatial):} Height ($H$).
+        \item \textbf{S (Spatial):} Width ($W$).
+        \item \textbf{C (Channels):} Depth (Colors or Feature Maps).
+        \item \textbf{B (Batch):} Number of images processed in parallel.
+    \end{itemize}
+    
+    $$ Tensor = 224 \times 224 \times 3 \times 32 $$
+\end{frame}
+
+%------------------------------------------------
+\section{Conclusion}
+%------------------------------------------------
+
+\begin{frame}{Summary}
+    \begin{itemize}
+        \item \textbf{Convolution} exploits spatial hierarchies and shared weights, making image processing efficient.
+        \item \textbf{ReLU} provides the necessary non-linearity for deep learning.
+        \item \textbf{Pooling} reduces dimensionality and grants translation invariance.
+        \item \textbf{Architecture:} It is a game of managing Dimensions ($S$) and Channels ($C$) usually decreasing spatial size while increasing channel depth deep in the network.
+    \end{itemize}
+\end{frame}
+
+\end{document}
