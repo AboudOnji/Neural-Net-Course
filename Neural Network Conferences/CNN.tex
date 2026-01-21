@@ -15,7 +15,6 @@
 \usepackage{algpseudocode}
 \usepackage{adjustbox}
 
-% Configuración de enlaces y metadatos PDF
 \hypersetup{
     colorlinks=true,
     linkcolor=cyan,
@@ -101,6 +100,7 @@
     \end{columns}
 \end{frame}
 
+
 \begin{frame}{Why not Standard MLPs?}
     Imagine an image of $224 \times 224$ pixels (RGB).
     
@@ -135,7 +135,7 @@
     \end{itemize}
 \end{frame}
 
-\begin{frame}{Feature Maps & Channels}
+\begin{frame}{Feature Maps \& Channels}
     \begin{columns}[t]
         \column{0.6\textwidth}
             \begin{block}{Input Tensor ($H \times W \times C_{in}$)}
@@ -149,36 +149,39 @@
                 \item These stack together to form the output depth (Channels).
                 \item \textbf{Analogy:} Each channel represents a specific "feature" (one for horizontal lines, one for curves, etc.).
             \end{itemize}
-        
+        \end{block}
         \column{0.4\textwidth}
             \centering
+            \begin{figure}
+            \includegraphics[width=\textwidth]{Figures/activation_tanh.png}
              \textit{[Placeholder: Animation of a kernel sliding over a matrix]}
              \caption{The sliding window mechanism.}
+            \end{figure}
     \end{columns}
 \end{frame}
 
+
 %------------------------------------------------
-\section{Hyperparameters & Arithmetic}
+\section{Hyperparameters \& Arithmetic}
 %------------------------------------------------
 
 \begin{frame}{Spatial Dimensions Control}
     How do we calculate the output size of a layer?
     This is the fundamental arithmetic equation for CNN design.
     
-    \begin{block}{Output Dimension Formula}
     \begin{equation}
         O = \left\lfloor \frac{W - F + 2P}{S} \right\rfloor + 1
     \end{equation}
-    \end{block}
     
     Where:
     \begin{itemize}
         \item $W$: Input Volume Size (Width/Height)
-        \item $F$: Filter/Kernel Size (e.g., $3 \times 3$)
+        \item $F$: Filter /Kernel Size (e.g., $3 \times 3$)
         \item $S$: \textbf{Stride} (Step size of the slide)
         \item $P$: \textbf{Padding} (Zeros added around the border)
     \end{itemize}
 \end{frame}
+
 
 \begin{frame}{Padding Options}
     \begin{columns}
@@ -205,7 +208,6 @@
     \end{center}
 \end{frame}
 
-%------------------------------------------------
 \section{CNN Building Blocks}
 %------------------------------------------------
 
@@ -224,25 +226,27 @@
     \end{itemize}
 \end{frame}
 
+
 \begin{frame}{Pooling Layers (Subsampling)}
     Purpose: Progressively reduce the spatial size ($S$-dimension) to reduce parameters and computation.
     
-    \begin{columns}
+    \begin{columns}[t]
         \column{0.6\textwidth}
             \begin{itemize}
                 \item \textbf{Max Pooling:} Takes the maximum value in the window. Extracts the most prominent features.
                 \item \textbf{Average Pooling:} Takes the average. Smoothes features.
             \end{itemize}
-            \vspace{0.3cm}
             \textbf{Key Property:} \textit{Translation Invariance}. Small shifts in the image don't change the outcome.
         \column{0.4\textwidth}
-            \centering
-             \textit{[Placeholder: 2x2 Max Pooling on a 4x4 matrix]}
+        \begin{figure}
+            \includegraphics[width=\textwidth]{Figures/activation_tanh.png}
+             \textit{Placeholder: 2x2 Max Pooling on a 4x4 matrix}
              \caption{Max Pooling operation.}
+        \end{figure}
     \end{columns}
 \end{frame}
 
-\begin{frame}{Flattening & Fully Connected}
+\begin{frame}{Flattening \& Fully Connected}
     \begin{block}{Transition to Classification}
     After extracting spatial features with Convolution+Pooling, we get a 3D volume (e.g., $7 \times 7 \times 512$).
     \end{block}
@@ -253,6 +257,7 @@
         \item \textbf{Softmax:} Probability distribution for the output classes.
     \end{enumerate}
 \end{frame}
+
 
 %------------------------------------------------
 \section{MATLAB Implementation}
@@ -284,6 +289,7 @@ lgraph = layerGraph(layers);
 % Ready for analyzeNetwork(lgraph) or trainnet()
 \end{lstlisting}
 \end{frame}
+
 
 \begin{frame}{Understanding Data Formats: SSCB}
     When training CNNs, MATLAB (since R2023a) usually expects tensors in the format \textbf{SSCB}.
