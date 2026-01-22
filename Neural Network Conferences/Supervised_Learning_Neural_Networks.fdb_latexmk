@@ -1,6 +1,6 @@
 # Fdb version 4
-["pdflatex"] 1768585313.3152 "/Users/aboudonji/OnjiLabs/Neural Net Course/Neural Network Conferences/Supervised_Learning_Neural_Networks.tex" "Supervised_Learning_Neural_Networks.pdf" "Supervised_Learning_Neural_Networks" 1768585316.59264 0
-  "/Users/aboudonji/OnjiLabs/Neural Net Course/Neural Network Conferences/Supervised_Learning_Neural_Networks.tex" 1768585309.81778 10882 a4bd2575f9fca2945950c5d159358b10 ""
+["pdflatex"] 1769102539.53601 "/Users/aboudonji/OnjiLabs/Neural Net Course/Neural Network Conferences/Supervised_Learning_Neural_Networks.tex" "Supervised_Learning_Neural_Networks.pdf" "Supervised_Learning_Neural_Networks" 1769102542.80433 0
+  "/Users/aboudonji/OnjiLabs/Neural Net Course/Neural Network Conferences/Supervised_Learning_Neural_Networks.tex" 1769102539.43357 10882 a4bd2575f9fca2945950c5d159358b10 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1246382020 1004 54797486969f23fa377b128694d548df ""
   "/usr/local/texlive/2025/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex8.tfm" 1246382020 988 bdf658c3bfc2d96d3c8b02cfc1c94c20 ""
@@ -240,11 +240,11 @@
   "Figures/TDNN.png" 1768414765.27099 152750 63a051918b3827992790c9a97ab12c55 ""
   "Figures/elman.png" 1768414662.61593 261619 df7da9f19a542df401e34707d2cd4f1d ""
   "Figures/singlelayer.png" 1768414892.77019 179586 393f71aaec077a031e5472061d96977b ""
-  "Supervised_Learning_Neural_Networks.aux" 1768585316.52847 5501 1a2d75629593282572fae1b14c2736e4 "pdflatex"
-  "Supervised_Learning_Neural_Networks.nav" 1768585316.52962 3454 8df96b76d2550a2b77c52d30b9f973c9 "pdflatex"
-  "Supervised_Learning_Neural_Networks.out" 1768585316.52943 897 529b2df1af93ee0fe453cf60faedd517 "pdflatex"
-  "Supervised_Learning_Neural_Networks.tex" 1768585309.81778 10882 a4bd2575f9fca2945950c5d159358b10 ""
-  "Supervised_Learning_Neural_Networks.toc" 1768585316.52965 373 02ab3fd7f4a40de067ecb10c5a2a54ca "pdflatex"
+  "Supervised_Learning_Neural_Networks.aux" 1769102542.73909 5501 1a2d75629593282572fae1b14c2736e4 "pdflatex"
+  "Supervised_Learning_Neural_Networks.nav" 1769102542.74028 3454 8df96b76d2550a2b77c52d30b9f973c9 "pdflatex"
+  "Supervised_Learning_Neural_Networks.out" 1769102542.74007 897 529b2df1af93ee0fe453cf60faedd517 "pdflatex"
+  "Supervised_Learning_Neural_Networks.tex" 1769102539.43357 10882 a4bd2575f9fca2945950c5d159358b10 ""
+  "Supervised_Learning_Neural_Networks.toc" 1769102542.74032 373 02ab3fd7f4a40de067ecb10c5a2a54ca "pdflatex"
   (generated)
   "Supervised_Learning_Neural_Networks.aux"
   "Supervised_Learning_Neural_Networks.log"
