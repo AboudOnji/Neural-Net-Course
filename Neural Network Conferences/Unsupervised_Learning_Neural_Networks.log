@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.3.8)  16 JAN 2026 11:43
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.3.8)  22 JAN 2026 12:21
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -888,15 +888,15 @@ Dictionary: translator-theorem-dictionary, Language: English
 [4
 
 ]
-LaTeX Font Info:    Trying to load font information for U+msa on input line 129.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 132.
  (/usr/local/texlive/2025/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 129.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 132.
  (/usr/local/texlive/2025/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-LaTeX Font Info:    Trying to load font information for OT1+mathkerncmss on input line 129.
+LaTeX Font Info:    Trying to load font information for OT1+mathkerncmss on input line 132.
  (/usr/local/texlive/2025/texmf-dist/tex/latex/sansmathaccent/ot1mathkerncmss.fd
 File: ot1mathkerncmss.fd 2020/01/31 Fontinst v1.933 font definitions for OT1/mathkerncmss.
 )
@@ -905,20 +905,25 @@ File: ot1mathkerncmss.fd 2020/01/31 Fontinst v1.933 font definitions for OT1/mat
 
 ]
 LaTeX Font Info:    Font shape `OT1/cmss/b/n' in size <9> not available
-(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 146.
+(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 150.
 LaTeX Font Info:    Font shape `OT1/cmss/b/n' in size <6> not available
-(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 146.
+(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 150.
 LaTeX Font Info:    Font shape `OT1/cmss/b/n' in size <5> not available
-(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 146.
+(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 150.
 
 
 [6
 
-] (./Unsupervised_Learning_Neural_Networks.toc)
+]
+LaTeX Font Info:    Font shape `OT1/cmss/b/n' in size <10.95> not available
+(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 165.
+LaTeX Font Info:    Font shape `OT1/cmss/b/n' in size <8> not available
+(Font)              Font shape `OT1/cmss/bx/n' tried instead on input line 165.
+
 
 [7
 
-]
+] (./Unsupervised_Learning_Neural_Networks.toc)
 
 [8
 
@@ -926,7 +931,11 @@ LaTeX Font Info:    Font shape `OT1/cmss/b/n' in size <5> not available
 
 [9
 
-] (./Unsupervised_Learning_Neural_Networks.toc)
+]
+Overfull \vbox (8.08846pt too high) detected at line 193
+ []
+
+
 
 [10
 
@@ -934,23 +943,23 @@ LaTeX Font Info:    Font shape `OT1/cmss/b/n' in size <5> not available
 
 [11
 
-]
-Overfull \vbox (0.26778pt too high) detected at line 209
- []
-
-
+] (./Unsupervised_Learning_Neural_Networks.toc)
 
 [12
 
-] (./Unsupervised_Learning_Neural_Networks.toc)
+]
 
 [13
 
 ]
+Overfull \vbox (0.26778pt too high) detected at line 241
+ []
+
+
 
 [14
 
-]
+] (./Unsupervised_Learning_Neural_Networks.toc)
 
 [15
 
@@ -970,13 +979,21 @@ Overfull \vbox (0.26778pt too high) detected at line 209
 
 [19
 
-] (./Unsupervised_Learning_Neural_Networks.toc)
+]
 
 [20
 
 ]
 
 [21
+
+] (./Unsupervised_Learning_Neural_Networks.toc)
+
+[22
+
+]
+
+[23
 
 ]
 \tf@nav=\write6
@@ -994,21 +1011,21 @@ LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2025-01-18>
  ***********
 Package rerunfilecheck Info: File `Unsupervised_Learning_Neural_Networks.out' has not changed.
-(rerunfilecheck)             Checksum: 0A73591F3D0426D5FFF0564ED6E213EE;1648.
+(rerunfilecheck)             Checksum: AA3422CC8975E3656FA58C920D783752;1648.
  ) 
 Here is how much of TeX's memory you used:
- 27074 strings out of 473190
- 516191 string characters out of 5715801
- 1114021 words of memory out of 5000000
- 49693 multiletter control sequences out of 15000+600000
- 570717 words of font info for 78 fonts, out of 8000000 for 9000
+ 27087 strings out of 473190
+ 516366 string characters out of 5715801
+ 1115021 words of memory out of 5000000
+ 49702 multiletter control sequences out of 15000+600000
+ 571011 words of font info for 79 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  128i,19n,123p,502b,812s stack positions out of 10000i,1000n,20000p,200000b,200000s
-</usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex9.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmss12.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmss8.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmss9.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmssbx10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi8.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi9.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb>
-Output written on Unsupervised_Learning_Neural_Networks.pdf (21 pages, 235539 bytes).
+</usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex9.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmss12.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmss8.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmss9.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmssbx10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi8.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi9.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb>
+Output written on Unsupervised_Learning_Neural_Networks.pdf (23 pages, 270716 bytes).
 PDF statistics:
- 1930 PDF objects out of 2073 (max. 8388607)
- 1258 compressed objects within 13 object streams
- 54 named destinations out of 1000 (max. 500000)
+ 2200 PDF objects out of 2487 (max. 8388607)
+ 1416 compressed objects within 15 object streams
+ 58 named destinations out of 1000 (max. 500000)
  131 words of extra memory for PDF output out of 10000 (max. 10000000)
 

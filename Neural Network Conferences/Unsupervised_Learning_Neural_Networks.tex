@@ -124,9 +124,13 @@
         \begin{equation}
             \Delta w_{ij} = \eta y_i x_j
         \end{equation}
+        \begin{equation}
+            w_{ij}(t) = w_{ij}(t-1) + \Delta w_{ij}(t)
+        \end{equation}
         where $y_i$ is the output of neuron $i$ and $x_j$ is the input from neuron $j$.
     \end{itemize}
 \end{frame}
+
 
 \begin{frame}{Algorithm: Hebbian Learning}
     \begin{algorithm}[H]
@@ -145,6 +149,21 @@
     \end{algorithm}
 \end{frame}
 
+\begin{frame}{Hebbian Learning}
+    \begin{block}{A problem with Hebbian Learning}
+    A problem with Hebbian learning is that repeated presentation of input patterns leads to an exponential growth in weight values, driving the weights into saturation. 
+    \end{block}
+    
+    \begin{itemize}
+        \item Te prevent saturation, a limit is posed on the increase in weight values (nonlinear forgetting factor)
+        \item Mathematical formulation:
+        \begin{equation}
+            \Delta w_{ij}(t) = \eta y_i x_j - \gamma y_i w_{ij}(t-1)
+        \end{equation}
+        where $y_i$ is the output of neuron $i$ and $x_j$ is the input from neuron $j$; $\gamma$ is a positive constant value.
+    \end{itemize}
+\end{frame}
+
 %------------------------------------------------
 \section{Principal Component Learning Rule}
 %------------------------------------------------
@@ -158,6 +177,19 @@
     \begin{block}{Goal}
     To find a direction (weight vector) that maximizes the variance of the output.
     \end{block}
+\end{frame}
+
+\begin{frame}{Principal Component Analysis (PCA)}
+\begin{block}{Oja's Rule}
+    Oja developed the ﬁrst principal components learning rule, with the aim of extracting the principal components from the input data. Oja’s principal components learning rule is an extension of the Hebbian learning rule, referred to as normalized Hebbian learning, to include a feedback term to constrain weights.
+\end{block}
+\begin{equation}
+\begin{aligned}
+\Delta u_{ki}(t) &= u_{ki}(t) - u_{ki}(t-1) \\
+&= \eta o_{k,p} [z_{i,p} - o_{k,p} u_{ki}(t-1)] \\
+&= \underbrace{\eta o_{k,p} z_{i,p}}_{Hebbian} - \underbrace{\eta o_{k,p}^2 u_{ki}(t-1)}_{forgetting \ factor}
+\end{aligned}
+\end{equation}
 \end{frame}
 
 \begin{frame}{Algorithm: Principal Component Learning}
