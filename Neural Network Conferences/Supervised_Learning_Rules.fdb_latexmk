@@ -1,6 +1,6 @@
 # Fdb version 4
-["pdflatex"] 1768585335.17911 "/Users/aboudonji/OnjiLabs/Neural Net Course/Neural Network Conferences/Supervised_Learning_Rules.tex" "Supervised_Learning_Rules.pdf" "Supervised_Learning_Rules" 1768585338.1552 0
-  "/Users/aboudonji/OnjiLabs/Neural Net Course/Neural Network Conferences/Supervised_Learning_Rules.tex" 1768585331.94304 10869 8d8c1dbc0cafc84f05d1af73721e9093 ""
+["pdflatex"] 1769094339.70611 "/Users/aboudonji/OnjiLabs/Neural Net Course/Neural Network Conferences/Supervised_Learning_Rules.tex" "Supervised_Learning_Rules.pdf" "Supervised_Learning_Rules" 1769094342.67144 0
+  "/Users/aboudonji/OnjiLabs/Neural Net Course/Neural Network Conferences/Supervised_Learning_Rules.tex" 1769094339.3745 10869 5532e820ad0197de8412331318f5c85e ""
   "/usr/local/texlive/2025/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmbsy6.tfm" 1246382020 1124 14ccf5552bc7f77ca02a8a402bea8bfb ""
   "/usr/local/texlive/2025/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmbsy8.tfm" 1246382020 1120 200be8b775682cdf80acad4be5ef57e4 ""
@@ -243,11 +243,11 @@
   "/usr/local/texlive/2025/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1759950611 5467155 19efa205003f9ecad95fbbaa6ff24da1 ""
   "/usr/local/texlive/2025/texmf-var/web2c/pdftex/pdflatex.fmt" 1741450574 3345740 46b66fdb0378f7bf5921b5eabf1762b8 ""
   "/usr/local/texlive/2025/texmf.cnf" 1741450484 577 418a7058ec8e006d8704f60ecd22c938 ""
-  "Supervised_Learning_Rules.aux" 1768585338.09286 5528 49275e4e5d800d8fbf3ef7388a67072c "pdflatex"
-  "Supervised_Learning_Rules.nav" 1768585338.09391 3459 a194d3c62fc5e70d3a8db956e5771726 "pdflatex"
-  "Supervised_Learning_Rules.out" 1768585338.09375 950 0293d57d65ced2959283381d3f719daa "pdflatex"
-  "Supervised_Learning_Rules.tex" 1768585331.94304 10869 8d8c1dbc0cafc84f05d1af73721e9093 ""
-  "Supervised_Learning_Rules.toc" 1768585338.09393 413 c2e0eada02158fc521a1e5b7f6331dbb "pdflatex"
+  "Supervised_Learning_Rules.aux" 1769094342.60197 5528 49275e4e5d800d8fbf3ef7388a67072c "pdflatex"
+  "Supervised_Learning_Rules.nav" 1769094342.60293 3459 a194d3c62fc5e70d3a8db956e5771726 "pdflatex"
+  "Supervised_Learning_Rules.out" 1769094342.60276 950 0293d57d65ced2959283381d3f719daa "pdflatex"
+  "Supervised_Learning_Rules.tex" 1769094339.3745 10869 5532e820ad0197de8412331318f5c85e ""
+  "Supervised_Learning_Rules.toc" 1769094342.60297 413 c2e0eada02158fc521a1e5b7f6331dbb "pdflatex"
   (generated)
   "Supervised_Learning_Rules.aux"
   "Supervised_Learning_Rules.log"

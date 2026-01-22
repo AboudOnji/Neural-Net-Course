@@ -6,7 +6,6 @@
 
 ---
 
-# Desglose de Dimensiones de Tensores en Deep Learning (C, B, T, S)
 
 En el ámbito de la Inteligencia Computacional y el Aprendizaje Profundo (Deep Learning), los datos no se procesan como simples hojas de cálculo 2D. Se organizan en **tensores** (estructuras multidimensionales). 
 

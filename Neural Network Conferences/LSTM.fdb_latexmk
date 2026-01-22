@@ -1,6 +1,6 @@
 # Fdb version 4
-["pdflatex"] 1768585294.33731 "/Users/aboudonji/OnjiLabs/Neural Net Course/Neural Network Conferences/LSTM.tex" "LSTM.pdf" "LSTM" 1768585297.63392 0
-  "/Users/aboudonji/OnjiLabs/Neural Net Course/Neural Network Conferences/LSTM.tex" 1768585294.16291 15368 901fa3ca08e7e44e0d9fcd940aa5df6a ""
+["pdflatex"] 1769096634.72006 "/Users/aboudonji/OnjiLabs/Neural Net Course/Neural Network Conferences/LSTM.tex" "LSTM.pdf" "LSTM" 1769096638.03635 0
+  "/Users/aboudonji/OnjiLabs/Neural Net Course/Neural Network Conferences/LSTM.tex" 1769096634.52641 15364 8546dc84ac7c25dad56373f64d5b8c70 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1246382020 1004 54797486969f23fa377b128694d548df ""
   "/usr/local/texlive/2025/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex8.tfm" 1246382020 988 bdf658c3bfc2d96d3c8b02cfc1c94c20 ""
@@ -253,12 +253,12 @@
   "Figures/LSTMNN.png" 1768502601.03954 30004 ba7896572c6106932b6d14436c5e39d2 ""
   "Figures/analysis.png" 1768504185.61168 73041 d829650c1d4c234f84f4a2b46b315841 ""
   "Figures/car.png" 1768503900.22826 16751 c282d5bdbdf2bc52b8631a9754736a71 ""
-  "LSTM.aux" 1768585297.55582 5590 ea8673ba341f74f622231d7f2548f2df "pdflatex"
-  "LSTM.nav" 1768585297.55676 3427 0ddbcb949688044d8886202ddfe2dacd "pdflatex"
-  "LSTM.out" 1768585297.5566 1091 12d89b516fcd09364e6cd7bf7e8c7104 "pdflatex"
-  "LSTM.tex" 1768585294.16291 15368 901fa3ca08e7e44e0d9fcd940aa5df6a ""
-  "LSTM.toc" 1768585297.55692 407 9c67e621e34b37e2963b428b10a045df "pdflatex"
-  "LSTM.vrb" 1768585297.35356 582 2e97f00ca7be30eaab7713c11424e967 "pdflatex"
+  "LSTM.aux" 1769096637.95728 5590 ea8673ba341f74f622231d7f2548f2df "pdflatex"
+  "LSTM.nav" 1769096637.95822 3427 0ddbcb949688044d8886202ddfe2dacd "pdflatex"
+  "LSTM.out" 1769096637.95805 1091 12d89b516fcd09364e6cd7bf7e8c7104 "pdflatex"
+  "LSTM.tex" 1769096634.52641 15364 8546dc84ac7c25dad56373f64d5b8c70 ""
+  "LSTM.toc" 1769096637.95825 407 9c67e621e34b37e2963b428b10a045df "pdflatex"
+  "LSTM.vrb" 1769096637.75437 582 2e97f00ca7be30eaab7713c11424e967 "pdflatex"
   (generated)
   "LSTM.aux"
   "LSTM.log"

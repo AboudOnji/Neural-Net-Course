@@ -8,7 +8,6 @@
 
 ---
 
-# Anatomía Matemática de la Celda LSTM: Las 4 Compuertas
 
 La red **LSTM (Long Short-Term Memory)** soluciona el problema del *gradiente desvanecido* presente en las Redes Recurrentes (RNN) simples. A diferencia de una neurona estándar que simplemente aplica una función $\tanh(Wx + b)$, una celda LSTM posee una estructura compleja de memoria interna regulada por **4 compuertas (gates)** operando en paralelo.
 
