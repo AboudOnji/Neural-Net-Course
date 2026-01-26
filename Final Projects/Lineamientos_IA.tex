@@ -1,0 +1,183 @@
+\documentclass[12pt, letterpaper, oneside]{book} % 'oneside' para revisión inicial, cambiar a 'twoside' para versión final
+\usepackage{csquotes}
+% --- PAQUETES ESENCIALES ---
+\usepackage[utf8]{inputenc} % Codificación de entrada UTF-8
+\usepackage[T1]{fontenc}    % Codificación de fuentes moderna
+\usepackage[spanish,es-tabla]{babel} % Soporte para español, incluyendo tablas
+\usepackage{lmodern}        % Fuente Latin Modern para mejor tipografía
+
+% --- MATEMÁTICAS ---
+\usepackage{amsmath}        % Funciones matemáticas avanzadas
+\usepackage{amsfonts}       % Fuentes matemáticas
+\usepackage{amssymb}        % Símbolos matemáticos adicionales
+\usepackage{algorithm}
+\usepackage{algorithmicx}
+\usepackage{algpseudocode}
+\usepackage{longtable} % Para tablas que ocupan varias páginas
+\usepackage{array}     % Para tipos de columna avanzados (como p{width}, m{width})
+\usepackage{booktabs}  % Para líneas de tabla de calidad profesional (toprule, midrule, bottomrule)
+\usepackage{ragged2e}  % Para mejor justificación en celdas (ej. \RaggedRight)
+\usepackage{seqsplit}  % Para permitir el corte de secuencias largas (ej. nombres de bibliotecas)
+% --- GRÁFICOS Y COLORES ---
+\usepackage{graphicx}       % Para incluir imágenes
+\usepackage[dvipsnames,svgnames,x11names]{xcolor}% Para definir y usar colores (ej. en hipervínculos)
+
+% --- REFERENCIAS Y ENLACES ---
+\usepackage{xurl}
+\usepackage{hyperref}       % Para crear hipervínculos internos y externos
+\hypersetup{
+    colorlinks=true,        % Colorear los enlaces en lugar de usar recuadros
+    linkcolor=blue,     % Color para enlaces internos (índice, referencias cruzadas)
+    filecolor=blue, % Color para enlaces a archivos locales
+    urlcolor=blue,      % Color para URLs
+    citecolor=blue,     % Color para citas bibliográficas
+}
+\usepackage[numbers,square,sort&compress]{natbib} % Para bibliografía estilo APA numérico
+\bibliographystyle{apalike} % Estilo bibliográfico (apalike es común y similar a APA)
+
+% --- DISEÑO DE PÁGINA Y FORMATO ---
+\usepackage{geometry}       % Para personalizar márgenes
+\geometry{left=3cm, right=2.5cm, top=2.5cm, bottom=2.5cm} % Configuración de márgenes
+\usepackage{fancyhdr}       % Para personalizar encabezados y pies de página
+\usepackage{lettrine}       % Para letras capitales al inicio de capítulo
+\usepackage{setspace}       % Para controlar el interlineado
+\onehalfspacing             % Interlineado a 1.5
+\usepackage{emptypage}      % Para que las páginas en blanco (ej. tras un capítulo) no tengan encabezado/pie
+\usepackage{epigraph}       % Para incluir citas o epígrafes al inicio de capítulos
+\usepackage{caption}        % Para personalizar los títulos de figuras y tablas
+\captionsetup{labelfont=bf, textfont=it, skip=10pt} % Configuración de captions
+
+% Directorio de las imágenes (opcional, si las imágenes están en una subcarpeta)
+% \graphicspath{{./imagenes/}}
+
+% --- CONFIGURACIÓN DE ENCABEZADOS Y PIES DE PÁGINA (fancyhdr) ---
+\pagestyle{fancy}
+\fancyhf{} % Limpiar configuraciones previas de encabezados y pies
+\fancyhead[LE,RO]{\slshape\nouppercase{\leftmark}} % Título del capítulo en cabecera (LE: Left Even, RO: Right Odd)
+%\fancyhead[RE,LO]{\slshape\nouppercase{\rightmark}} % Título de la sección en cabecera (RE: Right Even, LO: Left Odd)
+\fancyhead[RE,LO]{NN \& SVM - Prof. Dr. Barsekh-Onji} 
+\fancyfoot[CE,CO]{\thepage} % Número de página centrado en el pie
+\renewcommand{\headrulewidth}{0.4pt} % Grosor de la línea bajo el encabezado
+\renewcommand{\footrulewidth}{0pt}    % Sin línea sobre el pie de página
+
+% --- COMANDOS PERSONALIZADOS (EJEMPLO) ---
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}} % Para una línea horizontal personalizada
+
+% --- INFORMACIÓN DEL DOCUMENTO ---
+\title{Redes Neuronales y Support Vector Machine \\ Lineamientos para el Proyecto Final}
+\author{\textcopyright  Prof. Dr. Aboud BARSEKH-ONJI\\ \url{aboud.barsekh@anahuac.mx} \\ \url{https://orcid.org/0009-0004-5440-8092}} 
+\date{\today}
+
+\usepackage{listings}
+\usepackage{xcolor} % Para colores en listings
+ \definecolor{codegreen}{rgb}{0,0.6,0}
+ \definecolor{codegray}{rgb}{0.5,0.5,0.5}
+ \definecolor{codepurple}{rgb}{0.58,0,0.82}
+ \definecolor{backcolour}{rgb}{0.97,0.97,0.99}
+
+\lstdefinestyle{MATLABStyle}{
+  language=Matlab,
+  basicstyle=\ttfamily\footnotesize,
+  keywordstyle=\color{blue}\bfseries,
+  commentstyle=\color{codegreen},
+  stringstyle=\color{violet},
+  numberstyle=\tiny\color{gray},
+  breakatwhitespace=false,
+  breaklines=true,
+  captionpos=b,
+  keepspaces=true,
+  numbers=left,
+  numbersep=5pt,
+  showspaces=false,
+  showstringspaces=false,
+  showtabs=false,
+  tabsize=2,
+  frame=lines, % Añade un marco alrededor del código
+  framerule=0.4pt, % Grosor del marco
+  backgroundcolor=\color{backcolour} % Color de fondo suave
+}
+\lstset{style=MATLABStyle}
+
+ \lstdefinestyle{PythonStyle}{
+     backgroundcolor=\color{Snow},
+     commentstyle=\color{codegreen},
+     keywordstyle=\color{blue}\bfseries,
+     numberstyle=\tiny\color{codegray},
+     stringstyle=\color{codepurple},
+     basicstyle=\ttfamily\footnotesize,
+     breakatwhitespace=false,
+     breaklines=true,
+     captionpos=b,
+     keepspaces=true,
+     numbers=left,
+     numbersep=5pt,
+     showspaces=false,
+     showstringspaces=false,
+     showtabs=false,
+     tabsize=2,
+     frame=lines,
+     framerule=0.4pt
+ }
+\lstset{style=PythonStyle}
+
+
+% --- INICIO DEL DOCUMENTO ---
+
+
+\begin{document}
+
+\maketitle
+
+\section*{Introducción y Objetivo}
+
+El proyecto final es la culminación de los conocimientos adquiridos durante el curso de Redes Neuronales y Support Vector Machine. Su objetivo es permitir a los estudiantes aplicar de manera práctica las metodologías de aprendizaje automático de máquina (machine learning), específicamente redes neuronales y support vector machine, incluyendo la implementación de procesos de aprendizaje profundo (deep learning), para analizar sistemas complejos, proponer soluciones y comunicar sus hallazgos de manera profesional y estructurada.
+
+El proyecto tiene un valor del \textbf{60\%} de la calificación final de la materia (50\% para la documentación y 10\% para la presentación el día de la evaluación final), por lo que se espera un trabajo que refleje una cantidad significativa de tiempo, esfuerzo y rigor académico.
+
+\section*{Fechas Importantes}
+\begin{itemize}
+    \item \textbf{Entrega Final del Proyecto:} jueves, 19 de marzo 2026, a las 12:00hrs. Deberá enviarse por correo electrónico al profesor.
+\end{itemize}
+\textbf{Nota:} Las entregas tardías tendrán una penalización del 15\% por cada medio día de retraso (12 horas), hasta un máximo de 1 día. Después de este período, no se aceptarán entregas.
+
+\section*{Desarrollo del Proyecto}
+
+Esta modalidad se enfoca en el desarrollo práctico de un modelo basado en inteligencia computacional (NN y SVM, u otro algoritmo de machine learning o deep learning) para solucionar un problema práctico relacionado con el ámbito de la optimización, la predicción, la clasificación o el agrupamiento de variables con la finalidad de dar una solución a un problema práctico del ámbito financiero, mercadológico, industrial, o cualquier ámbito relacionado con el análisis y procesamiento de datos. El proyecto debe culminar con un análisis de resultados y conclusiones.
+
+El proyecto debe incluir, de manera clara en la metodología, las siguientes etapas:
+\begin{enumerate}
+    \item \textbf{Definición del problema abordado  y Justificación:} Describir claramente el problema que el proyecto trata de solucionar, delimitar su alcance y justificar la importancia de su estudio y el uso de la inteligencia computacional.
+    \item \textbf{Desarrollo del Modelo:} Crear un modelo conceptual y computacional del sistema. Se deben detallar las variables del problema, los objetivos y las relaciones lógicas del modelo.
+    \item \textbf{Validación del Modelo:} Presentar evidencia de que el modelo se comporta de manera similar al sistema real. Comparar los resultados del modelo con datos históricos o comportamientos conocidos.
+    \item \textbf{Análisis y Comparación de Resultados:} Analizar estadísticamente los datos generados por el modelo propuesto. Comparar los resultados de los diferentes escenarios entre sí y contra el estado base del sistema.
+    \item \textbf{Conclusiones:} Sintetizar los hallazgos y ofrecer recomendaciones basadas en la evidencia obtenida.
+\end{enumerate}
+\newpage
+\section*{Estructura y Formato del Documento}
+El reporte final debe ser un documento único en formato PDF, redactado como un artículo científico de investigación y siguiendo estrictamente la siguiente estructura:
+\begin{itemize}
+    \item \textbf{Título:} Claro, conciso y representativo del trabajo. Máximo 12 palabras, sin abreviaturas.
+    \item \textbf{Autor y Afiliación:} Nombre completo del estudiante y nombre de la universidad y la carrera.
+     \item \textbf{Resumen (Abstract):} Se debe presentar un resumen en \textbf{español} y su correspondiente traducción al \textbf{inglés}. Cada resumen debe tener una extensión máxima de 250 palabras y debe sintetizar: la problemática abordada, la metodología de investigación utilizada, los resultados más importantes, las conclusiones principales, la contribución, las limitaciones y la novedad del estudio.
+    \item \textbf{Palabras Clave:} Un máximo de 5 conceptos clave que describan el trabajo (en español e inglés).
+    \item \textbf{Introducción:} Debe presentar el contexto general del problema, el marco teórico y conceptual relevante, los objetivos del trabajo y una breve descripción de la metodología, resultados y conclusiones que se presentarán.
+    \item \textbf{Metodología:} Esta sección es fundamental y debe ser detallada. Debe describir técnicamente el modelo desarrollado y justificar su elección, así como la elección de los parámetros de los algoritmos utilizados. Es \textbf{mandatorio} que esta sección refleje explícitamente las etapas del proceso  mencionadas anteriormente.
+    \item \textbf{Resultados y Discusión:} Presentar los hallazgos del proyecto. Esto puede incluir tablas, gráficos y análisis estadísticos. Se debe discutir el significado de los resultados, compararlos con trabajos previos (si aplica) e interpretar lo que implican en el contexto del problema.
+    \item \textbf{Conclusiones:} Resumir las conclusiones finales del trabajo, ofrecer recomendaciones prácticas o teóricas basadas en los resultados, y discutir honestamente las limitaciones del estudio y sugerir líneas de investigación futura.
+    \item \textbf{Referencias:} Listar todas las fuentes citadas en el texto. El formato debe ser \textbf{APA 7ma Edición} o \textbf{IEEE}.
+\end{itemize}
+
+\section*{Lineamientos de Entrega}
+\begin{itemize}
+    \item El único entregable es el documento del proyecto en \textbf{formato PDF}.
+    \item El archivo debe nombrarse de la siguiente manera:
+    
+    \texttt{Apellido-Nombre-ProyectoFinal.pdf}.
+    
+    \item La entrega se realizará exclusivamente a través de correo electrónico al profesor (\href{mailto:aboud.barsekh@anahuac.mx}{aboud.barsekh@anahuac.mx}), recibirás en un lapso de 12 horas una confirmación de recibido.
+    \item Antes de su entrega final, se puede revisar el porcentaje de plagio y escritura por IA, si es deseo del alumno, usando un \textbf{enlace de Turnitin} que se enviará a su correo electrónico institucional durante la última semana del curso.
+    \item Se permite un porcentaje máximo de plagio del 20\%, y un porcentaje de escritura por IA máximo del 30\%.
+    \item El uso de Turnitin implica una revisión de originalidad. Si el alumno realiza o no este proceso, el profesor lo hará de todas maneras ya que todo trabajo debe ser de autoría propia, citando adecuadamente todas las fuentes utilizadas para evitar el plagio.
+\end{itemize}
+
+\end{document}

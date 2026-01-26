@@ -1,0 +1,140 @@
+\documentclass[12pt, letterpaper, oneside]{book}
+
+\usepackage{enumitem}
+\usepackage{csquotes}
+% --- PAQUETES ESENCIALES ---
+\usepackage[utf8]{inputenc} % Codificación de entrada UTF-8
+\usepackage[T1]{fontenc}    % Codificación de fuentes moderna
+\usepackage[spanish,es-tabla]{babel} % Soporte para español, incluyendo tablas
+\usepackage{lmodern}        % Fuente Latin Modern para mejor tipografía
+
+% --- PAQUETES PARA TABLAS Y DISEÑO ---
+\usepackage{longtable} % Para tablas que ocupan varias páginas
+\usepackage{array}     % Para tipos de columna avanzados (como p{width}, m{width})
+\usepackage{booktabs}  % Para líneas de tabla de calidad profesional (toprule, midrule, bottomrule)
+\usepackage{ragged2e}  % Para mejor justificación en celdas (ej. \RaggedRight)
+\usepackage[table]{xcolor} % Para colores en tablas
+\usepackage{graphicx}  % Para rotar texto en celdas
+
+% --- PAQUETES GENERALES (Mantenidos para consistencia de estilo) ---
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{xurl}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=blue,
+    urlcolor=blue,
+    citecolor=blue,
+}
+\usepackage[numbers,square,sort&compress]{natbib}
+\bibliographystyle{apalike}
+\usepackage{geometry}
+\geometry{left=3cm, right=2.5cm, top=2.5cm, bottom=2.5cm}
+\usepackage{fancyhdr}
+\usepackage{setspace}
+\onehalfspacing
+\usepackage{emptypage}
+\usepackage{caption}
+\captionsetup{labelfont=bf, textfont=it, skip=10pt}
+
+% --- CONFIGURACIÓN DE ENCABEZADOS Y PIES DE PÁGINA ---
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[LE,RO]{\slshape\nouppercase{\leftmark}}
+\fancyhead[RE,LO]{Rúbricas de Evaluación - Redes Neurales y SVM}
+\fancyfoot[CE,CO]{\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0pt}
+
+% --- COLORES Y ESTILOS PARA LA RÚBRICA ---
+\definecolor{TableHeader}{HTML}{EAEAEA} % Un gris claro para el encabezado de la tabla
+\newcolumntype{P}[1]{>{\RaggedRight\arraybackslash}p{#1}} % Columna con justificación a la izquierda
+
+% --- INFORMACIÓN DEL DOCUMENTO ---
+\title{Redes Neurales y Support Vector Machine \\ Rúbrica de Evaluación para Proyecto Final}
+\author{\textcopyright Prof. Dr. Aboud BARSEKH-ONJI\\ \url{aboud.barsekh@anahuac.mx} \\ \url{https://orcid.org/0009-0004-5440-8092}} 
+\date{\today}
+
+% --- INICIO DEL DOCUMENTO ---
+\begin{document}
+
+\maketitle
+\thispagestyle{empty}
+\clearpage
+
+
+
+\chapter*{Rúbrica de Proyecto}
+\label{sec:rubrica2}
+\begin{longtable}{P{3.5cm} P{1.5cm} P{9cm}}
+\caption{Rúbrica de evaluación para el Proyecto de Redes Neurales y Support Vector Machine} \label{tab:rubrica2} \\
+\toprule
+\rowcolor{TableHeader}
+\textbf{Criterio de Evaluación} & \textbf{Ponderación} & \textbf{Niveles de Desempeño} \\
+\midrule
+\endfirsthead
+\multicolumn{3}{c}%
+{{\bfseries \tablename\ \thetable{} -- continuación}} \\
+\toprule
+\rowcolor{TableHeader}
+\textbf{Criterio de Evaluación} & \textbf{Ponderación} & \textbf{Niveles de Desempeño} \\
+\midrule
+\endhead
+\bottomrule
+\endfoot
+\bottomrule
+\endlastfoot
+
+% --- Criterios de Evaluación ---
+\textbf{Estructura y Formato del Paper} & 10 Puntos &
+\begin{itemize}[noitemsep, topsep=0pt, partopsep=0pt, leftmargin=*]
+    \item \textbf{Excelente (9-10):} Sigue impecablemente todas las secciones, formatos y lineamientos solicitados. El documento es profesional y fácil de leer.
+    \item \textbf{Bueno (7-8):} Cumple con la mayoría de los lineamientos, pero puede tener errores menores en formato o estructura.
+    \item \textbf{Regular (5-6):} Faltan secciones importantes o el formato es inconsistente.
+    \item \textbf{Deficiente (0-4):} No sigue la estructura de un paper científico.
+\end{itemize} \\
+\addlinespace
+
+\textbf{Metodología: Etapas de Modelado, Validación y Aprendizaje Automático} & 50 Puntos &
+\begin{itemize}[noitemsep, topsep=0pt, partopsep=0pt, leftmargin=*]
+    \item \textbf{Excelente (45-50):} Todas las etapas de la metodología están descritas de forma explícita, detallada y rigurosa. La lógica del modelo, su validación y los experimentos son impecables.
+    \item \textbf{Bueno (38-44):} Se describen la mayoría de las etapas, pero alguna podría tener falta de detalle o rigor.
+    \item \textbf{Regular (30-37):} Faltan etapas clave (ej. validación) o la descripción es superficial. El modelo puede tener fallos lógicos.
+    \item \textbf{Deficiente (0-29):} No se sigue el proceso metodológico. La metodología es inexistente o muy pobre.
+\end{itemize} \\
+\addlinespace
+
+\textbf{Análisis y Comparación de Resultados} & 25 Puntos &
+\begin{itemize}[noitemsep, topsep=0pt, partopsep=0pt, leftmargin=*]
+    \item \textbf{Excelente (21-25):} El análisis estadístico es robusto y adecuado. La interpretación de los resultados y la comparación de escenarios son profundas y aportan valor.
+    \item \textbf{Bueno (17-20):} El análisis es correcto, pero la interpretación o la discusión podrían ser más profundas.
+    \item \textbf{Regular (12-16):} El análisis es muy básico o presenta errores. La discusión es superficial.
+    \item \textbf{Deficiente (0-11):} No hay análisis de resultados o es incorrecto.
+\end{itemize} \\
+\addlinespace
+
+\textbf{Conclusiones y Recomendaciones} & 10 Puntos &
+\begin{itemize}[noitemsep, topsep=0pt, partopsep=0pt, leftmargin=*]
+    \item \textbf{Excelente (9-10):} Las conclusiones se derivan directamente de los resultados. Las recomendaciones son prácticas, viables y bien fundamentadas.
+    \item \textbf{Bueno (7-8):} Las conclusiones son correctas, pero las recomendaciones podrían ser más específicas o justificadas.
+    \item \textbf{Regular (5-6):} Las conclusiones no se conectan claramente con los resultados.
+    \item \textbf{Deficiente (0-4):} No hay conclusiones o no son pertinentes.
+\end{itemize} \\
+\addlinespace
+
+\textbf{Referencias y Redacción} & 5 Puntos &
+\begin{itemize}[noitemsep, topsep=0pt, partopsep=0pt, leftmargin=*]
+    \item \textbf{Excelente (5):} No hay errores de redacción u ortografía. Las referencias siguen el formato APA 7 o IEEE.
+    \item \textbf{Bueno (4):} Errores menores de redacción o en el formato de referencias.
+    \item \textbf{Regular (3):} Errores que dificultan la lectura.
+    \item \textbf{Deficiente (0-2):} Calidad de escritura muy baja.
+\end{itemize} \\
+\midrule
+\textbf{TOTAL} & \textbf{100 Puntos} & \\
+
+\end{longtable}
+
+\end{document}
