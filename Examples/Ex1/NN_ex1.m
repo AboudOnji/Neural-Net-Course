@@ -1,5 +1,5 @@
 %% EJEMPLO 1:
-% Author: Dr. Aboud BARSEKH-ONJI
+% Comments: Dr. Aboud BARSEKH-ONJI
 % IPN - Universidad Anáhuac México
 % Email: aboud.barsekh@anahuac.mx
 % ORCID: 0009-0004-5440-8092

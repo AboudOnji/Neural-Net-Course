@@ -1,0 +1,15 @@
+\frametitle{Redes de LSTM más profundas}
+\begin{lstlisting}[language=Matlab, style=MATLABStyle]
+numFeatures = 12;
+numHiddenUnits1 = 125;
+numHiddenUnits2 = 100;
+numClasses = 9;
+layers = [ ...
+    sequenceInputLayer(numFeatures)
+    lstmLayer(numHiddenUnits1,OutputMode='sequence')
+    dropoutLayer(0.2)
+    lstmLayer(numHiddenUnits2,OutputMode='last')
+    dropoutLayer(0.2)
+    fullyConnectedLayer(numClasses)
+    softmaxLayer];
+    \end{lstlisting}

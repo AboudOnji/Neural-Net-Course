@@ -1,0 +1,266 @@
+\documentclass[aspectratio=169,xcolor=dvipsnames]{beamer}
+\usetheme{Berlin}
+
+\usepackage[english]{babel}
+\usepackage{hyperref}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{amsmath}
+\usepackage{lettrine}
+\setbeamertemplate{caption}[numbered]
+\usepackage[dvipsnames,svgnames,x11names]{xcolor}
+\usepackage{xurl}
+\usepackage{algorithm}
+\usepackage{algorithmicx}
+\usepackage{algpseudocode}
+\usepackage{adjustbox}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=cyan,
+    filecolor=blue,
+    urlcolor=blue,
+    citecolor=blue,
+}
+
+%----------------------------------------------------------------------------------------
+%	CODE LISTINGS SETTINGS
+%----------------------------------------------------------------------------------------
+\usepackage{listings}
+\definecolor{backcolour}{rgb}{0.97,0.97,0.99}
+\definecolor{codegreen}{rgb}{0,0.6,0}
+
+\lstdefinestyle{MATLABStyle}{
+  language=Matlab,
+  basicstyle=\ttfamily\scriptsize,
+  keywordstyle=\color{blue}\bfseries,
+  commentstyle=\color{codegreen},
+  stringstyle=\color{violet},
+  breaklines=true,
+  numbers=left,
+  numbersep=5pt,
+  frame=lines,
+  backgroundcolor=\color{backcolour}
+}
+\lstset{style=MATLABStyle}
+
+\title{Recurrent Neural Networks II}
+\subtitle{Deep Dive: Long Short-Term Memory (LSTM) - 2da Parte}
+
+\author{Prof. Dr. BARSEKH-ONJI Aboud}
+
+\institute
+{
+    Facultad de Ingeniería \\
+    Universidad Anáhuac México
+}
+\date{\today}
+
+%----------------------------------------------------------------------------------------
+%	INICIO DE PRESENTACIÓN
+%----------------------------------------------------------------------------------------
+
+\AtBeginSection[]
+{
+  \begin{frame}{Agenda}
+    \tableofcontents[currentsection]
+  \end{frame}
+}
+
+\begin{document}
+
+\begin{frame}
+    \titlepage
+\end{frame}
+
+%------------------------------------------------
+\section{Introduction to LSTM}
+%------------------------------------------------
+
+\begin{frame}{Redes Neuronales de memoria de corto\_largo plazo}
+   \small
+   \begin{block}{Objetivo}
+    En este tema se explica cómo trabajar con datos secuenciales y de series de tiempo en tareas de clasificación y regresión usando redes neuronales de memoria de corto\_largo plazo (LSTM). Para ver un ejemplo de cómo clasificar datos secuenciales mediante una red neuronal de LSTM.
+   \end{block}
+\begin{alertblock}{Red LSTM}
+    Una red neuronal de LSTM es un tipo de red neuronal recurrente (RNN) que puede aprender dependencias a largo plazo entre unidades de tiempo de datos secuenciales.
+\end{alertblock}
+\begin{exampleblock}{Ejemplos durante el curso}
+    \url{https://la.mathworks.com/help/deeplearning/ug/long-short-term-memory-networks.html}
+    
+\end{exampleblock}
+\end{frame}
+
+\begin{frame}{Arquitectura de red neuronal de LSTM}
+   Los componentes principales de una red neuronal de LSTM son una capa de entrada de secuencias y una capa de LSTM. Una capa de entrada de secuencias introduce datos secuenciales o de series de tiempo en la red neuronal. Una capa de LSTM aprende dependencias a largo plazo entre las unidades de tiempo de los datos secuenciales.
+   Estudiaremos diferentes tipos de aplicaciones de LSTM:
+   \begin{itemize}
+       \item Clasificación sequencia a etiquetas
+       \item Clasificación sequencia a secuencia
+       \item Predicción de series de tiempo (secuencia a uno)
+       \item Predicción de series de tiempo (secuencia a secuencia)
+       \item Redes de LSTM más profundas
+   \end{itemize}
+   \end{frame}
+\section{LSTM para clasificación}
+\begin{frame}{LSTM para clasificar}
+    Este diagrama ilustra la arquitectura de una red neuronal de LSTM sencilla para clasificación. La red neuronal comienza con una capa de entrada de secuencias seguida de una capa de LSTM. Para predecir las etiquetas de clase, la red neuronal termina con una capa totalmente conectada y una capa softmax.
+    \begin{figure}
+        \centering
+        \includegraphics[width=0.5\textwidth]{Figures/LSTM2A.png}
+        \caption{Arquitectura de red neuronal de LSTM para clasificación}
+    \end{figure}
+\end{frame}
+
+\subsection{LSTM para clasificación sequencia a etiqueta}
+
+\begin{frame}{LSTM para clasificación sequencia a etiqueta}
+    Para crear una red de LSTM para la clasificación secuencia a etiqueta, cree un arreglo de capas que contenga una capa de entrada de secuencias, una capa de LSTM, una capa totalmente conectada y una capa softmax.
+
+    Establezca el tamaño de la capa de entrada de secuencias en el número de características de los datos de entrada. Establezca el tamaño de la capa totalmente conectada en el número de clases. No es necesario especificar la longitud de la secuencia.
+
+Para la capa de LSTM, especifique el número de unidades ocultas y el modo de salida "last".
+\end{frame}
+\begin{frame}[fragile]{LSTM para clasificación sequencia a etiqueta}
+\begin{lstlisting}[language=Matlab, style=MATLABStyle]
+numFeatures = 12;
+numHiddenUnits = 100;
+numClasses = 9;
+layers = [ ...
+    sequenceInputLayer(numFeatures)
+    lstmLayer(numHiddenUnits,OutputMode='last')
+    fullyConnectedLayer(numClasses)
+    softmaxLayer];
+    \end{lstlisting}
+\end{frame}
+
+\subsection{LSTM para clasificación sequencia a secuencia}
+
+\begin{frame}{LSTM para clasificación sequencia a etiqueta}
+    Para crear una red de LSTM para una clasificación secuencia a secuencia, utilice la misma arquitectura que para la clasificación secuencia a etiqueta, pero establezca el modo de salida de la capa de LSTM en "sequence".
+\end{frame}
+\begin{frame}[fragile]{LSTM para clasificación sequencia a etiqueta}
+\begin{lstlisting}[language=Matlab, style=MATLABStyle]
+numFeatures = 12;
+numHiddenUnits = 100;
+numClasses = 9;
+layers = [ ...
+    sequenceInputLayer(numFeatures)
+    lstmLayer(numHiddenUnits,OutputMode='sequence')
+    fullyConnectedLayer(numClasses)
+    softmaxLayer];
+    \end{lstlisting}
+\end{frame}
+
+\section{LSTM para regresión}
+
+\begin{frame}{LSTM para regresión}
+    Este diagrama ilustra la arquitectura de una red neuronal de LSTM sencilla para regresión. La red neuronal comienza con una capa de entrada de secuencias seguida de una capa de LSTM. La red neuronal termina con una capa totalmente conectada.
+    \begin{figure}
+        \centering
+        \includegraphics[width=0.5\textwidth]{Figures/LSTM2B.png}
+        \caption{Arquitectura de red neuronal de LSTM para regresión}
+    \end{figure}
+\end{frame}
+
+\subsection{LSTM para regresión sequencia a etiqueta}
+
+\begin{frame}{LSTM para regresión sequencia a etiqueta}
+    Para crear una red de LSTM para la regresión secuencia a uno, cree un arreglo de capas que contenga una capa de entrada de secuencias, una capa de LSTM y una capa totalmente conectada.
+
+Establezca el tamaño de la capa de entrada de secuencias en el número de características de los datos de entrada. Establezca el tamaño de la capa totalmente conectada en el número de respuestas. No es necesario especificar la longitud de la secuencia.
+
+Para la capa de LSTM, especifique el número de unidades ocultas y el modo de salida 'last'.
+
+
+\end{frame}
+
+\begin{frame}[fragile]{LSTM para regresión sequencia a etiqueta}
+\begin{lstlisting}[language=Matlab, style=MATLABStyle]
+numFeatures = 12;
+numHiddenUnits = 125;
+numResponses = 1;
+
+layers = [ ...
+    sequenceInputLayer(numFeatures)
+    lstmLayer(numHiddenUnits,OutputMode='last')
+    fullyConnectedLayer(numResponses)];
+    \end{lstlisting}
+\end{frame}
+
+\subsection{LSTM para regresión sequencia a secuencia}
+
+
+\begin{frame}{LSTM para regresión sequencia a secuencia}
+    
+Para crear una red de LSTM para una regresión secuencia a secuencia, utilice la misma arquitectura que para la regresión secuencia a uno, pero establezca el modo de salida de la capa de LSTM en 'sequence'.
+
+\end{frame}
+
+\begin{frame}[fragile]{LSTM para regresión sequencia a secuencia}
+\begin{lstlisting}[language=Matlab, style=MATLABStyle]
+numFeatures = 12;
+numHiddenUnits = 125;
+numResponses = 1;
+
+layers = [ ...
+    sequenceInputLayer(numFeatures)
+    lstmLayer(numHiddenUnits,OutputMode='sequence')
+    fullyConnectedLayer(numResponses)];
+    \end{lstlisting}
+\end{frame}
+
+\section{Redes de LSTM más profundas}
+
+\begin{frame}{Redes de LSTM más profundas}
+  Puede hacer más profundas las redes de LSTM insertando capas de LSTM adicionales con el modo de salida "sequence" antes de la capa de LSTM. Para evitar un sobreajuste, puede insertar capas de abandono después de las capas de LSTM.
+
+Para redes de clasificación secuencia a etiqueta, el modo de salida de la última capa de LSTM debe ser "last".
+
+
+\end{frame}
+
+\begin{frame}[fragile]{Redes de LSTM más profundas}
+\begin{lstlisting}[language=Matlab, style=MATLABStyle]
+numFeatures = 12;
+numHiddenUnits1 = 125;
+numHiddenUnits2 = 100;
+numClasses = 9;
+layers = [ ...
+    sequenceInputLayer(numFeatures)
+    lstmLayer(numHiddenUnits1,OutputMode='sequence')
+    dropoutLayer(0.2)
+    lstmLayer(numHiddenUnits2,OutputMode='last')
+    dropoutLayer(0.2)
+    fullyConnectedLayer(numClasses)
+    softmaxLayer];
+    \end{lstlisting}
+\end{frame}
+
+\section{Tipos de capas de LSTM}
+
+\begin{frame}{Tipos de capas de LSTM - 1}
+    \begin{figure}
+        \centering
+        \includegraphics[width=\textwidth]{Figures/capas1.png}
+        \caption{Tipos de capas de LSTM - 1}
+    \end{figure}
+\end{frame}
+
+\begin{frame}{Tipos de capas de LSTM - 2}
+    \begin{figure}
+        \centering
+        \includegraphics[width=\textwidth]{Figures/capas2.png}
+        \caption{Tipos de capas de LSTM - 2}
+    \end{figure}
+\end{frame}
+
+\begin{frame}{Tipos de capas de LSTM - 3}
+    \begin{figure}
+        \centering
+        \includegraphics[width=\textwidth]{Figures/capas3.png}
+        \caption{Tipos de capas de LSTM - 3}
+    \end{figure}
+\end{frame} 
+
+\end{document}

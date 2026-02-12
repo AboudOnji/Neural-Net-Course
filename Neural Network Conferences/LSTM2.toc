@@ -1,0 +1,10 @@
+\babel@toc {english}{}\relax 
+\beamer@sectionintoc {1}{Introduction to LSTM}{2}{0}{1}
+\beamer@sectionintoc {2}{LSTM para clasificación}{5}{0}{2}
+\beamer@subsectionintoc {2}{1}{LSTM para clasificación sequencia a etiqueta}{7}{0}{2}
+\beamer@subsectionintoc {2}{2}{LSTM para clasificación sequencia a secuencia}{9}{0}{2}
+\beamer@sectionintoc {3}{LSTM para regresión}{11}{0}{3}
+\beamer@subsectionintoc {3}{1}{LSTM para regresión sequencia a etiqueta}{13}{0}{3}
+\beamer@subsectionintoc {3}{2}{LSTM para regresión sequencia a secuencia}{15}{0}{3}
+\beamer@sectionintoc {4}{Redes de LSTM más profundas}{17}{0}{4}
+\beamer@sectionintoc {5}{Tipos de capas de LSTM}{20}{0}{5}
