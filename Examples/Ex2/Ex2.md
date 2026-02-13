@@ -1,5 +1,5 @@
 # Ejemplo: NN_ex2.m
-**Author:** D.Sc. Aboud Barsekh Onji
+**Author:** Dr. Aboud Barsekh Onji
 **Institution:** Universidad Anáhuac México - Facultad de Ingeniería
 **Contact:** aboud.barsekh@anahuac.mx
 **ORCID:** 0009-0004-5440-8092

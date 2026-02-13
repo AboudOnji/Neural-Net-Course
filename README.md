@@ -31,6 +31,9 @@ This repository is organized into the following main sections:
 - **Neural Network Conferences**: Contains LaTeX presentations and conference materials for each topic.
 - **Examples**: Practical examples and code snippets (e.g., MATLAB, Markdown) to demonstrate key concepts.
 
-
+## Matlab desde la terminal
+```
+echo 'export PATH="/Applications/MATLAB_R2025a.app/bin:$PATH"' >> ~/.zshrc && source ~/.zshrc
+```
 ---
 *Powered by OnjiLabs*
