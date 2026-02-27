@@ -1,0 +1,14 @@
+\frametitle{Prediction Code}
+Using \texttt{testnet} or \texttt{minibatchpredict}:
+
+\begin{lstlisting}[language=Matlab]
+% Train the network
+net = trainnet(imdsTrain, net_1, "crossentropy", options);
+
+% Evaluate standard accuracy
+accuracy = testnet(net, imdsValidation, "accuracy");
+
+% Visualizing Predictions
+scores = minibatchpredict(net, imdsValidation);
+YPred = scores2label(scores, classNames);
+\end{lstlisting}

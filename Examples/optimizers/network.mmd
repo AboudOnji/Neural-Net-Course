@@ -1,0 +1,30 @@
+graph LR
+    subgraph Entrada
+    x1(x1: 0.35)
+    x2(x2: 0.8)
+    end
+    subgraph Oculta
+    h1((h1))
+    h2((h2))
+    end
+    subgraph Salida
+    y1((y1))
+    y2((y2))
+    end
+
+    x1 -- "w11=0.1" --> h1
+    x1 -- "w12=0.4" --> h2
+    x2 -- "w21=0.2" --> h1
+    x2 -- "w22=0.6" --> h2
+
+    h1 -- "w11=0.3" --> y1
+    h1 -- "w12=0.1" --> y2
+    h2 -- "w21=0.2" --> y1
+    h2 -- "w22=0.9" --> y2
+    
+    style x1 fill:#e1f5fe,stroke:#01579b
+    style x2 fill:#e1f5fe,stroke:#01579b
+    style h1 fill:#f3e5f5,stroke:#4a148c
+    style h2 fill:#f3e5f5,stroke:#4a148c
+    style y1 fill:#fff3e0,stroke:#e65100
+    style y2 fill:#fff3e0,stroke:#e65100

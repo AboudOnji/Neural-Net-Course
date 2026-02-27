@@ -2,7 +2,7 @@
 \headcommand {\beamer@framepages {1}{1}}
 \headcommand {\beamer@sectionpages {1}{1}}
 \headcommand {\beamer@subsectionpages {1}{1}}
-\headcommand {\sectionentry {1}{Motivation}{2}{Motivation}{0}}
+\headcommand {\sectionentry {1}{Introduction}{2}{Introduction}{0}}
 \headcommand {\slideentry {1}{0}{1}{2/2}{}{0}}
 \headcommand {\beamer@framepages {2}{2}}
 \headcommand {\slideentry {1}{0}{2}{3/3}{}{0}}
@@ -11,51 +11,101 @@
 \headcommand {\beamer@framepages {4}{4}}
 \headcommand {\beamer@sectionpages {2}{4}}
 \headcommand {\beamer@subsectionpages {2}{4}}
-\headcommand {\sectionentry {2}{The Convolution Operation}{5}{The Convolution Operation}{0}}
+\headcommand {\sectionentry {2}{Concepts of Convolutional Neural Networks}{5}{Concepts of Convolutional Neural Networks}{0}}
 \headcommand {\slideentry {2}{0}{1}{5/5}{}{0}}
 \headcommand {\beamer@framepages {5}{5}}
-\headcommand {\slideentry {2}{0}{2}{6/6}{}{0}}
+\headcommand {\beamer@subsectionpages {5}{5}}
+\headcommand {\beamer@subsectionentry {0}{2}{1}{6}{Basic Concepts}}
+\headcommand {\slideentry {2}{1}{1}{6/6}{Basic Concepts}{0}}
 \headcommand {\beamer@framepages {6}{6}}
-\headcommand {\slideentry {2}{0}{3}{7/7}{}{0}}
+\headcommand {\slideentry {2}{1}{2}{7/7}{Basic Concepts}{0}}
 \headcommand {\beamer@framepages {7}{7}}
-\headcommand {\beamer@sectionpages {5}{7}}
-\headcommand {\beamer@subsectionpages {5}{7}}
-\headcommand {\sectionentry {3}{Hyperparameters \& Arithmetic}{8}{Hyperparameters \& Arithmetic}{0}}
-\headcommand {\slideentry {3}{0}{1}{8/8}{}{0}}
+\headcommand {\slideentry {2}{1}{3}{8/8}{Basic Concepts}{0}}
 \headcommand {\beamer@framepages {8}{8}}
-\headcommand {\slideentry {3}{0}{2}{9/9}{}{0}}
+\headcommand {\beamer@subsectionpages {6}{8}}
+\headcommand {\beamer@subsectionentry {0}{2}{2}{9}{Why not Standard MLPs?}}
+\headcommand {\slideentry {2}{2}{1}{9/9}{Why not Standard MLPs?}{0}}
 \headcommand {\beamer@framepages {9}{9}}
-\headcommand {\slideentry {3}{0}{3}{10/10}{}{0}}
+\headcommand {\slideentry {2}{2}{2}{10/10}{Why not Standard MLPs?}{0}}
 \headcommand {\beamer@framepages {10}{10}}
-\headcommand {\beamer@sectionpages {8}{10}}
-\headcommand {\beamer@subsectionpages {8}{10}}
-\headcommand {\sectionentry {4}{CNN Building Blocks}{11}{CNN Building Blocks}{0}}
-\headcommand {\slideentry {4}{0}{1}{11/11}{}{0}}
+\headcommand {\beamer@sectionpages {5}{10}}
+\headcommand {\beamer@subsectionpages {9}{10}}
+\headcommand {\sectionentry {3}{Network Layers}{11}{Network Layers}{0}}
+\headcommand {\slideentry {3}{0}{1}{11/11}{}{0}}
 \headcommand {\beamer@framepages {11}{11}}
-\headcommand {\slideentry {4}{0}{2}{12/12}{}{0}}
+\headcommand {\slideentry {3}{0}{2}{12/12}{}{0}}
 \headcommand {\beamer@framepages {12}{12}}
-\headcommand {\slideentry {4}{0}{3}{13/13}{}{0}}
+\headcommand {\beamer@subsectionpages {11}{12}}
+\headcommand {\beamer@subsectionentry {0}{3}{1}{13}{Convolutional Layer}}
+\headcommand {\slideentry {3}{1}{1}{13/13}{Convolutional Layer}{0}}
 \headcommand {\beamer@framepages {13}{13}}
-\headcommand {\slideentry {4}{0}{4}{14/14}{}{0}}
+\headcommand {\beamer@subsectionpages {13}{13}}
+\headcommand {\beamer@subsectionentry {0}{3}{2}{14}{The Convolution Operation}}
+\headcommand {\slideentry {3}{2}{1}{14/14}{The Convolution Operation}{0}}
 \headcommand {\beamer@framepages {14}{14}}
-\headcommand {\beamer@sectionpages {11}{14}}
-\headcommand {\beamer@subsectionpages {11}{14}}
-\headcommand {\sectionentry {5}{MATLAB Implementation}{15}{MATLAB Implementation}{0}}
-\headcommand {\slideentry {5}{0}{1}{15/15}{}{0}}
+\headcommand {\slideentry {3}{2}{2}{15/15}{The Convolution Operation}{0}}
 \headcommand {\beamer@framepages {15}{15}}
-\headcommand {\slideentry {5}{0}{2}{16/16}{}{0}}
+\headcommand {\slideentry {3}{2}{3}{16/16}{The Convolution Operation}{0}}
 \headcommand {\beamer@framepages {16}{16}}
-\headcommand {\slideentry {5}{0}{3}{17/17}{}{0}}
+\headcommand {\slideentry {3}{2}{4}{17/17}{The Convolution Operation}{0}}
 \headcommand {\beamer@framepages {17}{17}}
-\headcommand {\beamer@sectionpages {15}{17}}
-\headcommand {\beamer@subsectionpages {15}{17}}
-\headcommand {\sectionentry {6}{Conclusion}{18}{Conclusion}{0}}
-\headcommand {\slideentry {6}{0}{1}{18/18}{}{0}}
+\headcommand {\slideentry {3}{2}{5}{18/18}{The Convolution Operation}{0}}
 \headcommand {\beamer@framepages {18}{18}}
-\headcommand {\slideentry {6}{0}{2}{19/19}{}{0}}
+\headcommand {\slideentry {3}{2}{6}{19/19}{The Convolution Operation}{0}}
 \headcommand {\beamer@framepages {19}{19}}
-\headcommand {\beamer@partpages {1}{19}}
-\headcommand {\beamer@subsectionpages {18}{19}}
-\headcommand {\beamer@sectionpages {18}{19}}
-\headcommand {\beamer@documentpages {19}}
-\headcommand {\gdef \inserttotalframenumber {19}}
+\headcommand {\slideentry {3}{2}{7}{20/20}{The Convolution Operation}{0}}
+\headcommand {\beamer@framepages {20}{20}}
+\headcommand {\slideentry {3}{2}{8}{21/21}{The Convolution Operation}{0}}
+\headcommand {\beamer@framepages {21}{21}}
+\headcommand {\beamer@subsectionpages {14}{21}}
+\headcommand {\beamer@subsectionentry {0}{3}{3}{22}{Pooling Layer}}
+\headcommand {\slideentry {3}{3}{1}{22/22}{Pooling Layer}{0}}
+\headcommand {\beamer@framepages {22}{22}}
+\headcommand {\slideentry {3}{3}{2}{23/23}{Pooling Layer}{0}}
+\headcommand {\beamer@framepages {23}{23}}
+\headcommand {\slideentry {3}{3}{3}{24/24}{Pooling Layer}{0}}
+\headcommand {\beamer@framepages {24}{24}}
+\headcommand {\slideentry {3}{3}{4}{25/25}{Pooling Layer}{0}}
+\headcommand {\beamer@framepages {25}{25}}
+\headcommand {\beamer@subsectionpages {22}{25}}
+\headcommand {\beamer@subsectionentry {0}{3}{4}{26}{Activation Function}}
+\headcommand {\slideentry {3}{4}{1}{26/26}{Activation Function}{0}}
+\headcommand {\beamer@framepages {26}{26}}
+\headcommand {\beamer@subsectionpages {26}{26}}
+\headcommand {\beamer@subsectionentry {0}{3}{5}{27}{Fully Connected Layer (FC)}}
+\headcommand {\slideentry {3}{5}{1}{27/27}{Fully Connected Layer (FC)}{0}}
+\headcommand {\beamer@framepages {27}{27}}
+\headcommand {\slideentry {3}{5}{2}{28/28}{Fully Connected Layer (FC)}{0}}
+\headcommand {\beamer@framepages {28}{28}}
+\headcommand {\beamer@sectionpages {11}{28}}
+\headcommand {\beamer@subsectionpages {27}{28}}
+\headcommand {\sectionentry {4}{Loss Functions}{29}{Loss Functions}{0}}
+\headcommand {\slideentry {4}{0}{1}{29/29}{}{0}}
+\headcommand {\beamer@framepages {29}{29}}
+\headcommand {\slideentry {4}{0}{2}{30/30}{}{0}}
+\headcommand {\beamer@framepages {30}{30}}
+\headcommand {\beamer@sectionpages {29}{30}}
+\headcommand {\beamer@subsectionpages {29}{30}}
+\headcommand {\sectionentry {5}{Training process of Convolutional Neural Network}{31}{Training process of Convolutional Neural Network}{0}}
+\headcommand {\slideentry {5}{0}{1}{31/31}{}{0}}
+\headcommand {\beamer@framepages {31}{31}}
+\headcommand {\slideentry {5}{0}{2}{32/32}{}{0}}
+\headcommand {\beamer@framepages {32}{32}}
+\headcommand {\slideentry {5}{0}{3}{33/33}{}{0}}
+\headcommand {\beamer@framepages {33}{33}}
+\headcommand {\slideentry {5}{0}{4}{34/34}{}{0}}
+\headcommand {\beamer@framepages {34}{34}}
+\headcommand {\beamer@sectionpages {31}{34}}
+\headcommand {\beamer@subsectionpages {31}{34}}
+\headcommand {\sectionentry {6}{Recent advancement in CNN architectures}{35}{Recent advancement in CNN architectures}{0}}
+\headcommand {\slideentry {6}{0}{1}{35/35}{}{0}}
+\headcommand {\beamer@framepages {35}{35}}
+\headcommand {\slideentry {6}{0}{2}{36/36}{}{0}}
+\headcommand {\beamer@framepages {36}{36}}
+\headcommand {\slideentry {6}{0}{3}{37/37}{}{0}}
+\headcommand {\beamer@framepages {37}{37}}
+\headcommand {\beamer@partpages {1}{37}}
+\headcommand {\beamer@subsectionpages {35}{37}}
+\headcommand {\beamer@sectionpages {35}{37}}
+\headcommand {\beamer@documentpages {37}}
+\headcommand {\gdef \inserttotalframenumber {37}}

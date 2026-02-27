@@ -1,10 +1,10 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.3.8)  27 FEB 2026 14:54
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.3.8)  17 FEB 2026 13:48
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
  %&-line parsing enabled.
-**"/Users/aboudonji/OnjiLabs/Neural Net Course/Neural Network Conferences/CNN.tex"
-(/Users/aboudonji/OnjiLabs/Neural Net Course/Neural Network Conferences/CNN.tex
+**"/Users/aboudonji/OnjiLabs/Neural Net Course/Neural Network Conferences/Ex3_Simple_CNN.tex"
+(/Users/aboudonji/OnjiLabs/Neural Net Course/Neural Network Conferences/Ex3_Simple_CNN.tex
 LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2025-01-18>
 (/usr/local/texlive/2025/texmf-dist/tex/latex/beamer/beamer.cls
@@ -700,110 +700,55 @@ Package: varwidth 2009/03/30 ver 0.92;  Variable-width minipages
 \sift@deathcycles=\count367
 \@vwid@loff=\dimen342
 \@vwid@roff=\dimen343
-)) (/usr/local/texlive/2025/texmf-dist/tex/latex/animate/animate.sty
-Package: animate 2024/10/14 PDF & SVG animations from files and inline graphics
- (/usr/local/texlive/2025/texmf-dist/tex/latex/oberdiek/ifdraft.sty
-Package: ifdraft 2016/05/16 v1.4 Detect class options draft and final (HO)
-) (/usr/local/texlive/2025/texmf-dist/tex/latex/tools/calc.sty
-Package: calc 2023/07/08 v4.3 Infix arithmetic (KKT,FJ)
-\calc@Acount=\count368
-\calc@Bcount=\count369
-\calc@Adimen=\dimen344
-\calc@Bdimen=\dimen345
-\calc@Askip=\skip69
-\calc@Bskip=\skip70
-LaTeX Info: Redefining \setlength on input line 80.
-LaTeX Info: Redefining \addtolength on input line 81.
-\calc@Ccount=\count370
-\calc@Cskip=\skip71
-) (/usr/local/texlive/2025/texmf-dist/tex/latex/media9/pdfbase.sty
-Package: pdfbase 2024/09/16 v0.59 driver independent access to low-level PDF features
-\g_pbs_page_int=\count371
-\g_pbs_oc_int=\count372
-) (/usr/local/texlive/2025/texmf-dist/tex/latex/zref/zref-abspage.sty
-Package: zref-abspage 2023-09-14 v2.35 Module abspage for zref (HO)
- (/usr/local/texlive/2025/texmf-dist/tex/latex/zref/zref-base.sty
-Package: zref-base 2023-09-14 v2.35 Module base for zref (HO)
- (/usr/local/texlive/2025/texmf-dist/tex/generic/etexcmds/etexcmds.sty
-Package: etexcmds 2019/12/15 v1.7 Avoid name clashes with e-TeX commands (HO)
-) (/usr/local/texlive/2025/texmf-dist/tex/latex/auxhook/auxhook.sty
-Package: auxhook 2019-12-17 v1.6 Hooks for auxiliary files (HO)
-)
-Package zref Info: New property list: main on input line 767.
-Package zref Info: New property: default on input line 768.
-Package zref Info: New property: page on input line 769.
-)
-\c@abspage=\count373
-Package zref Info: New property: abspage on input line 67.
-) (/usr/local/texlive/2025/texmf-dist/tex/latex/ocgx2/ocgbase.sty
-Package: ocgbase 2024/09/15 v0.24 support package for ocgx2.sty
-)
-\@anim@box=\box85
-\@anim@measbox=\box86
-\@anim@tmpdima=\dimen346
-\@anim@tmpdimb=\dimen347
-\@anim@num=\count374
-\@anim@curframe=\count375
-\@anim@curframe@zb=\count376
-\@anim@resizeflags=\count377
-\@anim@skipfram=\count378
-\@anim@mulframecnt=\count379
-\@anim@@tmlnfile=\read4
-\@anim@tmpcnt=\count380
-\c@@anim@ltxcnt=\count381
-\@anim@curlayer=\count382
-\@anim@lineno=\count383
-\@anim@curfield=\count384
-\@anim@@resizeflags=\count385
-)
+))
 Package hyperref Info: Option `colorlinks' set `true' on input line 25.
  (/usr/local/texlive/2025/texmf-dist/tex/latex/listings/listings.sty
-\lst@mode=\count386
-\lst@gtempboxa=\box87
+\lst@mode=\count368
+\lst@gtempboxa=\box85
 \lst@token=\toks53
-\lst@length=\count387
-\lst@currlwidth=\dimen348
-\lst@column=\count388
-\lst@pos=\count389
-\lst@lostspace=\dimen349
-\lst@width=\dimen350
-\lst@newlines=\count390
-\lst@lineno=\count391
-\lst@maxwidth=\dimen351
+\lst@length=\count369
+\lst@currlwidth=\dimen344
+\lst@column=\count370
+\lst@pos=\count371
+\lst@lostspace=\dimen345
+\lst@width=\dimen346
+\lst@newlines=\count372
+\lst@lineno=\count373
+\lst@maxwidth=\dimen347
  (/usr/local/texlive/2025/texmf-dist/tex/latex/listings/lstpatch.sty
 File: lstpatch.sty 2024/09/23 1.10c (Carsten Heinz)
 ) (/usr/local/texlive/2025/texmf-dist/tex/latex/listings/lstmisc.sty
 File: lstmisc.sty 2024/09/23 1.10c (Carsten Heinz)
-\c@lstnumber=\count392
-\lst@skipnumbers=\count393
-\lst@framebox=\box88
+\c@lstnumber=\count374
+\lst@skipnumbers=\count375
+\lst@framebox=\box86
 ) (/usr/local/texlive/2025/texmf-dist/tex/latex/listings/listings.cfg
 File: listings.cfg 2024/09/23 1.10c listings configuration
 ))
 Package: listings 2024/09/23 1.10c (Carsten Heinz)
  (/usr/local/texlive/2025/texmf-dist/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2024/09/23 1.10c listings language file
-) (./CNN.aux)
-\openout1 = `CNN.aux'.
+) (./Ex3_Simple_CNN.aux)
+\openout1 = `Ex3_Simple_CNN.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 70.
-LaTeX Font Info:    ... okay on input line 70.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 70.
-LaTeX Font Info:    ... okay on input line 70.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 70.
-LaTeX Font Info:    ... okay on input line 70.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 70.
-LaTeX Font Info:    ... okay on input line 70.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 70.
-LaTeX Font Info:    ... okay on input line 70.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 70.
-LaTeX Font Info:    ... okay on input line 70.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 70.
-LaTeX Font Info:    ... okay on input line 70.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 70.
-LaTeX Font Info:    ... okay on input line 70.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 70.
-LaTeX Font Info:    ... okay on input line 70.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 72.
+LaTeX Font Info:    ... okay on input line 72.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 72.
+LaTeX Font Info:    ... okay on input line 72.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 72.
+LaTeX Font Info:    ... okay on input line 72.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 72.
+LaTeX Font Info:    ... okay on input line 72.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 72.
+LaTeX Font Info:    ... okay on input line 72.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 72.
+LaTeX Font Info:    ... okay on input line 72.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 72.
+LaTeX Font Info:    ... okay on input line 72.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 72.
+LaTeX Font Info:    ... okay on input line 72.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 72.
+LaTeX Font Info:    ... okay on input line 72.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -841,16 +786,16 @@ LaTeX Font Info:    ... okay on input line 70.
 
 (/usr/local/texlive/2025/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count394
-\scratchdimen=\dimen352
-\scratchbox=\box89
-\nofMPsegments=\count395
-\nofMParguments=\count396
+\scratchcounter=\count376
+\scratchdimen=\dimen348
+\scratchbox=\box87
+\nofMPsegments=\count377
+\nofMParguments=\count378
 \everyMPshowfont=\toks54
-\MPscratchCnt=\count397
-\MPscratchDim=\dimen353
-\MPnumerator=\count398
-\makeMPintoPDFobject=\count399
+\MPscratchCnt=\count379
+\MPscratchDim=\dimen349
+\MPnumerator=\count380
+\makeMPintoPDFobject=\count381
 \everyMPtoPDFconversion=\toks55
 ) (/usr/local/texlive/2025/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
@@ -858,60 +803,60 @@ Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 48
  (/usr/local/texlive/2025/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
 ))
-Package hyperref Info: Link coloring ON on input line 70.
- (./CNN.out) (./CNN.out)
+Package hyperref Info: Link coloring ON on input line 72.
+ (./Ex3_Simple_CNN.out) (./Ex3_Simple_CNN.out)
 \@outlinefile=\write5
-\openout5 = `CNN.out'.
+\openout5 = `Ex3_Simple_CNN.out'.
 
 LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
-(Font)                  OT1/cmr/m/n --> OT1/cmss/m/n on input line 70.
+(Font)                  OT1/cmr/m/n --> OT1/cmss/m/n on input line 72.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
-(Font)                  OT1/cmr/bx/n --> OT1/cmss/b/n on input line 70.
+(Font)                  OT1/cmr/bx/n --> OT1/cmss/b/n on input line 72.
 \symnumbers=\mathgroup6
 \sympureletters=\mathgroup7
 LaTeX Font Info:    Overwriting math alphabet `\mathrm' in version `normal'
-(Font)                  OT1/cmss/m/n --> OT1/cmr/m/n on input line 70.
-LaTeX Font Info:    Redeclaring math alphabet \mathbf on input line 70.
+(Font)                  OT1/cmss/m/n --> OT1/cmr/m/n on input line 72.
+LaTeX Font Info:    Redeclaring math alphabet \mathbf on input line 72.
 LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `normal'
-(Font)                  OT1/cmr/bx/n --> OT1/cmss/b/n on input line 70.
+(Font)                  OT1/cmr/bx/n --> OT1/cmss/b/n on input line 72.
 LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `bold'
-(Font)                  OT1/cmr/bx/n --> OT1/cmss/b/n on input line 70.
-LaTeX Font Info:    Redeclaring math alphabet \mathsf on input line 70.
+(Font)                  OT1/cmr/bx/n --> OT1/cmss/b/n on input line 72.
+LaTeX Font Info:    Redeclaring math alphabet \mathsf on input line 72.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `normal'
-(Font)                  OT1/cmss/m/n --> OT1/cmss/m/n on input line 70.
+(Font)                  OT1/cmss/m/n --> OT1/cmss/m/n on input line 72.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
-(Font)                  OT1/cmss/bx/n --> OT1/cmss/m/n on input line 70.
-LaTeX Font Info:    Redeclaring math alphabet \mathit on input line 70.
+(Font)                  OT1/cmss/bx/n --> OT1/cmss/m/n on input line 72.
+LaTeX Font Info:    Redeclaring math alphabet \mathit on input line 72.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `normal'
-(Font)                  OT1/cmr/m/it --> OT1/cmss/m/it on input line 70.
+(Font)                  OT1/cmr/m/it --> OT1/cmss/m/it on input line 72.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
-(Font)                  OT1/cmr/bx/it --> OT1/cmss/m/it on input line 70.
-LaTeX Font Info:    Redeclaring math alphabet \mathtt on input line 70.
+(Font)                  OT1/cmr/bx/it --> OT1/cmss/m/it on input line 72.
+LaTeX Font Info:    Redeclaring math alphabet \mathtt on input line 72.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `normal'
-(Font)                  OT1/cmtt/m/n --> OT1/cmtt/m/n on input line 70.
+(Font)                  OT1/cmtt/m/n --> OT1/cmtt/m/n on input line 72.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
-(Font)                  OT1/cmtt/m/n --> OT1/cmtt/m/n on input line 70.
+(Font)                  OT1/cmtt/m/n --> OT1/cmtt/m/n on input line 72.
 LaTeX Font Info:    Overwriting symbol font `numbers' in version `bold'
-(Font)                  OT1/cmss/m/n --> OT1/cmss/b/n on input line 70.
+(Font)                  OT1/cmss/m/n --> OT1/cmss/b/n on input line 72.
 LaTeX Font Info:    Overwriting symbol font `pureletters' in version `bold'
-(Font)                  OT1/cmss/m/it --> OT1/cmss/b/it on input line 70.
+(Font)                  OT1/cmss/m/it --> OT1/cmss/b/it on input line 72.
 LaTeX Font Info:    Overwriting math alphabet `\mathrm' in version `bold'
-(Font)                  OT1/cmss/b/n --> OT1/cmr/b/n on input line 70.
+(Font)                  OT1/cmss/b/n --> OT1/cmr/b/n on input line 72.
 LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `bold'
-(Font)                  OT1/cmss/b/n --> OT1/cmss/b/n on input line 70.
+(Font)                  OT1/cmss/b/n --> OT1/cmss/b/n on input line 72.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
-(Font)                  OT1/cmss/m/n --> OT1/cmss/b/n on input line 70.
+(Font)                  OT1/cmss/m/n --> OT1/cmss/b/n on input line 72.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
-(Font)                  OT1/cmss/m/it --> OT1/cmss/b/it on input line 70.
+(Font)                  OT1/cmss/m/it --> OT1/cmss/b/it on input line 72.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
-(Font)                  OT1/cmtt/m/n --> OT1/cmtt/b/n on input line 70.
-LaTeX Font Info:    Redeclaring symbol font `pureletters' on input line 70.
+(Font)                  OT1/cmtt/m/n --> OT1/cmtt/b/n on input line 72.
+LaTeX Font Info:    Redeclaring symbol font `pureletters' on input line 72.
 LaTeX Font Info:    Overwriting symbol font `pureletters' in version `normal'
-(Font)                  OT1/cmss/m/it --> OT1/mathkerncmss/m/sl on input line 70.
+(Font)                  OT1/cmss/m/it --> OT1/mathkerncmss/m/sl on input line 72.
 LaTeX Font Info:    Overwriting symbol font `pureletters' in version `bold'
-(Font)                  OT1/cmss/b/it --> OT1/mathkerncmss/m/sl on input line 70.
+(Font)                  OT1/cmss/b/it --> OT1/mathkerncmss/m/sl on input line 72.
 LaTeX Font Info:    Overwriting symbol font `pureletters' in version `bold'
-(Font)                  OT1/mathkerncmss/m/sl --> OT1/mathkerncmss/bx/sl on input line 70.
+(Font)                  OT1/mathkerncmss/m/sl --> OT1/mathkerncmss/bx/sl on input line 72.
  (/usr/local/texlive/2025/texmf-dist/tex/latex/translator/translator-basic-dictionary-English.dict
 Dictionary: translator-basic-dictionary, Language: English 
 ) (/usr/local/texlive/2025/texmf-dist/tex/latex/translator/translator-bibliography-dictionary-English.dict
@@ -925,703 +870,149 @@ Dictionary: translator-numbers-dictionary, Language: English
 ) (/usr/local/texlive/2025/texmf-dist/tex/latex/translator/translator-theorem-dictionary-English.dict
 Dictionary: translator-theorem-dictionary, Language: English 
 )
-\c@lstlisting=\count400
- (./CNN.nav)
-Overfull \hbox (61.09767pt too wide) detected at line 70
-  [] [][][][] [][][][][][][] [][][][][][][][][][][][][][][][][][][] [][][] [][][][][] [][][][]  
- []
-
-
-Overfull \hbox (61.09767pt too wide) detected at line 74
-  [] [][][][] [][][][][][][] [][][][][][][][][][][][][][][][][][][] [][][] [][][][][] [][][][]  
- []
-
-
-
-
-Overfull \hbox (61.09767pt too wide) has occurred while \output is active
-  [] [][][][] [][][][][][][] [][][][][][][][][][][][][][][][][][][] [][][] [][][][][] [][][][]  
- []
+\c@lstlisting=\count382
+ (./Ex3_Simple_CNN.nav)
 
 [1{/usr/local/texlive/2025/texmf-var/fonts/map/pdftex/updmap/pdftex.map}
 
-]
-Overfull \hbox (61.09767pt too wide) detected at line 75
-  [] [][][][] [][][][][][][] [][][][][][][][][][][][][][][][][][][] [][][] [][][][][] [][][][]  
- []
-
-(./CNN.toc)
-Overfull \vbox (13.72067pt too high) detected at line 75
- []
-
-
-
-
-Overfull \hbox (61.09767pt too wide) has occurred while \output is active
-  [] [][][][] [][][][][][][] [][][][][][][][][][][][][][][][][][][] [][][] [][][][][] [][][][]  
- []
+] (./Ex3_Simple_CNN.toc)
 
 [2
 
 ]
-Overfull \hbox (61.09767pt too wide) detected at line 83
-  [] [][][][] [][][][][][][] [][][][][][][][][][][][][][][][][][][] [][][] [][][][][] [][][][]  
- []
+LaTeX Font Info:    Trying to load font information for U+msa on input line 99.
+ (/usr/local/texlive/2025/texmf-dist/tex/latex/amsfonts/umsa.fd
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+)
+LaTeX Font Info:    Trying to load font information for U+msb on input line 99.
+ (/usr/local/texlive/2025/texmf-dist/tex/latex/amsfonts/umsb.fd
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+)
+LaTeX Font Info:    Trying to load font information for OT1+mathkerncmss on input line 99.
+ (/usr/local/texlive/2025/texmf-dist/tex/latex/sansmathaccent/ot1mathkerncmss.fd
+File: ot1mathkerncmss.fd 2020/01/31 Fontinst v1.933 font definitions for OT1/mathkerncmss.
+)
+<../Examples/Ex3/images/CreateImageClassificationNetworkUsingDeepNetworkDesignerExample_01.png, id=207, 457.71pt x 124.465pt>
+File: ../Examples/Ex3/images/CreateImageClassificationNetworkUsingDeepNetworkDesignerExample_01.png Graphic file (type png)
+<use ../Examples/Ex3/images/CreateImageClassificationNetworkUsingDeepNetworkDesignerExample_01.png>
+Package pdftex.def Info: ../Examples/Ex3/images/CreateImageClassificationNetworkUsingDeepNetworkDesignerExample_01.png  used on input line 99.
+(pdftex.def)             Requested size: 239.00558pt x 64.99185pt.
 
-
-
-
-Overfull \hbox (61.09767pt too wide) has occurred while \output is active
-  [] [][][][] [][][][][][][] [][][][][][][][][][][][][][][][][][][] [][][] [][][][][] [][][][]  
- []
 
 [3
 
-]
-Overfull \hbox (61.09767pt too wide) detected at line 91
-  [] [][][][] [][][][][][][] [][][][][][][][][][][][][][][][][][][] [][][] [][][][][] [][][][]  
- []
-
-<Figures/fuku.png, id=542, 608.2725pt x 294.09875pt>
-File: Figures/fuku.png Graphic file (type png)
-<use Figures/fuku.png>
-Package pdftex.def Info: Figures/fuku.png  used on input line 91.
-(pdftex.def)             Requested size: 274.77818pt x 132.85478pt.
-
-Overfull \vbox (12.01709pt too high) detected at line 91
- []
-
-
-
-
-Overfull \hbox (61.09767pt too wide) has occurred while \output is active
-  [] [][][][] [][][][][][][] [][][][][][][][][][][][][][][][][][][] [][][] [][][][][] [][][][]  
- []
+ <../Examples/Ex3/images/CreateImageClassificationNetworkUsingDeepNetworkDesignerExample_01.png>] (./Ex3_Simple_CNN.toc)
 
 [4
 
- <./Figures/fuku.png>]
-Overfull \hbox (61.09767pt too wide) detected at line 94
-  [] [][][][] [][][][][][][] [][][][][][][][][][][][][][][][][][][] [][][] [][][][][] [][][][]  
- []
+]
+<../Examples/Ex3/images/CreateImageClassificationNetworkUsingDeepNetworkDesignerExample_02.png, id=338, 358.33875pt x 160.34906pt>
+File: ../Examples/Ex3/images/CreateImageClassificationNetworkUsingDeepNetworkDesignerExample_02.png Graphic file (type png)
+<use ../Examples/Ex3/images/CreateImageClassificationNetworkUsingDeepNetworkDesignerExample_02.png>
+Package pdftex.def Info: ../Examples/Ex3/images/CreateImageClassificationNetworkUsingDeepNetworkDesignerExample_02.png  used on input line 127.
+(pdftex.def)             Requested size: 179.25114pt x 80.21103pt.
 
-(./CNN.toc)
-Overfull \vbox (13.72067pt too high) detected at line 94
- []
-
-
-
-
-Overfull \hbox (61.09767pt too wide) has occurred while \output is active
-  [] [][][][] [][][][][][][] [][][][][][][][][][][][][][][][][][][] [][][] [][][][][] [][][][]  
- []
 
 [5
 
-]
-Overfull \hbox (61.09767pt too wide) detected at line 101
-  [] [][][][] [][][][][][][] [][][][][][][][][][][][][][][][][][][] [][][] [][][][][] [][][][]  
- []
-
-
-
-
-Overfull \hbox (61.09767pt too wide) has occurred while \output is active
-  [] [][][][] [][][][][][][] [][][][][][][][][][][][][][][][][][][] [][][] [][][][][] [][][][]  
- []
+ <../Examples/Ex3/images/CreateImageClassificationNetworkUsingDeepNetworkDesignerExample_02.png>]
 
 [6
 
 ]
-Overfull \hbox (61.09767pt too wide) detected at line 112
-  [] [][][][] [][][][][][][] [][][][][][][][][][][][][][][][][][][] [][][] [][][][][] [][][][]  
- []
+<../Examples/Ex3/images/CreateImageClassificationNetworkUsingDeepNetworkDesignerExample_03.png, id=462, 368.87813pt x 143.78719pt>
+File: ../Examples/Ex3/images/CreateImageClassificationNetworkUsingDeepNetworkDesignerExample_03.png Graphic file (type png)
+<use ../Examples/Ex3/images/CreateImageClassificationNetworkUsingDeepNetworkDesignerExample_03.png>
+Package pdftex.def Info: ../Examples/Ex3/images/CreateImageClassificationNetworkUsingDeepNetworkDesignerExample_03.png  used on input line 168.
+(pdftex.def)             Requested size: 127.46687pt x 49.68561pt.
 
-
-
-
-Overfull \hbox (61.09767pt too wide) has occurred while \output is active
-  [] [][][][] [][][][][][][] [][][][][][][][][][][][][][][][][][][] [][][] [][][][][] [][][][]  
- []
 
 [7
 
-]
-Overfull \hbox (61.09767pt too wide) detected at line 120
-  [] [][][][] [][][][][][][] [][][][][][][][][][][][][][][][][][][] [][][] [][][][][] [][][][]  
- []
-
-<Figures/concepCNN.png, id=1011, 569.12625pt x 207.77625pt>
-File: Figures/concepCNN.png Graphic file (type png)
-<use Figures/concepCNN.png>
-Package pdftex.def Info: Figures/concepCNN.png  used on input line 120.
-(pdftex.def)             Requested size: 337.9092pt x 123.36366pt.
-
-Overfull \vbox (2.52597pt too high) detected at line 120
- []
-
-
-
-
-Overfull \hbox (61.09767pt too wide) has occurred while \output is active
-  [] [][][][] [][][][][][][] [][][][][][][][][][][][][][][][][][][] [][][] [][][][][] [][][][]  
- []
+ <../Examples/Ex3/images/CreateImageClassificationNetworkUsingDeepNetworkDesignerExample_03.png>] (./Ex3_Simple_CNN.toc)
 
 [8
 
- <./Figures/concepCNN.png>]
-Overfull \hbox (61.09767pt too wide) detected at line 135
-  [] [][][][] [][][][][][][] [][][][][][][][][][][][][][][][][][][] [][][] [][][][][] [][][][]  
- []
-
-LaTeX Font Info:    Trying to load font information for U+msa on input line 135.
-(/usr/local/texlive/2025/texmf-dist/tex/latex/amsfonts/umsa.fd
-File: umsa.fd 2013/01/14 v3.01 AMS symbols A
-)
-LaTeX Font Info:    Trying to load font information for U+msb on input line 135.
- (/usr/local/texlive/2025/texmf-dist/tex/latex/amsfonts/umsb.fd
-File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-)
-LaTeX Font Info:    Trying to load font information for OT1+mathkerncmss on input line 135.
- (/usr/local/texlive/2025/texmf-dist/tex/latex/sansmathaccent/ot1mathkerncmss.fd
-File: ot1mathkerncmss.fd 2020/01/31 Fontinst v1.933 font definitions for OT1/mathkerncmss.
-)
-Overfull \vbox (14.6053pt too high) detected at line 135
- []
-
-
-
-
-Overfull \hbox (61.09767pt too wide) has occurred while \output is active
-  [] [][][][] [][][][][][][] [][][][][][][][][][][][][][][][][][][] [][][] [][][][][] [][][][]  
- []
+]
 
 [9
 
 ]
-Overfull \hbox (61.09767pt too wide) detected at line 143
-  [] [][][][] [][][][][][][] [][][][][][][][][][][][][][][][][][][] [][][] [][][][][] [][][][]  
+<../Examples/Ex3/images/CreateImageClassificationNetworkUsingDeepNetworkDesignerExample_04.png, id=651, 903.375pt x 508.14844pt>
+File: ../Examples/Ex3/images/CreateImageClassificationNetworkUsingDeepNetworkDesignerExample_04.png Graphic file (type png)
+<use ../Examples/Ex3/images/CreateImageClassificationNetworkUsingDeepNetworkDesignerExample_04.png>
+Package pdftex.def Info: ../Examples/Ex3/images/CreateImageClassificationNetworkUsingDeepNetworkDesignerExample_04.png  used on input line 195.
+(pdftex.def)             Requested size: 278.83578pt x 156.84981pt.
+
+Overfull \vbox (17.51709pt too high) detected at line 195
  []
 
 
-
-
-Overfull \hbox (61.09767pt too wide) has occurred while \output is active
-  [] [][][][] [][][][][][][] [][][][][][][][][][][][][][][][][][][] [][][] [][][][][] [][][][]  
- []
 
 [10
 
-]
-Overfull \hbox (61.09767pt too wide) detected at line 145
-  [] [][][][] [][][][][][][] [][][][][][][][][][][][][][][][][][][] [][][] [][][][][] [][][][]  
- []
-
-(./CNN.toc)
-Overfull \vbox (13.72067pt too high) detected at line 145
- []
-
-
-
-
-Overfull \hbox (61.09767pt too wide) has occurred while \output is active
-  [] [][][][] [][][][][][][] [][][][][][][][][][][][][][][][][][][] [][][] [][][][][] [][][][]  
- []
+ <../Examples/Ex3/images/CreateImageClassificationNetworkUsingDeepNetworkDesignerExample_04.png>] (./Ex3_Simple_CNN.toc)
 
 [11
 
 ]
-Overfull \hbox (61.09767pt too wide) detected at line 155
-  [] [][][][] [][][][][][][] [][][][][][][][][][][][][][][][][][][] [][][] [][][][][] [][][][]  
- []
+<../Examples/Ex3/images/CreateImageClassificationNetworkUsingDeepNetworkDesignerExample_05.png, id=777, 903.375pt x 318.43968pt>
+File: ../Examples/Ex3/images/CreateImageClassificationNetworkUsingDeepNetworkDesignerExample_05.png Graphic file (type png)
+<use ../Examples/Ex3/images/CreateImageClassificationNetworkUsingDeepNetworkDesignerExample_05.png>
+Package pdftex.def Info: ../Examples/Ex3/images/CreateImageClassificationNetworkUsingDeepNetworkDesignerExample_05.png  used on input line 208.
+(pdftex.def)             Requested size: 258.91765pt x 91.2713pt.
 
-
-
-
-Overfull \hbox (61.09767pt too wide) has occurred while \output is active
-  [] [][][][] [][][][][][][] [][][][][][][][][][][][][][][][][][][] [][][] [][][][][] [][][][]  
- []
 
 [12
 
-]
-Overfull \hbox (61.09767pt too wide) detected at line 159
-  [] [][][][] [][][][][][][] [][][][][][][][][][][][][][][][][][][] [][][] [][][][][] [][][][]  
- []
+ <../Examples/Ex3/images/CreateImageClassificationNetworkUsingDeepNetworkDesignerExample_05.png>]
+\openout4 = `Ex3_Simple_CNN.vrb'.
 
-
-
-
-Overfull \hbox (61.09767pt too wide) has occurred while \output is active
-  [] [][][][] [][][][][][][] [][][][][][][][][][][][][][][][][][][] [][][] [][][][][] [][][][]  
- []
+ (./Ex3_Simple_CNN.vrb)
 
 [13
 
 ]
-Overfull \hbox (61.09767pt too wide) detected at line 168
-  [] [][][][] [][][][][][][] [][][][][][][][][][][][][][][][][][][] [][][] [][][][][] [][][][]  
- []
+<../Examples/Ex3/images/CreateImageClassificationNetworkUsingDeepNetworkDesignerExample_06.png, id=920, 1282.7925pt x 666.49pt>
+File: ../Examples/Ex3/images/CreateImageClassificationNetworkUsingDeepNetworkDesignerExample_06.png Graphic file (type png)
+<use ../Examples/Ex3/images/CreateImageClassificationNetworkUsingDeepNetworkDesignerExample_06.png>
+Package pdftex.def Info: ../Examples/Ex3/images/CreateImageClassificationNetworkUsingDeepNetworkDesignerExample_06.png  used on input line 233.
+(pdftex.def)             Requested size: 199.1693pt x 103.47777pt.
 
-
-
-
-Overfull \hbox (61.09767pt too wide) has occurred while \output is active
-  [] [][][][] [][][][][][][] [][][][][][][][][][][][][][][][][][][] [][][] [][][][][] [][][][]  
- []
 
 [14
 
-]
-Overfull \hbox (61.09767pt too wide) detected at line 175
-  [] [][][][] [][][][][][][] [][][][][][][][][][][][][][][][][][][] [][][] [][][][][] [][][][]  
- []
-
-<Figures/kernel_frames/kernel_frame_01.png, id=1822, 663.47874pt x 356.33125pt>
-File: Figures/kernel_frames/kernel_frame_01.png Graphic file (type png)
-<use Figures/kernel_frames/kernel_frame_01.png>
-Package pdftex.def Info: Figures/kernel_frames/kernel_frame_01.png  used on input line 175.
-(pdftex.def)             Requested size: 663.47711pt x 356.33037pt.
- <./Figures/kernel_frames/kernel_frame_01.png> <a0,fr0>
-<Figures/kernel_frames/kernel_frame_02.png, id=1826, 663.47874pt x 356.33125pt>
-File: Figures/kernel_frames/kernel_frame_02.png Graphic file (type png)
-<use Figures/kernel_frames/kernel_frame_02.png>
-Package pdftex.def Info: Figures/kernel_frames/kernel_frame_02.png  used on input line 175.
-(pdftex.def)             Requested size: 663.47711pt x 356.33037pt.
- <./Figures/kernel_frames/kernel_frame_02.png> <a0,fr1>
-<Figures/kernel_frames/kernel_frame_03.png, id=1830, 663.47874pt x 356.33125pt>
-File: Figures/kernel_frames/kernel_frame_03.png Graphic file (type png)
-<use Figures/kernel_frames/kernel_frame_03.png>
-Package pdftex.def Info: Figures/kernel_frames/kernel_frame_03.png  used on input line 175.
-(pdftex.def)             Requested size: 663.47711pt x 356.33037pt.
- <./Figures/kernel_frames/kernel_frame_03.png> <a0,fr2>
-<Figures/kernel_frames/kernel_frame_04.png, id=1834, 663.47874pt x 356.33125pt>
-File: Figures/kernel_frames/kernel_frame_04.png Graphic file (type png)
-<use Figures/kernel_frames/kernel_frame_04.png>
-Package pdftex.def Info: Figures/kernel_frames/kernel_frame_04.png  used on input line 175.
-(pdftex.def)             Requested size: 663.47711pt x 356.33037pt.
- <./Figures/kernel_frames/kernel_frame_04.png> <a0,fr3>
-<Figures/kernel_frames/kernel_frame_05.png, id=1838, 663.47874pt x 356.33125pt>
-File: Figures/kernel_frames/kernel_frame_05.png Graphic file (type png)
-<use Figures/kernel_frames/kernel_frame_05.png>
-Package pdftex.def Info: Figures/kernel_frames/kernel_frame_05.png  used on input line 175.
-(pdftex.def)             Requested size: 663.47711pt x 356.33037pt.
- <./Figures/kernel_frames/kernel_frame_05.png> <a0,fr4>
-<Figures/kernel_frames/kernel_frame_06.png, id=1842, 663.47874pt x 356.33125pt>
-File: Figures/kernel_frames/kernel_frame_06.png Graphic file (type png)
-<use Figures/kernel_frames/kernel_frame_06.png>
-Package pdftex.def Info: Figures/kernel_frames/kernel_frame_06.png  used on input line 175.
-(pdftex.def)             Requested size: 663.47711pt x 356.33037pt.
- <./Figures/kernel_frames/kernel_frame_06.png> <a0,fr5>
-<Figures/kernel_frames/kernel_frame_07.png, id=1846, 663.47874pt x 356.33125pt>
-File: Figures/kernel_frames/kernel_frame_07.png Graphic file (type png)
-<use Figures/kernel_frames/kernel_frame_07.png>
-Package pdftex.def Info: Figures/kernel_frames/kernel_frame_07.png  used on input line 175.
-(pdftex.def)             Requested size: 663.47711pt x 356.33037pt.
- <./Figures/kernel_frames/kernel_frame_07.png> <a0,fr6>
-<Figures/kernel_frames/kernel_frame_08.png, id=1850, 663.47874pt x 356.33125pt>
-File: Figures/kernel_frames/kernel_frame_08.png Graphic file (type png)
-<use Figures/kernel_frames/kernel_frame_08.png>
-Package pdftex.def Info: Figures/kernel_frames/kernel_frame_08.png  used on input line 175.
-(pdftex.def)             Requested size: 663.47711pt x 356.33037pt.
- <./Figures/kernel_frames/kernel_frame_08.png> <a0,fr7>
-<Figures/kernel_frames/kernel_frame_09.png, id=1854, 663.47874pt x 356.33125pt>
-File: Figures/kernel_frames/kernel_frame_09.png Graphic file (type png)
-<use Figures/kernel_frames/kernel_frame_09.png>
-Package pdftex.def Info: Figures/kernel_frames/kernel_frame_09.png  used on input line 175.
-(pdftex.def)             Requested size: 663.47711pt x 356.33037pt.
- <./Figures/kernel_frames/kernel_frame_09.png> <a0,fr8>
-
-
-Overfull \hbox (61.09767pt too wide) has occurred while \output is active
-  [] [][][][] [][][][][][][] [][][][][][][][][][][][][][][][][][][] [][][] [][][][][] [][][][]  
- []
-
-[15
-
-]
-Overfull \hbox (61.09767pt too wide) detected at line 190
-  [] [][][][] [][][][][][][] [][][][][][][][][][][][][][][][][][][] [][][] [][][][][] [][][][]  
- []
-
-
-
-
-Overfull \hbox (61.09767pt too wide) has occurred while \output is active
-  [] [][][][] [][][][][][][] [][][][][][][][][][][][][][][][][][][] [][][] [][][][][] [][][][]  
- []
-
-[16
-
-]
-Overfull \hbox (61.09767pt too wide) detected at line 197
-  [] [][][][] [][][][][][][] [][][][][][][][][][][][][][][][][][][] [][][] [][][][][] [][][][]  
- []
-
-<Figures/ConvOp.png, id=2128, 661.47125pt x 313.17pt>
-File: Figures/ConvOp.png Graphic file (type png)
-<use Figures/ConvOp.png>
-Package pdftex.def Info: Figures/ConvOp.png  used on input line 197.
-(pdftex.def)             Requested size: 278.83578pt x 132.01312pt.
-
-Overfull \vbox (11.17543pt too high) detected at line 197
- []
-
-
-
-
-Overfull \hbox (61.09767pt too wide) has occurred while \output is active
-  [] [][][][] [][][][][][][] [][][][][][][][][][][][][][][][][][][] [][][] [][][][][] [][][][]  
- []
-
-[17
-
- <./Figures/ConvOp.png>]
-Overfull \hbox (61.09767pt too wide) detected at line 214
-  [] [][][][] [][][][][][][] [][][][][][][][][][][][][][][][][][][] [][][] [][][][][] [][][][]  
- []
-
-
-
-
-Overfull \hbox (61.09767pt too wide) has occurred while \output is active
-  [] [][][][] [][][][][][][] [][][][][][][][][][][][][][][][][][][] [][][] [][][][][] [][][][]  
- []
-
-[18
-
-]
-Overfull \hbox (61.09767pt too wide) detected at line 240
-  [] [][][][] [][][][][][][] [][][][][][][][][][][][][][][][][][][] [][][] [][][][][] [][][][]  
- []
-
-
-
-
-Overfull \hbox (61.09767pt too wide) has occurred while \output is active
-  [] [][][][] [][][][][][][] [][][][][][][][][][][][][][][][][][][] [][][] [][][][][] [][][][]  
- []
-
-[19
-
-]
-Overfull \hbox (61.09767pt too wide) detected at line 247
-  [] [][][][] [][][][][][][] [][][][][][][][][][][][][][][][][][][] [][][] [][][][][] [][][][]  
- []
-
-<Figures/padding.png, id=2473, 684.5575pt x 256.96pt>
-File: Figures/padding.png Graphic file (type png)
-<use Figures/padding.png>
-Package pdftex.def Info: Figures/padding.png  used on input line 247.
-(pdftex.def)             Requested size: 318.67209pt x 119.62239pt.
-
-
-
-Overfull \hbox (61.09767pt too wide) has occurred while \output is active
-  [] [][][][] [][][][][][][] [][][][][][][][][][][][][][][][][][][] [][][] [][][][][] [][][][]  
- []
-
-[20
-
- <./Figures/padding.png>]
-Overfull \hbox (61.09767pt too wide) detected at line 251
-  [] [][][][] [][][][][][][] [][][][][][][][][][][][][][][][][][][] [][][] [][][][][] [][][][]  
- []
-
-
-
-
-Overfull \hbox (61.09767pt too wide) has occurred while \output is active
-  [] [][][][] [][][][][][][] [][][][][][][][][][][][][][][][][][][] [][][] [][][][][] [][][][]  
- []
-
-[21
-
-]
-Overfull \hbox (61.09767pt too wide) detected at line 260
-  [] [][][][] [][][][][][][] [][][][][][][][][][][][][][][][][][][] [][][] [][][][][] [][][][]  
- []
-
-
-
-
-Overfull \hbox (61.09767pt too wide) has occurred while \output is active
-  [] [][][][] [][][][][][][] [][][][][][][][][][][][][][][][][][][] [][][] [][][][][] [][][][]  
- []
-
-[22
-
-]
-Overfull \hbox (61.09767pt too wide) detected at line 268
-  [] [][][][] [][][][][][][] [][][][][][][][][][][][][][][][][][][] [][][] [][][][][] [][][][]  
- []
-
-
-
-
-Overfull \hbox (61.09767pt too wide) has occurred while \output is active
-  [] [][][][] [][][][][][][] [][][][][][][][][][][][][][][][][][][] [][][] [][][][][] [][][][]  
- []
-
-[23
-
-]
-Overfull \hbox (61.09767pt too wide) detected at line 275
-  [] [][][][] [][][][][][][] [][][][][][][][][][][][][][][][][][][] [][][] [][][][][] [][][][]  
- []
-
-<Figures/pooling.png, id=2929, 559.08875pt x 279.0425pt>
-File: Figures/pooling.png Graphic file (type png)
-<use Figures/pooling.png>
-Package pdftex.def Info: Figures/pooling.png  used on input line 275.
-(pdftex.def)             Requested size: 258.91765pt x 129.22969pt.
-
-Overfull \vbox (8.392pt too high) detected at line 275
- []
-
-
-
-
-Overfull \hbox (61.09767pt too wide) has occurred while \output is active
-  [] [][][][] [][][][][][][] [][][][][][][][][][][][][][][][][][][] [][][] [][][][][] [][][][]  
- []
-
-[24
-
- <./Figures/pooling.png>]
-Overfull \hbox (61.09767pt too wide) detected at line 293
-  [] [][][][] [][][][][][][] [][][][][][][][][][][][][][][][][][][] [][][] [][][][][] [][][][]  
- []
-
-
-
-
-Overfull \hbox (61.09767pt too wide) has occurred while \output is active
-  [] [][][][] [][][][][][][] [][][][][][][][][][][][][][][][][][][] [][][] [][][][][] [][][][]  
- []
-
-[25
-
-]
-Overfull \hbox (61.09767pt too wide) detected at line 302
-  [] [][][][] [][][][][][][] [][][][][][][][][][][][][][][][][][][] [][][] [][][][][] [][][][]  
- []
-
-
-
-
-Overfull \hbox (61.09767pt too wide) has occurred while \output is active
-  [] [][][][] [][][][][][][] [][][][][][][][][][][][][][][][][][][] [][][] [][][][][] [][][][]  
- []
-
-[26
-
-]
-Overfull \hbox (61.09767pt too wide) detected at line 308
-  [] [][][][] [][][][][][][] [][][][][][][][][][][][][][][][][][][] [][][] [][][][][] [][][][]  
- []
-
-
-
-
-Overfull \hbox (61.09767pt too wide) has occurred while \output is active
-  [] [][][][] [][][][][][][] [][][][][][][][][][][][][][][][][][][] [][][] [][][][][] [][][][]  
- []
-
-[27
-
-]
-Overfull \hbox (61.09767pt too wide) detected at line 321
-  [] [][][][] [][][][][][][] [][][][][][][][][][][][][][][][][][][] [][][] [][][][][] [][][][]  
- []
-
-
-
-
-Overfull \hbox (61.09767pt too wide) has occurred while \output is active
-  [] [][][][] [][][][][][][] [][][][][][][][][][][][][][][][][][][] [][][] [][][][][] [][][][]  
- []
-
-[28
-
-]
-Overfull \hbox (61.09767pt too wide) detected at line 323
-  [] [][][][] [][][][][][][] [][][][][][][][][][][][][][][][][][][] [][][] [][][][][] [][][][]  
- []
-
-(./CNN.toc)
-Overfull \vbox (13.72067pt too high) detected at line 323
- []
-
-
-
-
-Overfull \hbox (61.09767pt too wide) has occurred while \output is active
-  [] [][][][] [][][][][][][] [][][][][][][][][][][][][][][][][][][] [][][] [][][][][] [][][][]  
- []
-
-[29
-
-]
-Overfull \hbox (61.09767pt too wide) detected at line 332
-  [] [][][][] [][][][][][][] [][][][][][][][][][][][][][][][][][][] [][][] [][][][][] [][][][]  
- []
-
-
-
-
-Overfull \hbox (61.09767pt too wide) has occurred while \output is active
-  [] [][][][] [][][][][][][] [][][][][][][][][][][][][][][][][][][] [][][] [][][][][] [][][][]  
- []
-
-[30
-
-]
-Overfull \hbox (61.09767pt too wide) detected at line 335
-  [] [][][][] [][][][][][][] [][][][][][][][][][][][][][][][][][][] [][][] [][][][][] [][][][]  
- []
-
-(./CNN.toc)
-Overfull \vbox (13.72067pt too high) detected at line 335
- []
-
-
-
-
-Overfull \hbox (61.09767pt too wide) has occurred while \output is active
-  [] [][][][] [][][][][][][] [][][][][][][][][][][][][][][][][][][] [][][] [][][][][] [][][][]  
- []
-
-[31
-
-]
-Overfull \hbox (61.09767pt too wide) detected at line 347
-  [] [][][][] [][][][][][][] [][][][][][][][][][][][][][][][][][][] [][][] [][][][][] [][][][]  
- []
-
-
-
-
-Overfull \hbox (61.09767pt too wide) has occurred while \output is active
-  [] [][][][] [][][][][][][] [][][][][][][][][][][][][][][][][][][] [][][] [][][][][] [][][][]  
- []
-
-[32
-
-]
-Overfull \hbox (61.09767pt too wide) detected at line 352
-  [] [][][][] [][][][][][][] [][][][][][][][][][][][][][][][][][][] [][][] [][][][][] [][][][]  
- []
-
-
-
-
-Overfull \hbox (61.09767pt too wide) has occurred while \output is active
-  [] [][][][] [][][][][][][] [][][][][][][][][][][][][][][][][][][] [][][] [][][][][] [][][][]  
- []
-
-[33
-
-]
-Overfull \hbox (61.09767pt too wide) detected at line 363
-  [] [][][][] [][][][][][][] [][][][][][][][][][][][][][][][][][][] [][][] [][][][][] [][][][]  
- []
-
-
-
-
-Overfull \hbox (61.09767pt too wide) has occurred while \output is active
-  [] [][][][] [][][][][][][] [][][][][][][][][][][][][][][][][][][] [][][] [][][][][] [][][][]  
- []
-
-[34
-
-]
-Overfull \hbox (61.09767pt too wide) detected at line 365
-  [] [][][][] [][][][][][][] [][][][][][][][][][][][][][][][][][][] [][][] [][][][][] [][][][]  
- []
-
-(./CNN.toc)
-Overfull \vbox (13.72067pt too high) detected at line 365
- []
-
-
-
-
-Overfull \hbox (61.09767pt too wide) has occurred while \output is active
-  [] [][][][] [][][][][][][] [][][][][][][][][][][][][][][][][][][] [][][] [][][][][] [][][][]  
- []
-
-[35
-
-]
-Overfull \hbox (61.09767pt too wide) detected at line 377
-  [] [][][][] [][][][][][][] [][][][][][][][][][][][][][][][][][][] [][][] [][][][][] [][][][]  
- []
-
-
-
-
-Overfull \hbox (61.09767pt too wide) has occurred while \output is active
-  [] [][][][] [][][][][][][] [][][][][][][][][][][][][][][][][][][] [][][] [][][][][] [][][][]  
- []
-
-[36
-
-]
-Overfull \hbox (61.09767pt too wide) detected at line 384
-  [] [][][][] [][][][][][][] [][][][][][][][][][][][][][][][][][][] [][][] [][][][][] [][][][]  
- []
-
-<Figures/LeNet5.png, id=4435, 905.3825pt x 325.215pt>
-File: Figures/LeNet5.png Graphic file (type png)
-<use Figures/LeNet5.png>
-Package pdftex.def Info: Figures/LeNet5.png  used on input line 384.
-(pdftex.def)             Requested size: 358.50229pt x 128.77362pt.
-
-Overfull \vbox (7.93593pt too high) detected at line 384
- []
-
-
-
-
-Overfull \hbox (61.09767pt too wide) has occurred while \output is active
-  [] [][][][] [][][][][][][] [][][][][][][][][][][][][][][][][][][] [][][] [][][][][] [][][][]  
- []
-
-[37
-
- <./Figures/LeNet5.png>]
+ <../Examples/Ex3/images/CreateImageClassificationNetworkUsingDeepNetworkDesignerExample_06.png>]
 \tf@nav=\write6
-\openout6 = `CNN.nav'.
+\openout6 = `Ex3_Simple_CNN.nav'.
 
 \tf@toc=\write7
-\openout7 = `CNN.toc'.
+\openout7 = `Ex3_Simple_CNN.toc'.
 
 \tf@snm=\write8
-\openout8 = `CNN.snm'.
+\openout8 = `Ex3_Simple_CNN.snm'.
 
- (./CNN.aux)
+ (./Ex3_Simple_CNN.aux)
  ***********
 LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2025-01-18>
  ***********
-Package rerunfilecheck Info: File `CNN.out' has not changed.
-(rerunfilecheck)             Checksum: F23A4569222095289DCA18D8B93DA4FF;2283.
+Package rerunfilecheck Info: File `Ex3_Simple_CNN.out' has not changed.
+(rerunfilecheck)             Checksum: E66C93CB593085474E433E861C8B489C;629.
  ) 
 Here is how much of TeX's memory you used:
- 28660 strings out of 473190
- 551358 string characters out of 5715801
- 1166127 words of memory out of 5000000
- 51219 multiletter control sequences out of 15000+600000
- 566354 words of font info for 63 fonts, out of 8000000 for 9000
+ 27804 strings out of 473190
+ 525079 string characters out of 5715801
+ 1166217 words of memory out of 5000000
+ 50451 multiletter control sequences out of 15000+600000
+ 566522 words of font info for 64 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 128i,19n,123p,635b,821s stack positions out of 10000i,1000n,20000p,200000b,200000s
-</usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmss12.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmss8.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmssbx10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi8.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
-Output written on CNN.pdf (37 pages, 1053686 bytes).
+ 128i,19n,123p,479b,1836s stack positions out of 10000i,1000n,20000p,200000b,200000s
+</usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmss12.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmss8.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmssbx10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt8.pfb>
+Output written on Ex3_Simple_CNN.pdf (14 pages, 230614 bytes).
 PDF statistics:
- 4578 PDF objects out of 5155 (max. 8388607)
- 2774 compressed objects within 28 object streams
- 88 named destinations out of 1000 (max. 500000)
- 344 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1013 PDF objects out of 1200 (max. 8388607)
+ 666 compressed objects within 7 object streams
+ 33 named destinations out of 1000 (max. 500000)
+ 105 words of extra memory for PDF output out of 10000 (max. 10000000)
 

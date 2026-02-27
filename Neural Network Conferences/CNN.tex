@@ -14,6 +14,7 @@
 \usepackage{algorithmicx}
 \usepackage{algpseudocode}
 \usepackage{adjustbox}
+\usepackage{animate}
 
 \hypersetup{
     colorlinks=true,
@@ -57,9 +58,7 @@
 }
 \date{\today}
 
-%----------------------------------------------------------------------------------------
-%	INICIO
-%----------------------------------------------------------------------------------------
+
 
 \AtBeginSection[]
 {
@@ -73,34 +72,54 @@
 \begin{frame}
     \titlepage
 \end{frame}
-
-%------------------------------------------------
-\section{Motivation}
-%------------------------------------------------
-
-\begin{frame}{Biological Inspiration}
-    \begin{columns}
-        \column{0.5\textwidth}
-        CNNs are biologically inspired by the visual cortex organization (Hubel \& Wiesel, 1959).
-        
-        \begin{itemize}
-            \item Local Receptive Fields: Neurons respond only to a small sub region of the visual field.
-            \item Hierarchy:
-            
-                \item \textbf{V1 Area:} Detects simple edges and orientations.
-                \item \textbf{Higher Areas:} Detect shapes, textures, and objects.
-           
-        \end{itemize}
-        
-        \column{0.5\textwidth}
-        \begin{figure}
-        \includegraphics[width=\textwidth]{Figures/activation_tanh.png}
-        \caption{Hierarchical processing in the brain vs. Deep Learning.}
-        \end{figure}
-    \end{columns}
+\section{Introduction}
+\begin{frame}{Introduction}
+    \begin{itemize}
+        \item 1959: Hubel and Wiesel described that the neurons inside the brain of a cat are organized in layered form.
+        \item 1980: Fukushima proposed the Neocognitron, the first CNN architecture.
+        \item 1989: LeCun et al. proposed the LeNet-5, the first successful CNN architecture.
+        \item 2012: AlexNet won the ImageNet challenge, demonstrating the power of CNNs.
+    \end{itemize}
 \end{frame}
 
+\begin{frame}{Fukushima's Neocognitron}
+    \begin{figure}
+        \centering
+\includegraphics[width=0.8\textwidth,height=0.7\textheight,keepaspectratio]{Figures/fuku.png}
+        \caption{Fukushima's Neocognitron}
+    \end{figure}
+\end{frame}
+    
+%------------------------------------------------
+\section{Concepts of Convolutional Neural Networks}
+%------------------------------------------------
+\subsection{Basic Concepts}
+\begin{frame}{Basic Concepts}
+    \begin{block}{Convolutional Neural Network (CNN)}
+Convolutional Neural Network (CNN), also called ConvNet, is a type of Artiﬁcial Neural Network(ANN), which has deep feed-forward architecture and has amazing generalizing ability as compared to other networks with FC layers, it can learn highly abstracted features of objects especially spatial data and can indentify them more eﬃciently.
+    \end{block}
+\end{frame}
 
+\begin{frame}{Basic Concepts}
+
+    \begin{block}{The CNN Model}
+        A deep CNN model consists of a ﬁnite set of processing layers that can learn various features of input data (e.g. image) with multiple level of abstraction.
+    \begin{itemize}
+        \item The initiatory layers learn and extract the high level features (with lower abstraction),
+        \item and the deeper layers learns and extracts the low level features (with higher abstraction). 
+    \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}{Basic Concepts}
+    \begin{figure}
+        \centering
+        \includegraphics[width=\textwidth,height=0.65\textheight,keepaspectratio]{Figures/concepCNN.png}
+        \caption{Conceptual mode of CNN}
+    \end{figure}
+\end{frame}
+
+\subsection{Why not Standard MLPs?}
 \begin{frame}{Why not Standard MLPs?}
     Imagine an image of $224 \times 224$ pixels (RGB).
     
@@ -111,14 +130,49 @@
     If the first hidden layer has 1,000 neurons (Dense Layer):
     $$ \text{Weights} = 150,528 \times 1,000 \approx 150 \text{ Million Parameters!} $$
     \end{alertblock}
-    
-    \textbf{Problem:} Huge computational cost and massive overfitting. \\
+    \textbf{Problem:} Huge computational cost and massive overfitting. 
     \textbf{Solution:} Local connectivity and Parameter Sharing (CNNs).
 \end{frame}
 
+\begin{frame}{CNN vs. Classical NN in the context of computer vision}
+    \begin{itemize}
+        \item One of the main reason for considering CNN in such case is the weight sharing feature of CNN, that reduce the number of trainable parameters in the network, which helped the model to avoid overﬁtting and as well as to improved generalization.
+        \item In CNN, the classiﬁcation layer and the feature extraction layers learn together, that makes the output of the model more organized and makes the output more dependent to the extracted features.
+        \item The implementation of a large network is more diﬃcult by using other types of neural networks rather than using Convolutional Neural Networks.
+    \end{itemize}
+\end{frame}
+
+\section{Network Layers}
+\begin{frame}{Network Layers}
+    As we mentioned earlier, that a CNN is composed of multiple building blocks (known as layers of the architecture), in this subsection, we described some of these building blocks in detail with their roll in the CNN architecture.
+
+\begin{itemize}
+    \item Convolutional Layer
+    \item Pooling Layer
+    \item Activation Layer
+    \item Fully Connected Layer
+\end{itemize}
+\end{frame}
+\subsection{Convolutional Layer}
+\begin{frame}{Convolutional Layer}
+    Convolutional layer1 is the most important component of any CNN architecture. It contains a set of convolutional kernels (also called ﬁlters), which gets convolved with the input image (N-dimensional metrics) to generate an output feature map.
+\end{frame}
+
+
 %------------------------------------------------
-\section{The Convolution Operation}
+\subsection{The Convolution Operation}
 %------------------------------------------------
+\begin{frame}{Kernel and Convolution Operation}
+    A kernel can be described as a grid of discrete values or numbers, where each value is known as the weight of this kernel. During the starting of training process of an CNN model, all the weights of a kernel are assigned with random numbers (different approaches are also available there for initializing the weights). Then, with each training
+epoch, the weights are tuned and the kernel learned to extract meaningful features
+\end{frame}
+
+\begin{frame}{Kernel and Convolution Operation}
+    \begin{figure}
+        \centering
+        \animategraphics[loop,controls,width=0.6\textwidth]{2}{Figures/kernel_frames/kernel_frame_}{01}{09}
+    \end{figure}
+\end{frame}
 
 \begin{frame}{The Mathematical Definition}
     In Deep Learning, a "convolution" is technically a \textbf{sliding dot product} (cross-correlation). 
@@ -135,35 +189,12 @@
     \end{itemize}
 \end{frame}
 
-\begin{frame}{Feature Maps \& Channels}
-    \begin{columns}[t]
-        \column{0.6\textwidth}
-            \begin{block}{Input Tensor ($H \times W \times C_{in}$)}
-            An image usually has 3 channels (RGB).
-            \end{block}
-            
-            \begin{block}{Output Tensor ($H' \times W' \times K$)}
-            If we apply $K$ distinct filters (e.g., 32 filters):
-            \begin{itemize}
-                \item We obtain 32 discrete 2D maps.
-                \item These stack together to form the output depth (Channels).
-                \item \textbf{Analogy:} Each channel represents a specific "feature" (one for horizontal lines, one for curves, etc.).
-            \end{itemize}
-        \end{block}
-        \column{0.4\textwidth}
-            \centering
-            \begin{figure}
-            \includegraphics[width=\textwidth]{Figures/activation_tanh.png}
-             \textit{[Placeholder: Animation of a kernel sliding over a matrix]}
-             \caption{The sliding window mechanism.}
-            \end{figure}
-    \end{columns}
+\begin{frame}{Convolution Operation - example}
+    \begin{figure}
+        \includegraphics[width=0.7\textwidth]{Figures/ConvOp.png}
+        \caption{Convolution Operation}
+    \end{figure}
 \end{frame}
-
-
-%------------------------------------------------
-\section{Hyperparameters \& Arithmetic}
-%------------------------------------------------
 
 \begin{frame}{Spatial Dimensions Control}
     How do we calculate the output size of a layer?
@@ -208,43 +239,74 @@
     \end{center}
 \end{frame}
 
-\section{CNN Building Blocks}
-%------------------------------------------------
+\begin{frame}{Padding with Stride - example}
+    \begin{figure}
+        \includegraphics[width=0.8\textwidth]{Figures/padding.png}
+        \caption{Padding with Stride}
+    \end{figure}
+\end{frame}
 
-\begin{frame}{The Non-Linearity (ReLU)}
-    Convolution is a \textit{linear} operation (multiplication + sum). To learn complex patterns, we need non-linearity.
-    
+\begin{frame}{Main advantages of Padding}
+    The padding is important to give border size information of the input image more importance, otherwise without using any padding the border side features are gets washed away too quickly. The padding is also used to increase the input image size, as a result the output feature map size also get increased. 
+\end{frame}
+
+\subsection{Pooling Layer}
+
+\begin{frame}{Pooling Layer}
+    Pooling layer is used to reduce the spatial dimensions of the feature maps. It is also used to reduce the number of parameters in the network, which helps to avoid overﬁtting and as well as to improved generalization.
+    \begin{alertblock}{Note}
+        The pooling operation is performed by specifying the pooled region size and the stride of the operation, similar to convolution operation.
+        \end{alertblock}
+\end{frame}
+
+\begin{frame}{Pooling Layer}
+
+    \begin{exampleblock}{Different types of Pooling}
+        here are diﬀerent types
+of pooling techniques are used in diﬀerent pooling layers such as max pooling, min pooling, average pooling, gated pooling, tree pooling, etc. Max Pooling is the most popular.
+    \end{exampleblock}
+\end{frame}
+
+\begin{frame}{Pooling Operation - example}
+    \begin{figure}
+        \includegraphics[width=0.65\textwidth]{Figures/pooling.png}
+        \caption{Pooling Operation}
+    \end{figure}
+\end{frame}
+
+\begin{frame}{Size after Pooling}
+    The formula for calculating the output size of a pooling layer is:
     \begin{equation}
-        f(x) = \max(0, x)
+        h' = \left\lfloor \frac{h - f}{s} \right\rfloor
     \end{equation}
-    
-    \textbf{Rectified Linear Unit (ReLU):}
+
+    \begin{equation}
+        w' = \left\lfloor \frac{w - f}{s} \right\rfloor
+    \end{equation}
+    Where:
     \begin{itemize}
-        \item Introduces sparsity.
-        \item Avoids Vanishing Gradient problem (common in Sigmoid).
-        \item Extremely computationally efficient.
+        \item $h$: Input Feature Map Height
+        \item $w$: Input Feature Map Width
+        \item $f$: Pooling region size (e.g., $3 \times 3$)
+        \item $s$: \textbf{Stride} (Step size of the slide)
     \end{itemize}
 \end{frame}
 
+\subsection{Activation Function}
 
-\begin{frame}{Pooling Layers (Subsampling)}
-    Purpose: Progressively reduce the spatial size ($S$-dimension) to reduce parameters and computation.
-    
-    \begin{columns}[t]
-        \column{0.6\textwidth}
-            \begin{itemize}
-                \item \textbf{Max Pooling:} Takes the maximum value in the window. Extracts the most prominent features.
-                \item \textbf{Average Pooling:} Takes the average. Smoothes features.
-            \end{itemize}
-            \textbf{Key Property:} \textit{Translation Invariance}. Small shifts in the image don't change the outcome.
-        \column{0.4\textwidth}
-        \begin{figure}
-            \includegraphics[width=\textwidth]{Figures/activation_tanh.png}
-             \textit{Placeholder: 2x2 Max Pooling on a 4x4 matrix}
-             \caption{Max Pooling operation.}
-        \end{figure}
-    \end{columns}
+\begin{frame}{Activation Function}
+    Activation function is used to introduce non-linearity in the network, which helps to learn complex patterns in the data.
+    \begin{alertblock}{}
+        In CNN architecture, after each learnable layers (layers with weights, i.e. convolutional and FC layers) non-linear activation layers are used. The non-linearity behavior of those layers enables the CNN model to learn more complex things and manage to map the inputs to outputs non-linearly. The important feature of an activation function is that it should be diﬀerentiable in order to enable error backpropagation to train the model. The most commonly used activation functions in deep neural networks (including CNN) are described below.  
+    \end{alertblock}
 \end{frame}
+
+\subsection{Fully Connected Layer (FC)}
+
+\begin{frame}{Fully Connected Layer}
+The Fully-Connected Layers are type of feed-forward artiﬁcial neural network (ANN) and it follows the principle of traditional multi-layer perceptron neural network (MLP). The FC layers take input from the ﬁnal convolutional or pooling layer, which is in the form of a set of metrics (feature maps) and those metrics are ﬂattened to create a vector and this vector is then fed into the FC layer to generate the ﬁnal output of CNN.
+\end{frame}
+
 
 \begin{frame}{Flattening \& Fully Connected}
     \begin{block}{Transition to Classification}
@@ -258,63 +320,67 @@
     \end{enumerate}
 \end{frame}
 
-
-%------------------------------------------------
-\section{MATLAB Implementation}
-%------------------------------------------------
-
-\begin{frame}[fragile]{Defining a CNN in MATLAB}
-    Using the \texttt{Layer Graph} approach (standard for modern image classification):
-    
-\begin{lstlisting}[language=Matlab, caption=Standard VGG-Style Block]
-inputSize = [28 28 1]; % Grayscale image (S-S-C)
-
-layers = [
-    imageInputLayer(inputSize, "Name", "imageinput")
-    
-    % Convolutional Block 1
-    convolution2dLayer(3, 8, "Padding", "same", "Name", "conv_1")
-    batchNormalizationLayer("Name", "batchnorm_1")
-    reluLayer("Name", "relu_1")
-    
-    % Downsampling
-    maxPooling2dLayer(2, "Stride", 2, "Name", "maxpool_1")
-    
-    % Classification Head
-    fullyConnectedLayer(10, "Name", "fc") % 10 classes
-    softmaxLayer("Name", "softmax")
-    ];
-    
-lgraph = layerGraph(layers);
-% Ready for analyzeNetwork(lgraph) or trainnet()
-\end{lstlisting}
+\section{Loss Functions}
+\begin{frame}{Loss Functions}
+\begin{block}{Loss Functions}
+    Loss functions are used to measure the difference between the predicted output and the actual output.
+    \begin{itemize}
+        \item \textbf{Cross-Entropy Loss or Softmax Loss:} Used for classification tasks.
+        \item \textbf{Euclidean Loss Function:} Used for regression tasks.
+    \end{itemize}
+\end{block}
 \end{frame}
 
 
-\begin{frame}{Understanding Data Formats: SSCB}
-    When training CNNs, MATLAB (since R2023a) usually expects tensors in the format \textbf{SSCB}.
-    
-    \begin{itemize}
-        \item \textbf{S (Spatial):} Height ($H$).
-        \item \textbf{S (Spatial):} Width ($W$).
-        \item \textbf{C (Channels):} Depth (Colors or Feature Maps).
-        \item \textbf{B (Batch):} Number of images processed in parallel.
-    \end{itemize}
-    
-    $$ Tensor = 224 \times 224 \times 3 \times 32 $$
+\section{Training process of Convolutional Neural Network}
+
+\begin{frame}{Training process of Convolutional Neural Network}
+\begin{block}{}
+     The training process mainly includes the following steps:
+     \begin{enumerate}
+         \item Data pre-processing and Data augmentation.
+         \item Parameters initialization.
+         \item Regularization of CNN.
+         \item Optimizer selection.
+     \end{enumerate}
+\end{block}
 \end{frame}
 
-%------------------------------------------------
-\section{Conclusion}
-%------------------------------------------------
+\begin{frame}{Parameters initialization}
+The most easiest way to doing it is by initializing all the weights with zero. However, This turns out to be a mistake, because if we initialize weights of all layer to zero, the output as well as the gradients (during backpropagation) calculated by every neuron in the network will
+be the same. Hence the update to all the weights would also be the same.
+\end{frame}
 
-\begin{frame}{Summary}
+
+\begin{frame}{Parameters initialization}
+\begin{block}{Different Initialization Techniques}
     \begin{itemize}
-        \item \textbf{Convolution} exploits spatial hierarchies and shared weights, making image processing efficient.
-        \item \textbf{ReLU} provides the necessary non-linearity for deep learning.
-        \item \textbf{Pooling} reduces dimensionality and grants translation invariance.
-        \item \textbf{Architecture:} It is a game of managing Dimensions ($S$) and Channels ($C$) usually decreasing spatial size while increasing channel depth deep in the network.
+        \item Random Initialization
+        \item Xavier Initialization
+        \item Unsupervised Pre-training
     \end{itemize}
+\end{block}
+\end{frame}
+%------------------------------------------------
+\section{Recent advancement in CNN architectures}
+%------------------------------------------------
+\begin{frame}{Recent advancement in CNN architectures}
+\begin{block}{LeNet-5 Key note:}
+    \begin{itemize}
+        \item The LeNet-5 was trained on the MNIST digit dataset.
+        \item It used sigmoid non-linearity as the activation function.
+        \item It used stochastic gradient descent (SGD) learning algorithm with 20 training epoch.
+        \item It used 0.02 as the momentum factor value.
+        \item It reduced test error rate to 0.95\% on MNIST data set.
+    \end{itemize}
+\end{block}
+\end{frame}
+
+\begin{frame}{LeNet-5 Architecture}
+    \begin{figure}
+        \includegraphics[width=0.9\textwidth]{Figures/LeNet5.png}
+        \caption{LeNet-5 Architecture}
+    \end{figure}
 \end{frame}
 
 \end{document}

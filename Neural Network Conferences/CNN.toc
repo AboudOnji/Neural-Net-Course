@@ -1,7 +1,14 @@
 \babel@toc {english}{}\relax 
-\beamer@sectionintoc {1}{Motivation}{2}{0}{1}
-\beamer@sectionintoc {2}{The Convolution Operation}{5}{0}{2}
-\beamer@sectionintoc {3}{Hyperparameters \& Arithmetic}{8}{0}{3}
-\beamer@sectionintoc {4}{CNN Building Blocks}{11}{0}{4}
-\beamer@sectionintoc {5}{MATLAB Implementation}{15}{0}{5}
-\beamer@sectionintoc {6}{Conclusion}{18}{0}{6}
+\beamer@sectionintoc {1}{Introduction}{2}{0}{1}
+\beamer@sectionintoc {2}{Concepts of Convolutional Neural Networks}{5}{0}{2}
+\beamer@subsectionintoc {2}{1}{Basic Concepts}{6}{0}{2}
+\beamer@subsectionintoc {2}{2}{Why not Standard MLPs?}{9}{0}{2}
+\beamer@sectionintoc {3}{Network Layers}{11}{0}{3}
+\beamer@subsectionintoc {3}{1}{Convolutional Layer}{13}{0}{3}
+\beamer@subsectionintoc {3}{2}{The Convolution Operation}{14}{0}{3}
+\beamer@subsectionintoc {3}{3}{Pooling Layer}{22}{0}{3}
+\beamer@subsectionintoc {3}{4}{Activation Function}{26}{0}{3}
+\beamer@subsectionintoc {3}{5}{Fully Connected Layer (FC)}{27}{0}{3}
+\beamer@sectionintoc {4}{Loss Functions}{29}{0}{4}
+\beamer@sectionintoc {5}{Training process of Convolutional Neural Network}{31}{0}{5}
+\beamer@sectionintoc {6}{Recent advancement in CNN architectures}{35}{0}{6}
