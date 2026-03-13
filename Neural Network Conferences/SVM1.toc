@@ -1,0 +1,10 @@
+\babel@toc {english}{}\relax 
+\beamer@sectionintoc {1}{Motivación e Introducción}{3}{0}{1}
+\beamer@sectionintoc {2}{Hiperplano de Margen Máximo}{7}{0}{2}
+\beamer@sectionintoc {3}{Formulación Dual y Multiplicadores de Lagrange}{11}{0}{3}
+\beamer@sectionintoc {4}{SVM de Margen Suave (Soft Margin)}{18}{0}{4}
+\beamer@sectionintoc {5}{El Truco del Kernel}{24}{0}{5}
+\beamer@sectionintoc {6}{SVM Multi-clase y SVR}{30}{0}{6}
+\beamer@sectionintoc {7}{Implementación en MATLAB}{34}{0}{7}
+\beamer@sectionintoc {8}{Ventajas, Limitaciones y Comparativa}{39}{0}{8}
+\beamer@sectionintoc {9}{Resumen y Referencias}{44}{0}{9}

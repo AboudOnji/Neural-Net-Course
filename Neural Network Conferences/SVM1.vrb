@@ -1,0 +1,27 @@
+\frametitle{SVR en MATLAB}
+\begin{lstlisting}[language=Matlab, style=MATLABStyle]
+% Datos de regresion: prediccion de precio
+% X = caracteristicas, y = variable objetivo continua
+load carsmall
+X_reg = [Horsepower, Weight];
+y_reg = MPG;
+
+% Eliminar filas con NaN
+idx = ~any(isnan([X_reg, y_reg]), 2);
+X_reg = X_reg(idx,:); y_reg = y_reg(idx);
+
+% Entrenar epsilon-SVR
+svrModel = fitrsvm(X_reg, y_reg, ...
+    'KernelFunction', 'rbf', ...
+    'BoxConstraint',   10, ...       % C
+    'Epsilon',         0.1, ...      % epsilon del tubo
+    'KernelScale',    'auto', ...
+    'Standardize',    true);
+
+% Evaluar con RMSE
+y_pred = predict(svrModel, X_reg);
+rmse = sqrt(mean((y_pred - y_reg).^2));
+fprintf('RMSE en entrenamiento: %.4f\n', rmse);
+fprintf('Vectores de soporte: %d\n', ...
+        sum(svrModel.IsSupportVector));
+\end{lstlisting}
