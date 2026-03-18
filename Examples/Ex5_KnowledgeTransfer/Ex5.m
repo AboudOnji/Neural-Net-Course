@@ -307,7 +307,7 @@ title(string(label) + "  (Puntuación: " + gather(score)*100 + "%)")
 % PREGUNTAS PARA REFLEXIONAR:
 %   1. ¿Qué ocurre si aumentas MaxEpochs a 20?
 %   2. ¿Qué ocurre si cambias InitialLearnRate a 0.01?
-%   3. ¿Qué ocurre si reduces WeightLearnRateFactor a 1?
+%   3. ¿Qué ocurre si reduces WeightLearnRateFactor en la Conv1 última a 1?
 %   4. ¿Qué red preentrenada daría mejores resultados aquí? ¿Por qué?
 %   5. ¿Cómo cambia la matriz de confusión con y sin data augmentation?
 % ------------------------------------------------------------------
