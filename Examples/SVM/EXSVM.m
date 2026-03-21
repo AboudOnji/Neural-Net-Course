@@ -44,7 +44,7 @@ disp('=== Distribución de clases ===');
 tabulate(Y)
 
 fprintf('Dimensiones del dataset: %d muestras, %d características\n', ...
-        size(X,1), size(X,2));
+    size(X,1), size(X,2));
 
 %% 2. PARTICIÓN ENTRENAMIENTO / PRUEBA
 % -------------------------------------------------------------------------
@@ -114,7 +114,7 @@ svmModel = fitcsvm(X_train_std, Y_train, ...
 % Extraer información del modelo entrenado
 n_sv = sum(svmModel.IsSupportVector);   % Número de vectores de soporte
 fprintf('Vectores de soporte: %d de %d muestras de entrenamiento (%.1f%%)\n', ...
-        n_sv, size(X_train_std,1), 100*n_sv/size(X_train_std,1));
+    n_sv, size(X_train_std,1), 100*n_sv/size(X_train_std,1));
 
 %% 5. EVALUACIÓN DEL MODELO BASE
 % -------------------------------------------------------------------------
@@ -211,13 +211,13 @@ colormap(jet);
 xlabel('log_{10}(\gamma)', 'FontSize', 12);
 ylabel('log_{10}(C)',      'FontSize', 12);
 title('Exactitud de Validación Cruzada (5-fold) — Grilla C \times \gamma', ...
-      'FontSize', 13);
+    'FontSize', 13);
 hold on;
 % Marcar el punto óptimo
 plot(log10(best_gamma), log10(best_C), 'w*', 'MarkerSize', 14, 'LineWidth', 2);
 text(log10(best_gamma)+0.1, log10(best_C), ...
-     sprintf(' Óptimo: C=%.2f, \\gamma=%.4f', best_C, best_gamma), ...
-     'Color', 'white', 'FontSize', 10);
+    sprintf(' Óptimo: C=%.2f, \\gamma=%.4f', best_C, best_gamma), ...
+    'Color', 'white', 'FontSize', 10);
 set(gca, 'FontSize', 11);
 grid on;
 
@@ -259,7 +259,7 @@ x2_range = [min(X_train_std(:,2))-0.5, max(X_train_std(:,2))+0.5];
 h = 0.05;  % Resolución de la malla (puntos por unidad)
 
 [x1g, x2g] = meshgrid(x1_range(1):h:x1_range(2), ...
-                       x2_range(1):h:x2_range(2));
+    x2_range(1):h:x2_range(2));
 Xgrid = [x1g(:), x2g(:)];
 
 % Predecir la clase de cada punto de la malla
@@ -297,23 +297,23 @@ scatter(SV(:,1), SV(:,2), 120, 'k', 'd', 'LineWidth', 2);
 
 % Puntos de prueba (marcados con X para distinguirlos)
 scatter(X_test_std(strcmp(cellstr(Y_test),'versicolor'),1), ...
-        X_test_std(strcmp(cellstr(Y_test),'versicolor'),2), ...
-        60, 'b', 'x', 'LineWidth', 2);
+    X_test_std(strcmp(cellstr(Y_test),'versicolor'),2), ...
+    60, 'b', 'x', 'LineWidth', 2);
 scatter(X_test_std(strcmp(cellstr(Y_test),'virginica'),1), ...
-        X_test_std(strcmp(cellstr(Y_test),'virginica'),2), ...
-        60, 'r', 'x', 'LineWidth', 2);
+    X_test_std(strcmp(cellstr(Y_test),'virginica'),2), ...
+    60, 'r', 'x', 'LineWidth', 2);
 
 legend({'Región versicolor', 'Región virginica', ...
-        'Frontera de decisión', ...
-        'Entren. versicolor', 'Entren. virginica', ...
-        'Vectores de soporte', ...
-        'Prueba versicolor', 'Prueba virginica'}, ...
-       'Location', 'northwest', 'FontSize', 9);
+    'Frontera de decisión', ...
+    'Entren. versicolor', 'Entren. virginica', ...
+    'Vectores de soporte', ...
+    'Prueba versicolor', 'Prueba virginica'}, ...
+    'Location', 'northwest', 'FontSize', 9);
 
 xlabel('Long. pétalo (normalizada)', 'FontSize', 12);
 ylabel('Ancho pétalo (normalizado)',  'FontSize', 12);
 title(sprintf('Frontera de Decisión SVM (RBF)  |  C=%.2f, \\gamma=%.4f  |  Acc=%.1f%%', ...
-              best_C, best_gamma, accuracy_opt), 'FontSize', 13);
+    best_C, best_gamma, accuracy_opt), 'FontSize', 13);
 grid on;
 set(gca, 'FontSize', 11);
 
@@ -378,7 +378,7 @@ X_reg_train_std = (X_reg_train - mu_reg) ./ sigma_reg;
 X_reg_test_std  = (X_reg_test  - mu_reg) ./ sigma_reg;
 
 fprintf('Entrenamiento SVR: %d muestras | Prueba: %d muestras\n', ...
-        N_train_reg, N_reg - N_train_reg);
+    N_train_reg, N_reg - N_train_reg);
 
 %% 11. ENTRENAMIENTO DEL MODELO SVR (epsilon-SVR)
 % -------------------------------------------------------------------------
@@ -458,15 +458,15 @@ residuos = y_pred_svr - y_reg_test;
 % Colorear residuos dentro/fuera del tubo epsilon
 dentro_tubo = abs(residuos) <= svrModel.Epsilon;
 scatter(y_reg_test(dentro_tubo),  residuos(dentro_tubo),  ...
-        50, [0.2 0.7 0.2], 'filled', 'DisplayName', 'Dentro del tubo \epsilon');
+    50, [0.2 0.7 0.2], 'filled', 'DisplayName', 'Dentro del tubo \epsilon');
 hold on;
 scatter(y_reg_test(~dentro_tubo), residuos(~dentro_tubo), ...
-        50, [0.9 0.2 0.2], 'filled', 'DisplayName', 'Fuera del tubo \epsilon');
+    50, [0.9 0.2 0.2], 'filled', 'DisplayName', 'Fuera del tubo \epsilon');
 % Líneas del tubo epsilon
 yline( svrModel.Epsilon, 'k--', 'LineWidth', 1.5, ...
-       'Label', sprintf('+\\epsilon = %.1f', svrModel.Epsilon));
+    'Label', sprintf('+\\epsilon = %.1f', svrModel.Epsilon));
 yline(-svrModel.Epsilon, 'k--', 'LineWidth', 1.5, ...
-       'Label', sprintf('-\\epsilon = %.1f', svrModel.Epsilon));
+    'Label', sprintf('-\\epsilon = %.1f', svrModel.Epsilon));
 yline(0, 'k-', 'LineWidth', 1);
 xlabel('MPG Real',        'FontSize', 12);
 ylabel('Residuo (pred - real)', 'FontSize', 12);
