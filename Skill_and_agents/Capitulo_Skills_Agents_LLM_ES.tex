@@ -1,0 +1,1187 @@
+% ============================================================
+%  Skills y Agentes en Modelos de Lenguaje de Gran Escala
+%  Capítulo de curso — Redes Neuronales y SVM
+%  Universidad Anáhuac México
+%  Prof. D.Sc. Aboud BARSEKH-ONJI
+% ============================================================
+\documentclass[11pt,letterpaper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[spanish,es-tabla,es-noshorthands]{babel}
+\usepackage[T1]{fontenc}
+\usepackage{geometry}
+\geometry{top=2.5cm, bottom=2.5cm, left=3cm, right=3cm}
+
+\usepackage{amsmath, amssymb}
+\usepackage{booktabs}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{enumitem}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{xcolor}
+\usepackage{fancyhdr}
+\usepackage{titling}
+\usepackage{abstract}
+\usepackage{parskip}
+\usepackage{microtype}
+\usepackage{tikz}
+\usetikzlibrary{shapes.geometric, arrows.meta, positioning, fit, backgrounds, decorations.pathreplacing}
+\usepackage{hyperref}
+\usepackage{xurl}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue!70!black,
+    urlcolor=blue!70!black,
+    citecolor=blue!70!black,
+}
+
+%----------------------------------------------------------------
+%  LISTADOS DE CÓDIGO
+%----------------------------------------------------------------
+\usepackage{listings}
+
+\definecolor{backcolour}{rgb}{0.97,0.97,0.99}
+\definecolor{codegreen}{rgb}{0,0.55,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.55,0,0.75}
+\definecolor{darkblue}{rgb}{0,0,0.5}
+\definecolor{shellbg}{rgb}{0.1,0.1,0.1}
+
+\lstdefinestyle{PythonStyle}{
+  language=Python,
+  basicstyle=\ttfamily\footnotesize,
+  keywordstyle=\color{darkblue}\bfseries,
+  commentstyle=\color{codegreen}\itshape,
+  stringstyle=\color{codepurple},
+  numberstyle=\tiny\color{codegray},
+  breaklines=true,
+  numbers=left,
+  numbersep=8pt,
+  frame=single,
+  backgroundcolor=\color{backcolour},
+  showstringspaces=false,
+  tabsize=4,
+  captionpos=b,
+  xleftmargin=15pt,
+}
+
+\lstdefinestyle{JSONStyle}{
+  basicstyle=\ttfamily\footnotesize,
+  keywordstyle=\color{darkblue}\bfseries,
+  stringstyle=\color{codegreen},
+  commentstyle=\color{codegray}\itshape,
+  breaklines=true,
+  numbers=left,
+  numbersep=8pt,
+  frame=single,
+  backgroundcolor=\color{blue!5},
+  showstringspaces=false,
+  tabsize=2,
+  captionpos=b,
+  xleftmargin=15pt,
+}
+
+\lstdefinestyle{BashStyle}{
+  language=bash,
+  basicstyle=\ttfamily\footnotesize\color{white},
+  keywordstyle=\color{yellow}\bfseries,
+  commentstyle=\color{gray}\itshape,
+  stringstyle=\color{green!70!black},
+  breaklines=true,
+  numbers=left,
+  numberstyle=\tiny\color{gray},
+  numbersep=8pt,
+  frame=single,
+  backgroundcolor=\color{shellbg},
+  showstringspaces=false,
+  tabsize=2,
+  captionpos=b,
+  xleftmargin=15pt,
+}
+
+\lstdefinestyle{MarkdownStyle}{
+  basicstyle=\ttfamily\footnotesize,
+  keywordstyle=\color{darkblue}\bfseries,
+  stringstyle=\color{codepurple},
+  breaklines=true,
+  numbers=left,
+  numberstyle=\tiny\color{codegray},
+  numbersep=8pt,
+  frame=single,
+  backgroundcolor=\color{green!5},
+  showstringspaces=false,
+  tabsize=2,
+  captionpos=b,
+  xleftmargin=15pt,
+}
+
+\lstset{style=PythonStyle,
+  literate=
+    {á}{{\'{a}}}1 {é}{{\'{e}}}1 {í}{{\'{i}}}1 {ó}{{\'{o}}}1 {ú}{{\'{u}}}1
+    {Á}{{\'{A}}}1 {É}{{\'{E}}}1 {Í}{{\'{I}}}1 {Ó}{{\'{O}}}1 {Ú}{{\'{U}}}1
+    {ñ}{{\~{n}}}1 {Ñ}{{\~{N}}}1 {ü}{{\"u}}1 {Ü}{{\"U}}1
+    {¿}{{\textquestiondown}}1 {¡}{{\textexclamdown}}1
+}
+
+%----------------------------------------------------------------
+%  ENCABEZADOS Y PIES DE PÁGINA
+%----------------------------------------------------------------
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{\small Skills \& Agentes en LLMs}
+\lhead{\small Redes Neuronales y SVM --- Anáhuac México}
+\rfoot{\small Página \thepage}
+\lfoot{\small Prof. D.Sc. Aboud BARSEKH-ONJI}
+
+%----------------------------------------------------------------
+%  CAJAS DE COLORES
+%----------------------------------------------------------------
+\usepackage{tcolorbox}
+\tcbuselibrary{skins, breakable}
+
+\newtcolorbox{definitionbox}[1][]{
+    colback=blue!5, colframe=blue!50!black,
+    fonttitle=\bfseries, title=Definición,
+    breakable, #1
+}
+\newtcolorbox{notebox}[1][]{
+    colback=orange!8, colframe=orange!60!black,
+    fonttitle=\bfseries, title=Nota importante,
+    breakable, #1
+}
+\newtcolorbox{examplebox}[1][]{
+    colback=green!5, colframe=green!50!black,
+    fonttitle=\bfseries, title=Ejemplo,
+    breakable, #1
+}
+\newtcolorbox{warningbox}[1][]{
+    colback=red!5, colframe=red!60!black,
+    fonttitle=\bfseries, title=Advertencia,
+    breakable, #1
+}
+
+%----------------------------------------------------------------
+%  TÍTULO
+%----------------------------------------------------------------
+\title{
+    \LARGE \textbf{Skills y Agentes en Modelos de Lenguaje de Gran Escala} \\[0.3cm]
+    \large Del Razonamiento Guiado a las Arquitecturas Autónomas \\[0.5cm]
+    \normalsize Capítulo de curso --- \textit{Redes Neuronales y SVM}
+}
+\author{
+    \textbf{Prof. D.Sc. Aboud BARSEKH-ONJI} \\
+    Facultad de Ingeniería --- Universidad Anáhuac México \\
+    \texttt{aboud.barsekh@anahuac.mx}
+}
+\date{Primavera 2026}
+
+%================================================================
+\begin{document}
+%================================================================
+
+\maketitle
+\thispagestyle{fancy}
+
+%----------------------------------------------------------------
+%  RESUMEN
+%----------------------------------------------------------------
+\begin{abstract}
+Este capítulo introduce los conceptos de \textbf{skills} (habilidades) y \textbf{agentes} en el contexto de los modelos de lenguaje de gran escala (LLMs, por sus siglas en inglés), con énfasis particular en su implementación en Claude Code (Anthropic). Comenzamos trazando la evolución de los LLMs desde generadores de texto estático hasta sistemas completamente agénticos capaces de razonamiento autónomo de múltiples pasos y uso de herramientas. Posteriormente definimos formalmente los skills y los agentes, comparamos sus arquitecturas y casos de uso, y proporcionamos ejemplos de código funcionales utilizando el SDK de Python de Anthropic. Al concluir este capítulo, el lector será capaz de diseñar e implementar tanto un skill como un agente personalizado para Claude Code, entender cuándo utilizar cada mecanismo, y construir agentes con capacidad de uso de herramientas mediante la API de Claude.
+\end{abstract}
+
+\tableofcontents
+\newpage
+
+%================================================================
+\section{De los Modelos de Lenguaje a los Sistemas Agénticos}
+%================================================================
+
+\subsection{La Evolución de los Modelos de Lenguaje de Gran Escala}
+
+Los modelos de lenguaje de gran escala (LLMs) han experimentado una rápida evolución arquitectónica y funcional desde la introducción de la arquitectura Transformer por Vaswani et al.\ en 2017. Desde la perspectiva de su \emph{agencia}---el grado en que pueden percibir, planificar y actuar de forma autónoma---es posible identificar cuatro generaciones:
+
+\begin{enumerate}[leftmargin=*]
+    \item \textbf{Generación 1: Modelos de Lenguaje Puros (2018--2020).} Modelos como GPT-2 (Radford et al., 2019) y BERT (Devlin et al., 2018) operaban como distribuciones de probabilidad condicional sobre texto. Dado un texto de entrada, generaban una continuación. No disponían de herramientas externas, ni de memoria persistente más allá de la ventana de contexto, ni de mecanismo alguno para actuar en el mundo.
+
+    \item \textbf{Generación 2: Modelos Ajustados por Instrucción (2021--2022).} La introducción del Aprendizaje por Refuerzo con Retroalimentación Humana (RLHF) y el ajuste por instrucción (InstructGPT, 2022; Claude v1, 2023) mejoró drásticamente la capacidad de los modelos para seguir instrucciones complejas en lenguaje natural. Aunque seguían siendo texto-entrada/texto-salida, podían razonar sobre tareas de múltiples pasos y producir salidas estructuradas.
+
+    \item \textbf{Generación 3: Modelos Aumentados con Herramientas (2023--2024).} El uso de funciones (\textit{function calling}, OpenAI, 2023) y de herramientas (\textit{tool use}, Anthropic, 2023) dotó a los LLMs de la capacidad de interactuar con sistemas externos: búsqueda web, lectura de archivos, llamadas a APIs y ejecución de código. El modelo en sí genera solicitudes JSON estructuradas; la aplicación anfitriona las ejecuta y devuelve los resultados. Esta generación incluye GPT-4, Claude 3 (Haiku, Sonnet, Opus) y Gemini.
+
+    \item \textbf{Generación 4: Modelos Agénticos (2025--presente).} La frontera actual. Modelos como Claude 4 (Opus, Sonnet), GPT-4o y Gemini 2.0 pueden planificar autónomamente secuencias de llamadas a herramientas, lanzar subagentes para tareas paralelas, mantener memoria entre turnos y operar en flujos de trabajo de largo horizonte que pueden abarcar horas o días.
+\end{enumerate}
+
+\subsection{¿Qué Hace Agéntico a un Sistema?}
+
+El término \emph{agente} tiene origen en la filosofía de la mente y la inteligencia artificial: un agente es cualquier entidad que \emph{percibe} su entorno y \emph{actúa} para alcanzar objetivos (Russell \& Norvig, 2020). Para los sistemas basados en LLMs, añadimos tres propiedades específicas:
+
+\begin{definitionbox}[title=Agente Basado en LLM]
+Un \textbf{agente basado en LLM} es un sistema en el que un LLM actúa como el \emph{motor de razonamiento}, equipado con: (1) un conjunto de \textbf{herramientas} (\textit{tools}: funciones invocables que interactúan con el entorno), (2) un mecanismo de \textbf{memoria} (ventana de contexto, sistema de archivos o almacén vectorial), y (3) un \textbf{bucle de acción} que itera entre razonamiento, invocación de herramientas y observación hasta alcanzar el objetivo.
+\end{definitionbox}
+
+El insight fundamental es la separación de responsabilidades: el LLM \emph{razona y decide}; el código externo \emph{ejecuta}. Esta separación constituye tanto un principio arquitectónico como una garantía de seguridad.
+
+\subsection{El Marco ReAct}
+
+La formalización más influyente del comportamiento agéntico en LLMs es el marco ReAct (Yao et al., 2022), que intercala trazas de \textbf{Ra}zonamiento (\textit{reasoning}) con llamadas de \textbf{Ac}ción (\textit{action}):
+
+\begin{enumerate}[leftmargin=*]
+    \item \textbf{Pensamiento (\textit{Thought}):} El modelo genera una traza de razonamiento en lenguaje natural sobre qué hacer a continuación.
+    \item \textbf{Acción (\textit{Action}):} El modelo invoca una herramienta con argumentos estructurados.
+    \item \textbf{Observación (\textit{Observation}):} El resultado de la herramienta es devuelto y añadido al contexto.
+    \item Se repite hasta cumplir la condición de parada.
+\end{enumerate}
+
+Este bucle es la columna vertebral operativa de todo marco agéntico moderno: LangChain, AutoGen, CrewAI, LlamaIndex Agents y Claude Code implementan variantes de él.
+
+\begin{examplebox}[title=Ejemplo de Traza ReAct]
+\begin{verbatim}
+Tarea: ¿Cuál es el precio actual del BTC en pesos mexicanos?
+
+Pensamiento: Necesito el precio BTC/USD y el tipo de cambio USD/MXN.
+Acción: WebSearch({"query": "Bitcoin price USD today"})
+Observación: BTC = $62,400 USD (al cierre del mercado)
+
+Pensamiento: Ahora necesito el tipo de cambio.
+Acción: WebSearch({"query": "USD MXN tipo de cambio hoy"})
+Observación: 1 USD = 17.20 MXN
+
+Pensamiento: Puedo calcular: 62,400 x 17.20 = 1,073,280 MXN
+Respuesta final: 1 BTC ~= 1,073,280 MXN
+\end{verbatim}
+\end{examplebox}
+
+%================================================================
+\section{Herramientas y Llamada a Funciones}
+%================================================================
+
+\subsection{La Interfaz de Herramientas}
+
+Una \textbf{herramienta} (\textit{tool}), también denominada \emph{función} en la terminología de OpenAI, es una capacidad invocable descrita mediante un esquema estructurado que el LLM recibe como parte de su contexto. Cuando el modelo decide usar una herramienta, genera una \emph{solicitud de uso de herramienta} estructurada (típicamente JSON), que la aplicación anfitriona intercepta y ejecuta. El resultado es devuelto al modelo como un mensaje de resultado de herramienta.
+
+El esquema enviado al modelo tiene tres componentes:
+\begin{enumerate}[leftmargin=*]
+    \item \textbf{Nombre:} Un identificador legible por máquina (p.ej., \texttt{leer\_archivo}).
+    \item \textbf{Descripción:} Descripción en lenguaje natural de qué hace la herramienta, cuándo usarla y qué devuelve. Este campo es crítico: la capacidad del modelo para usar la herramienta correctamente depende íntegramente de la calidad de esta descripción.
+    \item \textbf{Esquema de entrada:} Un objeto JSON Schema que define los parámetros aceptados por la herramienta, sus tipos, descripciones y cuáles son obligatorios.
+\end{enumerate}
+
+\begin{lstlisting}[style=JSONStyle, caption={Definición de herramienta en formato API de Anthropic}]
+{
+  "name": "read_file",
+  "description": "Lee el contenido completo de un archivo en la ruta dada.
+                  Usar cuando se necesita inspeccionar el contenido de un
+                  archivo de codigo fuente, configuracion o documento.
+                  Devuelve el texto completo del archivo como cadena.",
+  "input_schema": {
+    "type": "object",
+    "properties": {
+      "path": {
+        "type": "string",
+        "description": "Ruta absoluta o relativa del archivo a leer."
+      }
+    },
+    "required": ["path"]
+  }
+}
+\end{lstlisting}
+
+\subsection{El Bucle de Múltiples Turnos}
+
+El uso de herramientas es inherentemente multi-turno: después de cada llamada a una herramienta, el modelo debe recibir el resultado antes de poder continuar. La secuencia completa de mensajes para una sola llamada es:
+
+\begin{enumerate}[leftmargin=*]
+    \item El usuario envía \texttt{[usuario: tarea]} + lista de herramientas
+    \item El modelo genera \texttt{[asistente: \{tool\_use: leer\_archivo, args: \{path: "x.py"\}\}]}
+    \item El anfitrión ejecuta \texttt{leer\_archivo("x.py")}, obtiene el contenido
+    \item El anfitrión envía \texttt{[usuario: \{tool\_result: "def foo(): ..."\}]}
+    \item El modelo genera \texttt{[asistente: respuesta de texto final]}
+\end{enumerate}
+
+\begin{notebox}
+El LLM \emph{nunca} ejecuta código. Solo genera solicitudes en formato JSON. El código Python, JavaScript o shell del desarrollador es el que realmente ejecuta las herramientas. Esta separación es fundamental para la seguridad: el desarrollador controla completamente qué herramientas existen y qué se les permite hacer.
+\end{notebox}
+
+\subsection{Implementación del Bucle de Herramientas}
+
+El siguiente listado muestra una implementación completa y mínima del bucle de herramientas usando el SDK de Python de Anthropic:
+
+\begin{lstlisting}[style=PythonStyle, caption={Bucle de herramientas mínimo con el SDK de Anthropic}]
+import anthropic
+import json
+
+client = anthropic.Anthropic()  # lee ANTHROPIC_API_KEY del entorno
+
+# --- Definicion de herramienta ---
+tools = [
+    {
+        "name": "calculate",
+        "description": "Evalua una expresion matematica y devuelve el resultado.",
+        "input_schema": {
+            "type": "object",
+            "properties": {
+                "expression": {
+                    "type": "string",
+                    "description": "Expresion evaluable en Python, ej. '2**10 + 3.14'"
+                }
+            },
+            "required": ["expression"]
+        }
+    }
+]
+
+# --- Ejecutor de herramienta (codigo del desarrollador, no del modelo) ---
+def ejecutar_herramienta(nombre: str, entradas: dict) -> str:
+    if nombre == "calculate":
+        try:
+            resultado = eval(entradas["expression"])  # seguro en entorno controlado
+            return str(resultado)
+        except Exception as e:
+            return f"Error: {e}"
+    return "Herramienta desconocida"
+
+# --- Bucle del agente ---
+def ejecutar_agente(mensaje_usuario: str) -> str:
+    mensajes = [{"role": "user", "content": mensaje_usuario}]
+
+    while True:
+        respuesta = client.messages.create(
+            model="claude-sonnet-4-6",
+            max_tokens=1024,
+            tools=tools,
+            messages=mensajes
+        )
+
+        # Agregar la respuesta completa del asistente al historial
+        mensajes.append({"role": "assistant", "content": respuesta.content})
+
+        # Si el modelo terminó, devolver el texto
+        if respuesta.stop_reason == "end_turn":
+            for bloque in respuesta.content:
+                if hasattr(bloque, "text"):
+                    return bloque.text
+
+        # Si no, ejecutar todas las llamadas a herramientas y retornar resultados
+        resultados_herramientas = []
+        for bloque in respuesta.content:
+            if bloque.type == "tool_use":
+                salida = ejecutar_herramienta(bloque.name, bloque.input)
+                resultados_herramientas.append({
+                    "type": "tool_result",
+                    "tool_use_id": bloque.id,
+                    "content": salida
+                })
+
+        mensajes.append({"role": "user", "content": resultados_herramientas})
+
+# Prueba
+if __name__ == "__main__":
+    respuesta = ejecutar_agente("Cuanto es 2 elevado a la potencia 32?")
+    print(respuesta)
+\end{lstlisting}
+
+%================================================================
+\section{Skills en Claude Code}
+%================================================================
+
+\subsection{¿Qué es un Skill?}
+
+\begin{definitionbox}[title=Skill (Claude Code)]
+Un \textbf{skill} es un archivo Markdown reutilizable y autocontenido que codifica un prompt especializado---incluyendo conocimiento de dominio, convenciones, instrucciones paso a paso y especificaciones de formato de salida---que Claude Code inyecta en la conversación activa cuando el usuario lo invoca mediante un comando de barra oblicua \texttt{/nombre-del-skill}.
+\end{definitionbox}
+
+Los skills son, en esencia, \emph{prompts de sistema estructurados} almacenados como archivos Markdown. Cuando se invoca un skill, su contenido se carga en el contexto de Claude como un conjunto de instrucciones. Claude entonces utiliza sus capacidades completas de llamada a herramientas (las que estén disponibles en ese momento) guiado por las instrucciones del skill.
+
+\subsection{Ubicación y Descubrimiento de Skills}
+
+Claude Code busca skills en dos ubicaciones, en este orden:
+
+\begin{enumerate}[leftmargin=*]
+    \item \textbf{Nivel de proyecto:} \texttt{.claude/skills/<nombre-del-skill>.md} (relativo a la raíz del proyecto). Solo disponible dentro de ese proyecto.
+    \item \textbf{Nivel de usuario:} \texttt{\textasciitilde/.claude/skills/<nombre-del-skill>.md}. Disponible en todos los proyectos.
+\end{enumerate}
+
+El nombre del archivo (sin la extensión \texttt{.md}) se convierte en el comando de barra oblicua. Un archivo llamado \texttt{latex-academic.md} se invoca con \texttt{/latex-academic}.
+
+\begin{lstlisting}[style=BashStyle, caption={Creación de un archivo de skill}]
+# Skill a nivel de usuario (disponible en todos los proyectos)
+mkdir -p ~/.claude/skills/
+nano ~/.claude/skills/mi-skill.md
+
+# Skill a nivel de proyecto (solo este proyecto)
+mkdir -p .claude/skills/
+nano .claude/skills/mi-skill.md
+\end{lstlisting}
+
+\subsection{Anatomía de un Archivo de Skill}
+
+Un archivo de skill bien diseñado contiene las siguientes secciones:
+
+\begin{enumerate}[leftmargin=*]
+    \item \textbf{Título:} Un nombre claro que identifique el propósito del skill.
+    \item \textbf{Descripción del disparador:} Una declaración explícita de \emph{cuándo} invocar este skill. Se usa tanto para documentación como para que Claude detecte automáticamente cuándo el skill es relevante.
+    \item \textbf{Contexto / Persona:} El rol de dominio, las convenciones y el conocimiento de fondo que Claude debe adoptar.
+    \item \textbf{Instrucciones paso a paso:} El flujo de trabajo ordenado que sigue el skill.
+    \item \textbf{Formato de salida:} La estructura exacta de la salida esperada (p.ej., estructura de un archivo LaTeX, formato de mensaje de commit).
+    \item \textbf{Ejemplos (opcional):} Pares concretos de entrada/salida que ilustran el comportamiento correcto.
+    \item \textbf{Restricciones:} Lo que el skill \emph{no} debe hacer (tan importante como lo que sí debe hacer).
+\end{enumerate}
+
+\begin{lstlisting}[style=MarkdownStyle, caption={Skill mínimo: reporte-calificaciones.md}]
+# Skill de Reporte de Calificaciones
+
+## Disparador
+Invocar con /reporte-calificaciones cuando el usuario quiera generar
+un reporte formateado de calificaciones para un grupo de alumnos.
+
+## Contexto
+Eres un asistente academico de la Universidad Anahuac Mexico. Sigues
+las convenciones academicas mexicanas: calificaciones 0-100, aprobacion
+>= 70, y los reportes se generan en español.
+
+## Instrucciones
+1. Lee los datos de calificaciones proporcionados (CSV, tabla o lista).
+2. Calcula: promedio, mediana, desviacion estandar, tasa de aprobacion.
+3. Identifica alumnos con calificacion menor a 70 (en riesgo).
+4. Genera un reporte formateado en español.
+
+## Formato de Salida
+**Reporte de Calificaciones -- [Nombre del Curso]**
+- Promedio: [X.X]
+- Mediana: [X.X]
+- Desviacion estandar: [X.X]
+- Tasa de aprobacion: [X]%
+- Alumnos en riesgo: [lista]
+
+## Restricciones
+- No revelar calificaciones individuales salvo que el usuario lo pida.
+- Redondear todas las estadisticas a un decimal.
+- Entregar siempre en español independientemente del idioma de entrada.
+\end{lstlisting}
+
+\subsection{Ejemplo Real: El Skill \texttt{latex-academic}}
+
+El skill \texttt{latex-academic} utilizado en este curso encapsula todo el flujo de trabajo de creación de documentos LaTeX para los materiales didácticos del Prof. Dr. Barsekh-Onji. Al invocarlo con \texttt{/latex-academic}, realiza las siguientes acciones:
+
+\begin{itemize}[leftmargin=*]
+    \item Carga la información del autor (credenciales completas, institución, contacto)
+    \item Selecciona la plantilla apropiada según el tipo de documento (examen, carta, artículo, programa de curso)
+    \item Aplica las convenciones institucionales de LaTeX (márgenes, fuentes, tablas con \texttt{booktabs}, sin líneas verticales en tablas)
+    \item Compila con \texttt{pdflatex} dos veces para obtener el índice y las referencias cruzadas correctas
+    \item Entrega tanto el código fuente \texttt{.tex} como el \texttt{.pdf} compilado
+\end{itemize}
+
+Sin el skill, el usuario necesitaría especificar todo este contexto en cada sesión. El skill lo codifica \emph{una sola vez} y lo hace permanentemente reutilizable.
+
+\subsection{Capacidades y Limitaciones de los Skills}
+
+\begin{table}[H]
+\centering
+\caption{Skills: capacidades y limitaciones}
+\begin{tabular}{@{}p{0.45\linewidth}p{0.45\linewidth}@{}}
+\toprule
+\textbf{Lo que los Skills SÍ pueden hacer} & \textbf{Lo que los Skills NO pueden hacer} \\
+\midrule
+Codificar flujos de trabajo complejos de múltiples pasos & Ejecutar código de forma autónoma \\
+Definir formatos de salida consistentes & Lanzar subprocesos o subagentes \\
+Establecer convenciones específicas del dominio & Ejecutarse de forma programada o ante eventos \\
+Inyectar experiencia especializada bajo demanda & Mantener estado entre invocaciones \\
+Encadenarse naturalmente con el uso de herramientas & Comunicarse con sistemas externos de forma independiente \\
+Compartirse entre proyectos (nivel usuario) & Reemplazar agentes en tareas largas y autónomas \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{notebox}
+Un skill es una \textbf{plantilla inteligente}. Un agente es un \textbf{trabajador autónomo}. La distinción no radica en la capacidad (Claude puede hacer lo mismo de ambas formas) sino en \emph{cómo} se inicia la tarea y \emph{quién} controla el flujo de ejecución.
+\end{notebox}
+
+%================================================================
+\section{Agentes en Claude Code}
+%================================================================
+
+\subsection{¿Qué es un Agente?}
+
+\begin{definitionbox}[title=Agente (Claude Code)]
+Un \textbf{agente} en Claude Code es un subproceso autónomo---una instancia separada de Claude con su propio prompt de sistema, conjunto de herramientas y contexto de conversación---que la instancia orquestadora de Claude puede lanzar, mediante la herramienta \texttt{Agent}, para ejecutar una tarea compleja de múltiples pasos de forma independiente y (opcionalmente) en paralelo con otros agentes.
+\end{definitionbox}
+
+Las diferencias arquitectónicas clave con respecto a un skill son:
+\begin{enumerate}[leftmargin=*]
+    \item Un agente se ejecuta como una \textbf{instancia separada de Claude}. No comparte el historial de conversación del orquestador.
+    \item Un agente tiene un \textbf{conjunto de herramientas explícitamente delimitado}. No puede usar herramientas que no estén listadas en su definición.
+    \item Un agente puede ejecutarse \textbf{en segundo plano}, permitiendo que el orquestador continúe trabajando.
+    \item Un agente puede estar \textbf{aislado en un worktree de git}, lo que le proporciona un entorno seguro para modificar archivos.
+    \item Los agentes son \textbf{invocados por Claude}, no directamente por el usuario.
+\end{enumerate}
+
+\subsection{Ubicación y Estructura de los Archivos de Agente}
+
+Los agentes se definen como archivos Markdown en una de estas dos ubicaciones:
+
+\begin{lstlisting}[style=BashStyle, caption={Ubicaciones de los archivos de agente}]
+# Agente a nivel de proyecto
+.claude/agents/<nombre-del-agente>.md
+
+# Agente a nivel de usuario (disponible en todos los proyectos)
+~/.claude/agents/<nombre-del-agente>.md
+\end{lstlisting}
+
+Cada archivo de agente tiene dos partes:
+
+\subsubsection{Frontmatter YAML}
+
+El bloque frontmatter (delimitado por \texttt{---}) define los metadatos y el control de acceso del agente:
+
+\begin{lstlisting}[style=MarkdownStyle, caption={Campos del frontmatter de un agente}]
+---
+name: mi-agente          # Identificador unico; usado por la herramienta Agent
+description: >           # CRITICO: Se usa para el enrutamiento automatico
+  Usar este agente cuando el usuario quiera hacer X o Y.
+  Disparadores: "hacer X", "ayuda con Y", "analiza Z".
+  NO usar para: A, B, C.
+tools:                   # Lista de herramientas permitidas (frontera de seguridad)
+  - Read
+  - Write
+  - Bash
+  - Grep
+  - Glob
+  - WebSearch
+model: claude-sonnet-4-6 # Opcional; hereda del padre si se omite
+---
+\end{lstlisting}
+
+\subsubsection{Cuerpo del Prompt de Sistema}
+
+Todo lo que está después del frontmatter es el prompt de sistema del agente en Markdown. Define:
+\begin{itemize}[leftmargin=*]
+    \item El rol y la experiencia del agente
+    \item Reglas de comportamiento (qué hacer, cómo formatear la salida)
+    \item Convenciones y preferencias del dominio
+    \item Restricciones explícitas (qué no hacer)
+\end{itemize}
+
+\subsection{Cómo el Orquestador Lanza un Agente}
+
+Cuando el Claude orquestador determina que una subtarea debe delegarse, invoca la herramienta interna \texttt{Agent}. La llamada incluye:
+
+\begin{itemize}[leftmargin=*]
+    \item \texttt{subagent\_type}: el nombre del agente del frontmatter
+    \item \texttt{description}: una etiqueta de 3 a 5 palabras para la tarea (mostrada al usuario)
+    \item \texttt{prompt}: la descripción completa de la tarea (debe ser autocontenida)
+    \item \texttt{run\_in\_background}: \texttt{true} o \texttt{false}
+    \item \texttt{isolation}: \texttt{"worktree"} para aislamiento en rama de git
+\end{itemize}
+
+\begin{notebox}
+\textbf{Los agentes comienzan en frío.} El prompt del agente debe contener todo el contexto que necesita: rutas de archivos, nombres de variables, objetivos, restricciones. \emph{No} asumir que el agente conoce nada de la conversación del orquestador.
+\end{notebox}
+
+\subsection{Delimitación de Herramientas: El Modelo de Seguridad}
+
+La delimitación de herramientas es el mecanismo de seguridad primario de los agentes. Un agente \emph{solo} tiene acceso a las herramientas listadas en el campo \texttt{tools:} de su frontmatter. Esto permite diseñar agentes con el \textbf{principio de mínimo privilegio}:
+
+\begin{table}[H]
+\centering
+\caption{Delimitación de herramientas por rol del agente}
+\begin{tabular}{@{}p{0.28\linewidth}p{0.32\linewidth}p{0.30\linewidth}@{}}
+\toprule
+\textbf{Rol del Agente} & \textbf{Herramientas Permitidas} & \textbf{Justificación} \\
+\midrule
+Inspector de solo lectura & \texttt{Read, Grep, Glob} & No puede modificar ni ejecutar nada \\
+Agente de investigación & \texttt{Read, WebSearch, WebFetch} & Lee la web, no el sistema local \\
+Escritor de código & \texttt{Read, Write, Edit, Bash} & Acceso local completo, sin web \\
+Ejecutor de pruebas & \texttt{Bash} (acotado) & Solo ejecuta pruebas \\
+Agente de despliegue & \texttt{Bash} (comandos específicos) & Lista blanca explícita de comandos \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{warningbox}
+No otorgar acceso a \texttt{Bash} a un agente a menos que lo necesite genuinamente. Bash es la herramienta más poderosa (y peligrosa). Un agente con acceso irrestricto a Bash puede eliminar archivos, instalar software y realizar llamadas de red.
+\end{warningbox}
+
+\subsection{Ejecución Paralela de Agentes}
+
+Una de las capacidades más poderosas del modelo multi-agente es la \textbf{ejecución paralela}. Cuando el orquestador necesita realizar múltiples investigaciones independientes, puede lanzar todos los agentes simultáneamente en lugar de hacerlo secuencialmente.
+
+\begin{examplebox}[title=Ejecución Paralela vs. Secuencial de Agentes]
+\textbf{Escenario:} Analizar vulnerabilidades de seguridad en tres módulos independientes.
+
+\textbf{Enfoque secuencial:}
+\begin{itemize}
+    \item Agente A analiza \texttt{auth.py} (30 segundos)
+    \item Agente B analiza \texttt{db.py} (25 segundos)
+    \item Agente C analiza \texttt{api.py} (35 segundos)
+    \item \textbf{Total: 90 segundos}
+\end{itemize}
+
+\textbf{Enfoque paralelo:}
+\begin{itemize}
+    \item Agentes A, B y C se lanzan simultáneamente
+    \item Se ejecutan de forma concurrente
+    \item \textbf{Total: 35 segundos} (acotado por el agente más lento)
+\end{itemize}
+
+\textbf{Aceleración: $90/35 \approx 2.6\times$}
+\end{examplebox}
+
+\begin{notebox}
+Usar ejecución secuencial cuando la entrada del Agente B depende de la salida del Agente A. Usar ejecución paralela cuando las tareas son independientes. El orquestador debe razonar sobre estas dependencias.
+\end{notebox}
+
+\subsection{Aislamiento con Git Worktree}
+
+Cuando se especifica \texttt{isolation: "worktree"}, Claude Code crea una rama de git temporal y la despliega en un directorio separado. El agente trabaja en esta copia aislada. Si no realiza cambios, el worktree se limpia automáticamente. Si realiza cambios, la ruta del worktree y el nombre de la rama se devuelven al orquestador para su revisión.
+
+Esto es especialmente útil para:
+\begin{itemize}[leftmargin=*]
+    \item Desarrollo paralelo de funcionalidades (múltiples agentes en ramas separadas simultáneamente)
+    \item Refactorizaciones experimentales (reversión segura)
+    \item Revisión de código sin contaminar el árbol de trabajo actual
+\end{itemize}
+
+%================================================================
+\section{Skills vs Agentes: Análisis Comparativo}
+%================================================================
+
+\subsection{Comparación Taxonómica}
+
+\begin{table}[H]
+\centering
+\caption{Comparación exhaustiva: Skills vs Agentes}
+\begin{tabular}{@{}p{0.25\linewidth}p{0.35\linewidth}p{0.35\linewidth}@{}}
+\toprule
+\textbf{Dimensión} & \textbf{Skill} & \textbf{Agente} \\
+\midrule
+Naturaleza & Plantilla de prompt (Markdown) & Subproceso autónomo \\
+Invocación & Usuario vía \texttt{/nombre-skill} & Orquestador Claude vía herramienta \texttt{Agent} \\
+Contexto de ejecución & Conversación actual & Nueva conversación aislada \\
+Memoria & Compartida con la sesión principal & Independiente (comienza en frío) \\
+Acceso a herramientas & Igual que la sesión actual & Subconjunto explícitamente delimitado \\
+Paralelismo & No (síncrono en línea) & Sí (soporte en segundo plano) \\
+Aislamiento de git & No & Sí (modo \texttt{worktree}) \\
+Ciclo de vida & Una sola respuesta & Bucle autónomo de múltiples turnos \\
+Ubicación del archivo & \texttt{skills/<nombre>.md} & \texttt{agents/<nombre>.md} \\
+Quien lo invoca & El usuario & Claude (orquestador) \\
+Persistencia de estado & Ninguna & Mediante escritura de archivos \\
+Aislamiento de contexto & No & Sí (ventana de contexto propia) \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Marco de Decisión: Qué Mecanismo Usar}
+
+Utilizar el siguiente árbol de decisión para seleccionar el mecanismo apropiado:
+
+\begin{enumerate}[leftmargin=*]
+    \item \textbf{¿Es la tarea disparada por el usuario?} $\rightarrow$ Sí: considerar un skill. $\rightarrow$ No (disparada internamente por Claude): usar un agente.
+    \item \textbf{¿Requiere la tarea ejecución paralela?} $\rightarrow$ Sí: agente obligatorio. $\rightarrow$ No: el skill puede ser suficiente.
+    \item \textbf{¿Necesita la tarea contexto aislado} (para evitar contaminar la sesión principal)? $\rightarrow$ Sí: agente. $\rightarrow$ No: skill.
+    \item \textbf{¿Es una tarea breve y puntual} (una sola respuesta)? $\rightarrow$ Sí: skill. $\rightarrow$ No (de múltiples pasos y larga duración): agente.
+    \item \textbf{¿Requiere la tarea delimitación especializada de herramientas} por seguridad? $\rightarrow$ Sí: agente. $\rightarrow$ No: skill.
+    \item \textbf{¿Es la tarea un flujo de trabajo recurrente con convenciones fijas?} $\rightarrow$ Sí: skill. $\rightarrow$ No (exploratorio, variable): agente.
+\end{enumerate}
+
+\subsection{El Continuo Skill--Agente}
+
+En la práctica, la distinción entre skills y agentes no es binaria. Existe un continuo desde los skills puros hasta los sistemas multi-agente completamente autónomos:
+
+\begin{center}
+\begin{tikzpicture}[scale=0.9]
+    \fill[green!15] (0,-0.6) rectangle (3,0.6);
+    \fill[yellow!25] (3,-0.6) rectangle (6.5,0.6);
+    \fill[orange!25] (6.5,-0.6) rectangle (10,0.6);
+    \fill[red!15] (10,-0.6) rectangle (13,0.6);
+
+    \draw[->, very thick] (0,0) -- (13.5,0) node[right] {\footnotesize Autonomía};
+
+    \node[above=0.7cm, font=\small\bfseries] at (1.5,0) {Skill};
+    \node[above=0.7cm, font=\small\bfseries] at (4.75,0) {Skill + Herramientas};
+    \node[above=0.7cm, font=\small\bfseries] at (8.25,0) {Agente Simple};
+    \node[above=0.7cm, font=\small\bfseries] at (11.5,0) {Multi-Agente};
+
+    \node[below=0.8cm, align=center, font=\scriptsize, text width=2.8cm] at (1.5,0)
+        {/commit, /latex-academic, /review-pr};
+    \node[below=0.8cm, align=center, font=\scriptsize, text width=3cm] at (4.75,0)
+        {Compilar + probar\\Buscar + reemplazar\\Escribir + desplegar};
+    \node[below=0.8cm, align=center, font=\scriptsize, text width=3cm] at (8.25,0)
+        {Explorador de código\\Revisor de PR\\Agente de investigación};
+    \node[below=0.8cm, align=center, font=\scriptsize, text width=3cm] at (11.5,0)
+        {Orquestador\\+ subagentes\\en paralelo};
+\end{tikzpicture}
+\end{center}
+
+\vspace{0.3cm}
+
+\begin{notebox}
+\textbf{Principio de Diseño:} Usar siempre el mecanismo más simple que resuelva el problema. Los agentes añaden potencia pero también complejidad, costo de API y latencia. Comenzar con un skill; escalar a un agente cuando la ejecución paralela, el aislamiento de contexto o el comportamiento autónomo de múltiples pasos sean genuinamente necesarios.
+\end{notebox}
+
+%================================================================
+\section{Arquitecturas Multi-Agente}
+%================================================================
+
+\subsection{El Patrón Orquestador--Trabajador}
+
+Claude Code implementa nativamente la topología \textbf{Orquestador--Trabajador}: una instancia principal de Claude actúa como orquestador, gestionando un grupo de agentes trabajadores especializados. El orquestador:
+
+\begin{enumerate}[leftmargin=*]
+    \item Recibe el objetivo de alto nivel del usuario
+    \item Lo descompone en subtareas independientes
+    \item Selecciona el agente apropiado para cada subtarea
+    \item Lanza los agentes (en serie o en paralelo)
+    \item Recopila y sintetiza los resultados
+    \item Reporta el resultado final al usuario
+\end{enumerate}
+
+\subsection{Distribución del Contexto: Resolviendo el Límite de Ventana}
+
+Todo LLM tiene una ventana de contexto finita (Claude: 200,000 tokens). Las tareas agénticas largas pueden agotar este límite. Los sistemas multi-agente resuelven este problema \emph{distribuyendo el contexto}: cada agente lee únicamente la porción de información relevante para su subtarea y devuelve un resumen comprimido al orquestador.
+
+\begin{examplebox}[title=Distribución de Contexto en la Práctica]
+\textbf{Tarea:} Analizar vulnerabilidades de seguridad en una base de código de 50,000 líneas distribuidas en 10 módulos.
+
+\textbf{Sin multi-agente:} El orquestador necesitaría cargar las 50,000 líneas (potencialmente superando el límite de contexto).
+
+\textbf{Con multi-agente:} Cada uno de 10 agentes analiza un módulo ($\sim$5,000 líneas). Cada uno devuelve un resumen de seguridad de 200 palabras. El orquestador sintetiza $10 \times 200 = 2,000$ palabras en lugar de 50,000 líneas.
+
+\textbf{Reducción de contexto: $\sim$25:1}
+\end{examplebox}
+
+\subsection{Memoria y Persistencia de los Agentes}
+
+Los agentes no tienen memoria persistente entre invocaciones. Cada agente comienza solo con su prompt de sistema y el prompt de tarea proporcionado por el orquestador. Para persistir información, los agentes deben \emph{escribir en almacenamiento externo}:
+
+\begin{itemize}[leftmargin=*]
+    \item \textbf{Archivos:} Escribir hallazgos en archivos \texttt{.md} o \texttt{.json} que otros agentes (o el orquestador) puedan leer posteriormente.
+    \item \textbf{Bases de datos:} Escribir en SQLite u otra base de datos a través de Bash.
+    \item \textbf{Sistemas de memoria:} Claude Code dispone de un sistema de memoria de proyecto (\texttt{MEMORY.md}) que persiste entre sesiones.
+    \item \textbf{Archivos CLAUDE.md:} Se cargan siempre en cada sesión de Claude; apropiados para instrucciones persistentes a nivel de proyecto.
+\end{itemize}
+
+%================================================================
+\section{Construcción de Agentes con el SDK de Python de Anthropic}
+%================================================================
+
+\subsection{Configuración del Entorno}
+
+\begin{lstlisting}[style=BashStyle, caption={Configuración del entorno (conda, según se requiere)}]
+# Usar siempre el entorno conda 'research'
+conda activate research
+pip install anthropic
+
+# Configurar la clave de API (agregar a ~/.zshrc o ~/.bashrc permanentemente)
+export ANTHROPIC_API_KEY="sk-ant-api03-..."
+
+# Verificar la instalacion
+python -c "import anthropic; print(anthropic.__version__)"
+\end{lstlisting}
+
+\subsection{Un Agente Asesor Académico Completo}
+
+El siguiente listado muestra un agente completo y listo para producción que asesora a los alumnos sobre su desempeño académico. Demuestra el diseño correcto de herramientas, el manejo del bucle de múltiples turnos y la gestión de errores:
+
+\begin{lstlisting}[style=PythonStyle, caption={Agente asesor académico completo}, label={lst:grade-agent}]
+"""
+asesor_academico.py
+Agente: asesora alumnos sobre su desempenio y estrategias de mejora.
+Curso: Redes Neuronales y SVM -- Anahuac Mexico
+"""
+import anthropic
+import json
+
+client = anthropic.Anthropic()
+
+# -----------------------------------------------------------------------
+# Definicion de herramientas
+# -----------------------------------------------------------------------
+tools = [
+    {
+        "name": "get_student_grades",
+        "description": (
+            "Obtiene las calificaciones de un alumno en todas las "
+            "actividades y examenes del curso. Devuelve un objeto JSON "
+            "con nombres de actividades como llaves y puntajes (0-100)."
+        ),
+        "input_schema": {
+            "type": "object",
+            "properties": {
+                "student_id": {
+                    "type": "string",
+                    "description": "Matricula del alumno, ej. 'A00123456'"
+                }
+            },
+            "required": ["student_id"]
+        }
+    },
+    {
+        "name": "get_course_statistics",
+        "description": (
+            "Obtiene estadisticas del grupo para el curso actual: "
+            "promedio, mediana, desviacion estandar, tasa de aprobacion. "
+            "Usar para comparar el desempenio de un alumno con el grupo."
+        ),
+        "input_schema": {
+            "type": "object",
+            "properties": {},
+            "required": []
+        }
+    },
+    {
+        "name": "get_syllabus_topics",
+        "description": (
+            "Devuelve la lista de temas pendientes del programa y sus "
+            "pesos en la calificacion final. Util para asesorar sobre "
+            "cuales temas priorizar."
+        ),
+        "input_schema": {
+            "type": "object",
+            "properties": {},
+            "required": []
+        }
+    }
+]
+
+# -----------------------------------------------------------------------
+# Base de datos simulada (reemplazar con consultas reales en produccion)
+# -----------------------------------------------------------------------
+GRADE_DB = {
+    "A00123456": {
+        "Parcial 1": 72,
+        "Parcial 2": 68,
+        "Lab 1 (Perceptron)": 85,
+        "Lab 2 (Backprop)": 90,
+        "Lab 3 (CNN)": 78,
+        "Tarea 1": 95,
+        "Tarea 2": 60,
+    }
+}
+
+COURSE_STATS = {
+    "average": 74.2,
+    "median": 76.0,
+    "std_dev": 11.3,
+    "pass_rate": 0.82,
+    "enrolled": 34
+}
+
+SYLLABUS_REMAINING = [
+    {"topic": "Support Vector Machines", "weight": 0.20},
+    {"topic": "LSTM Networks",           "weight": 0.15},
+    {"topic": "Transfer Learning",       "weight": 0.10},
+    {"topic": "Proyecto Final",          "weight": 0.20},
+]
+
+# -----------------------------------------------------------------------
+# Despachador de herramientas
+# -----------------------------------------------------------------------
+def despachar_herramienta(nombre: str, entradas: dict) -> str:
+    if nombre == "get_student_grades":
+        matricula = entradas["student_id"]
+        califs = GRADE_DB.get(matricula)
+        if califs is None:
+            return json.dumps({"error": f"Alumno {matricula} no encontrado."})
+        return json.dumps(califs)
+
+    elif nombre == "get_course_statistics":
+        return json.dumps(COURSE_STATS)
+
+    elif nombre == "get_syllabus_topics":
+        return json.dumps(SYLLABUS_REMAINING)
+
+    return json.dumps({"error": f"Herramienta desconocida: {nombre}"})
+
+# -----------------------------------------------------------------------
+# Prompt de sistema del agente
+# -----------------------------------------------------------------------
+SYSTEM_PROMPT = """
+Eres un asesor academico del curso Redes Neuronales y SVM en la
+Universidad Anahuac Mexico, impartido por el Prof. Dr. Aboud Barsekh-Onji.
+
+Tu funcion es:
+1. Analizar las calificaciones actuales del alumno e identificar areas debiles.
+2. Comparar su desempenio con el promedio del grupo.
+3. Identificar los temas proximos con mayor peso en la calificacion final.
+4. Ofrecer recomendaciones de estudio especificas y accionables.
+
+Siempre:
+- Usar un tono respetuoso, alentador y profesional (en español).
+- Ser especifico: mencionar nombres de actividades, puntajes exactos, temas.
+- Priorizar recomendaciones segun su impacto en la calificacion final.
+- Concluir con un plan de accion concreto de 3 pasos.
+
+Nunca revelar calificaciones individuales de otros alumnos.
+"""
+
+# -----------------------------------------------------------------------
+# Bucle del agente
+# -----------------------------------------------------------------------
+def ejecutar_asesor(matricula: str) -> str:
+    mensaje_usuario = (
+        f"Por favor analiza el rendimiento academico del alumno {matricula} "
+        f"y dame recomendaciones especificas para mejorar su calificacion final."
+    )
+
+    mensajes = [{"role": "user", "content": mensaje_usuario}]
+    print(f"\n[Agente] Iniciando sesion de asesoria para {matricula}...\n")
+
+    while True:
+        respuesta = client.messages.create(
+            model="claude-sonnet-4-6",
+            max_tokens=2048,
+            system=SYSTEM_PROMPT,
+            tools=tools,
+            messages=mensajes
+        )
+
+        print(f"[Agente] stop_reason = {respuesta.stop_reason}")
+        mensajes.append({"role": "assistant", "content": respuesta.content})
+
+        # Condicion terminal
+        if respuesta.stop_reason == "end_turn":
+            for bloque in respuesta.content:
+                if hasattr(bloque, "text"):
+                    return bloque.text
+
+        # Ejecutar llamadas a herramientas
+        if respuesta.stop_reason == "tool_use":
+            resultados = []
+            for bloque in respuesta.content:
+                if bloque.type == "tool_use":
+                    print(f"[Agente] Herramienta: {bloque.name}({bloque.input})")
+                    resultado = despachar_herramienta(bloque.name, bloque.input)
+                    print(f"[Agente] Resultado: {resultado[:80]}...")
+                    resultados.append({
+                        "type": "tool_result",
+                        "tool_use_id": bloque.id,
+                        "content": resultado
+                    })
+            mensajes.append({"role": "user", "content": resultados})
+
+# -----------------------------------------------------------------------
+# Punto de entrada
+# -----------------------------------------------------------------------
+if __name__ == "__main__":
+    informe = ejecutar_asesor("A00123456")
+    print("\n" + "="*60)
+    print("INFORME DEL ASESOR ACADEMICO")
+    print("="*60)
+    print(informe)
+\end{lstlisting}
+
+\subsection{Respuestas en Streaming}
+
+Para aplicaciones orientadas al usuario, el streaming mejora drásticamente la capacidad de respuesta percibida:
+
+\begin{lstlisting}[style=PythonStyle, caption={Agente con respuesta en streaming}]
+import anthropic
+
+client = anthropic.Anthropic()
+
+def ejecutar_agente_streaming(mensajes: list, tools: list) -> str:
+    """Ejecuta un agente con salida en streaming para visualizacion en tiempo real."""
+
+    with client.messages.stream(
+        model="claude-sonnet-4-6",
+        max_tokens=2048,
+        tools=tools,
+        messages=mensajes
+    ) as stream:
+        # Transmitir tokens de texto conforme llegan
+        for texto in stream.text_stream:
+            print(texto, end="", flush=True)
+        print()  # salto de linea al finalizar el streaming
+
+        # Obtener el mensaje final completo (incluye bloques tool_use)
+        return stream.get_final_message()
+\end{lstlisting}
+
+%================================================================
+\section{Definición Completa de un Agente para Claude Code}
+%================================================================
+
+\subsection{El Agente \texttt{neural-net-tutor}}
+
+A continuación se presenta la definición completa del agente \texttt{neural-net-tutor}, que sirve como ejemplo de demostración para este capítulo. Este agente está diseñado para responder preguntas conceptuales sobre redes neuronales y generar ejemplos en MATLAB, siendo estrictamente de solo lectura (sin capacidad de modificar archivos).
+
+\begin{lstlisting}[style=MarkdownStyle, caption={.claude/agents/neural-net-tutor.md},
+                   label={lst:tutor-agent}]
+---
+name: neural-net-tutor
+description: >
+  Usar este agente para explicar conceptos, arquitecturas y algoritmos
+  de entrenamiento de redes neuronales a nivel de ingenieria de licenciatura.
+  Disparadores: "explica la retropropagacion", "como funciona LSTM",
+  "que es una CNN", "muestra un ejemplo MATLAB de [tema]",
+  "ayudame a entender [concepto de RN]", cualquier pregunta conceptual
+  sobre redes neuronales o SVMs.
+  NO usar para: escribir archivos, ejecutar codigo, modificar proyectos.
+tools:
+  - Read
+  - Grep
+  - Glob
+model: claude-sonnet-4-6
+---
+
+# Tutor de Redes Neuronales
+
+Eres un asistente de ensenanza experto para el curso Redes Neuronales
+y SVM en la Universidad Anahuac Mexico, impartido por el Prof. Dr.
+Aboud Barsekh-Onji.
+
+## Tu Rol
+- Explicar conceptos de redes neuronales y SVM claramente a nivel
+  de ingenieria de licenciatura
+- Generar ejemplos en MATLAB R2025b usando el Deep Learning Toolbox
+- Referenciar diapositivas y ejemplos del curso cuando sea relevante
+- Usar notacion matematica rigurosa cuando sea conceptualmente util
+- Responder en espanol; los terminos tecnicos pueden permanecer en ingles
+
+## Reglas de Comportamiento
+1. Comenzar siempre con una explicacion intuitiva antes de la matematica
+2. Usar espanol para toda la prosa; terminos tecnicos (backpropagation,
+   softmax, etc.) permanecen en ingles en el primer uso
+3. Al generar codigo MATLAB, siempre usar:
+   - trainnet() (API R2023a+) -- nunca el legacy train()
+   - trainingOptions("adam", ...) con argumentos con nombre
+   - minibatchpredict() + scores2label() para evaluacion
+   - confusionchart() para visualizacion
+4. Los ejemplos de codigo deben ser autocontenidos y ejecutables
+5. Si un concepto aparece en las diapositivas del curso, mencionar
+   el nombre del archivo .tex
+
+## Alcance del Conocimiento
+- Redes Neuronales hacia Adelante: perceptron, MLP, retropropagacion
+- Redes Convolucionales: LeNet, AlexNet, VGG, ResNet, mapas de caracteristicas
+- Redes Recurrentes: RNN, gradiente evanescente, compuertas LSTM, GRU
+- Maquinas de Soporte Vectorial: truco del kernel, margen blando, multiclase
+- Aprendizaje por Transferencia: extraccion de caracteristicas vs ajuste fino
+- Optimizacion: SGD, Adam, RMSProp, programas de tasa de aprendizaje
+- Regularizacion: dropout, normalizacion por lote, L1/L2, parada temprana
+
+## Restricciones
+- Solo lectura: NUNCA modificar, crear ni eliminar archivos
+- NUNCA responder preguntas fuera del dominio de redes neuronales y SVM
+- NUNCA adivinar -- si hay incertidumbre, decirlo y sugerir referencias
+- NUNCA reproducir texto con derechos de autor textualmente; parafrasear y citar
+\end{lstlisting}
+
+\subsection{Prueba del Agente}
+
+Una vez que el archivo se crea en \texttt{.claude/agents/neural-net-tutor.md}, el agente queda disponible automáticamente. El Claude orquestador lo seleccionará cada vez que el usuario formule una pregunta conceptual sobre redes neuronales. No se requiere ningún comando de barra oblicua del lado del usuario.
+
+\begin{examplebox}[title=Interacciones de Prueba]
+
+\textbf{Usuario:} \textit{``Explica el problema del gradiente evanescente y cómo las LSTM lo resuelven. Incluye un ejemplo en MATLAB.''}
+
+\textbf{Lo que sucede internamente:}
+\begin{enumerate}
+    \item Claude (orquestador) asocia la pregunta con \texttt{neural-net-tutor}
+    \item Lanza el agente con la tarea como prompt
+    \item El agente puede usar \texttt{Grep} para buscar referencias en archivos del curso
+    \item El agente genera la explicación con matemáticas y ejemplo en MATLAB
+    \item El orquestador devuelve la respuesta al usuario
+\end{enumerate}
+
+\textbf{Extracto de la respuesta del agente:}
+
+El problema del \textbf{gradiente evanescente} surge durante la retropropagación en redes profundas. En cada capa, el gradiente se multiplica por la derivada de la función de activación y por la matriz de pesos:
+$$\frac{\partial \mathcal{L}}{\partial W^{(1)}} = \prod_{l=2}^{L} \frac{\partial h^{(l)}}{\partial h^{(l-1)}} \cdot \frac{\partial \mathcal{L}}{\partial h^{(L)}}$$
+Si $\|\frac{\partial h^{(l)}}{\partial h^{(l-1)}}\| < 1$, este producto decrece exponencialmente con la profundidad $L$, impidiendo que las capas tempranas aprendan.
+
+Las \textbf{LSTM} resuelven esto mediante una actualización \emph{aditiva} del estado de celda $C_t$:
+$$C_t = f_t \odot C_{t-1} + i_t \odot \tilde{C}_t$$
+donde el gradiente fluye a través de la suma sin multiplicaciones repetidas, preservando su magnitud a lo largo del tiempo.
+\end{examplebox}
+
+%================================================================
+\section{Actividad de Laboratorio}
+%================================================================
+
+\subsection{Objetivo}
+
+Diseñar e implementar un agente funcional de Claude Code para un dominio relevante a su trabajo académico o de investigación. Probarlo con al menos tres consultas distintas y evaluar su comportamiento con respecto a las intenciones de diseño.
+
+\subsection{Entregables}
+
+\begin{enumerate}[leftmargin=*]
+    \item \textbf{Archivo de agente:} \texttt{.claude/agents/<nombre-de-su-agente>.md}, entregado como archivo independiente.
+    \item \textbf{Registro de pruebas:} Tres consultas de muestra con las respuestas del agente (copia de la sesión de Claude Code).
+    \item \textbf{Reflexión de diseño} (1 cuartilla): Justificar la elección de:
+        \begin{itemize}
+            \item Conjunto de herramientas (por qué estas herramientas y no otras)
+            \item Redacción de la descripción (cómo se logró suficiente especificidad para un enrutamiento confiable)
+            \item Estructura del prompt de sistema (rol, reglas, restricciones)
+            \item Cualquier elemento que se iteró después de las pruebas iniciales
+        \end{itemize}
+\end{enumerate}
+
+\subsection{Rúbrica de Evaluación}
+
+\begin{table}[H]
+\centering
+\caption{Rúbrica de la actividad de laboratorio (100 puntos en total)}
+\begin{tabular}{@{}p{0.45\linewidth}p{0.1\linewidth}p{0.35\linewidth}@{}}
+\toprule
+\textbf{Criterio} & \textbf{Puntos} & \textbf{Indicadores} \\
+\midrule
+Especificidad de la descripción & 20 & Incluye disparadores y exclusiones explícitos; el agente se selecciona de forma confiable \\
+Delimitación de herramientas & 20 & Usa el mínimo de herramientas necesarias; sin acceso innecesario a Bash/Write \\
+Calidad del prompt de sistema & 25 & Rol claro, reglas concretas, restricciones explícitas \\
+Pruebas funcionales & 25 & Tres consultas probadas con respuestas apropiadas \\
+Reflexión de diseño & 10 & Justifica decisiones de diseño; describe la iteración \\
+\midrule
+\textbf{Total} & \textbf{100} & \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+%================================================================
+\section{Resumen}
+%================================================================
+
+Este capítulo ha recorrido el arco completo desde los LLMs como generadores de texto estático hasta los sistemas multi-agente autónomos. Los conceptos clave son:
+
+\begin{enumerate}[leftmargin=*]
+    \item \textbf{Los LLMs como motores de razonamiento:} Los LLMs modernos razonan sobre objetivos y deciden qué herramientas invocar. No ejecutan; el código externo lo hace.
+    \item \textbf{El bucle ReAct:} Pensamiento $\rightarrow$ Acción $\rightarrow$ Observación, repetido hasta alcanzar el objetivo. Es la columna vertebral operativa de todos los marcos agénticos.
+    \item \textbf{Los Skills} son plantillas de prompt reutilizables invocadas por el usuario mediante \texttt{/comando}. Codifican experiencia de dominio, convenciones y flujos de trabajo de múltiples pasos en un archivo Markdown persistente y compartible.
+    \item \textbf{Los Agentes} son subprocesos autónomos invocados por el propio Claude. Se ejecutan en contextos aislados, tienen acceso delimitado a herramientas y pueden ejecutarse en paralelo.
+    \item \textbf{La elección entre skills y agentes} depende de: quién dispara la tarea (usuario vs Claude), si se necesita ejecución paralela, si el aislamiento de contexto es importante, y si la tarea es breve (una respuesta) o larga (bucle autónomo de múltiples pasos).
+    \item \textbf{La orquestación multi-agente} resuelve las limitaciones de la ventana de contexto y habilita la ejecución paralela, reduciendo drásticamente el tiempo total de las tareas complejas.
+    \item \textbf{El SDK de Python de Anthropic} proporciona una interfaz limpia para construir agentes personalizados: definir herramientas, implementar el bucle de herramientas, despachar resultados y gestionar el streaming para aplicaciones orientadas al usuario.
+\end{enumerate}
+
+\begin{notebox}
+\textbf{Principio de Diseño Central:} Usar el mecanismo más simple que resuelva el problema. Tres líneas de buen ingeniería de prompts frecuentemente superan a un complejo pipeline multi-agente. Escalar a agentes solo cuando la autonomía, el paralelismo o el aislamiento sean genuinamente necesarios.
+\end{notebox}
+
+%================================================================
+\section*{Referencias}
+%================================================================
+
+\begin{enumerate}[leftmargin=*, label={[\arabic*]}]
+    \item Yao, S., Zhao, J., Yu, D., Du, N., Shafran, I., Narasimhan, K., \& Cao, Y. (2022). \textit{ReAct: Synergizing Reasoning and Acting in Language Models}. ICLR 2023. \url{https://arxiv.org/abs/2210.03629}
+
+    \item Anthropic. (2025). \textit{Documentación de la API de Claude --- Uso de Herramientas}. \url{https://docs.anthropic.com/en/docs/tool-use}
+
+    \item Anthropic. (2025). \textit{Claude Code --- Documentación de Agentes}. \url{https://docs.anthropic.com/en/docs/claude-code/agents}
+
+    \item Wang, L., Ma, C., Feng, X., Zhang, Z., Yang, H., Zhang, J., \ldots{} \& Wen, J. R. (2024). A survey on large language model based autonomous agents. \textit{Frontiers of Computer Science}, 18(6), 186345.
+
+    \item Xi, Z., Chen, W., Guo, X., He, W., Ding, Y., Hong, B., \ldots{} \& Gui, T. (2023). \textit{The Rise and Potential of Large Language Model Based Agents: A Survey}. \url{https://arxiv.org/abs/2309.07864}
+
+    \item Russell, S., \& Norvig, P. (2020). \textit{Inteligencia Artificial: Un Enfoque Moderno} (4.a ed.). Pearson.
+
+    \item Vaswani, A., Shazeer, N., Parmar, N., Uszkoreit, J., Jones, L., Gomez, A. N., Kaiser, L., \& Polosukhin, I. (2017). Attention is all you need. \textit{Advances in Neural Information Processing Systems}, 30.
+
+    \item Devlin, J., Chang, M. W., Lee, K., \& Toutanova, K. (2018). \textit{BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding}. \url{https://arxiv.org/abs/1810.04805}
+
+    \item Anthropic. (2025). \textit{SDK de Python de Anthropic}. \url{https://github.com/anthropics/anthropic-sdk-python}
+\end{enumerate}
+
+%================================================================
+\end{document}
+%================================================================

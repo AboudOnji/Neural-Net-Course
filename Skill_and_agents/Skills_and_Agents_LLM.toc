@@ -1,0 +1,11 @@
+\babel@toc {english}{}\relax 
+\beamer@sectionintoc {1}{From LLMs to Agentic Systems}{3}{0}{1}
+\beamer@sectionintoc {2}{Tools and Function Calling}{7}{0}{2}
+\beamer@sectionintoc {3}{Skills in Claude Code}{10}{0}{3}
+\beamer@sectionintoc {4}{Agents in Claude Code}{15}{0}{4}
+\beamer@sectionintoc {5}{Skills vs Agents: A Comparative Taxonomy}{21}{0}{5}
+\beamer@sectionintoc {6}{Multi-Agent Architectures}{25}{0}{6}
+\beamer@sectionintoc {7}{Building Agents with the Claude API}{28}{0}{7}
+\beamer@sectionintoc {8}{Claude Code Agent Definitions}{33}{0}{8}
+\beamer@sectionintoc {9}{Demonstration: A Complete Agent}{36}{0}{9}
+\beamer@sectionintoc {10}{Practical Activity}{41}{0}{10}
