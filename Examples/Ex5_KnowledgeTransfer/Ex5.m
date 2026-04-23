@@ -41,10 +41,10 @@
 % imageDatastore infiere automáticamente las etiquetas de clase
 % a partir de los nombres de las subcarpetas (LabelSource="foldernames").
 % ------------------------------------------------------------------
-
+% cd Examples/Ex5_KnowledgeTransfer/ % en caso de que no se tenga el path correcto
 folderName = "MerchData";
-unzip("MerchData.zip", folderName);   % Descomprimir el archivo ZIP
-
+unzip("MerchData.zip",folderName);
+%%
 % Crear el imageDatastore: permite leer imágenes en lotes durante
 % el entrenamiento sin cargar todo el dataset en memoria RAM
 imds = imageDatastore(folderName, ...
