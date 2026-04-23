@@ -1,0 +1,11 @@
+\frametitle{Training Options}
+
+    \begin{tabular}{lcl}
+        \toprule
+        \textbf{Option} & \textbf{Value} & \textbf{Justification} \\
+        \midrule
+        \texttt{InitialLearnRate} & 0.0001 & Protects pre-trained weights \\
+        \texttt{MaxEpochs}        & 8      & Fast convergence in TL \\
+        \texttt{MiniBatchSize}    & 11     & Even split of 52 training imgs \\
+        \bottomrule
+    \end{tabular}

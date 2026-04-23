@@ -1,0 +1,9 @@
+\babel@toc {english}{}\relax 
+\beamer@sectionintoc {1}{Motivation}{3}{0}{1}
+\beamer@sectionintoc {2}{Foundations of Transfer Learning}{6}{0}{2}
+\beamer@sectionintoc {3}{Transfer Learning Strategies}{10}{0}{3}
+\beamer@sectionintoc {4}{Pre-trained Networks in MATLAB}{14}{0}{4}
+\beamer@sectionintoc {5}{Transfer Learning Pipeline in MATLAB}{18}{0}{5}
+\beamer@subsectionintoc {5}{1}{Training}{20}{0}{5}
+\beamer@sectionintoc {6}{Analysis and Reflection}{24}{0}{6}
+\beamer@sectionintoc {7}{Summary}{28}{0}{7}
