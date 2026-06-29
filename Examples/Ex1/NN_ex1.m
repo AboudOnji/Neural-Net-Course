@@ -30,7 +30,13 @@ end
 % Divide el total de observaciones en tres conjuntos:
 % 80% Entrenamiento, 10% Validación, 10% Prueba.
 numObservations = numel(data);
-[idxTrain, idxValidation, idxTest] = trainingPartitions(numObservations, [0.8 0.1 0.1]);
+%[idxTrain, idxValidation, idxTest] = trainingPartitions(numObservations, [0.8 0.1 0.1]);
+  idx = randperm(numObservations);
+  n1 = round(0.8*numObservations);
+  n2 = round(0.1*numObservations);
+  idxTrain = idx(1:n1);
+  idxValidation = idx(n1+1:n1+n2);
+  idxTest = idx(n1+n2+1:end);
 
 % Asignación de datos basada en los índices generados
 XTrain = data(idxTrain);       % Datos de entrada (Entrenamiento)
