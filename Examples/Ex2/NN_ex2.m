@@ -12,6 +12,9 @@ numChannels = size(data{idx},2);
 
 figure
 stackedplot(data{idx},DisplayLabels="Channel " + (1:numChannels))
+
+%%
+
 %% Parte II: Definir la Arquitectura de la Red
 % Para construir la red, abra la app Deep Network Designer.
 deepNetworkDesigner

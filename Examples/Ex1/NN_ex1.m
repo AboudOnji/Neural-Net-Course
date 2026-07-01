@@ -54,8 +54,8 @@ TTest = labels(idxTest);
 % IMPORTANTE: exporta la red como 'net_1'
 
 options = trainingOptions("adam", ...        % Optimizador: Adam
-    MaxEpochs=500, ...                       % Número máximo de pasadas por todos los datos
-    InitialLearnRate=0.005, ...             % Tasa de aprendizaje inicial (paso del gradiente)
+    MaxEpochs=300, ...                       % Número máximo de pasadas por todos los datos
+    InitialLearnRate=0.05, ...             % Tasa de aprendizaje inicial (paso del gradiente)
     GradientThreshold=1, ...                 % Recorte de gradiente para estabilidad (evita explosión)
     ValidationData={XValidation,TValidation},... % Datos para validar durante entrenamiento
     Shuffle="every-epoch", ...               % Mezclar datos en cada época para evitar ciclos
